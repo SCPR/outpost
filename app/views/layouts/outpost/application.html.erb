@@ -1,14 +1,159 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
-  <title>Outpost</title>
-  <%= stylesheet_link_tag    "outpost/application", :media => "all" %>
-  <%= javascript_include_tag "outpost/application" %>
+  <title><%= @PAGE_TITLE ? @PAGE_TITLE + " | Outpost" : "Outpost" %></title>
+  <%= stylesheet_link_tag "admin/admin" %>
+  <%= javascript_include_tag "shared", "admin/admin" %>
+  
+  <link rel="shortcut icon" href="http://media.scpr.org/favicon.ico" />
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<div class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <a href="<%=admin_root_path%>" class="brand">Outpost</a>
+      
+      <% if admin_user %>
+        <ul class="nav">
+          
+          <!-- Quick Nav -->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-fast-forward icon-white"></i> Quick Nav <b class="caret"></b></a>
+            <ul class="dropdown-menu cms-nav" style="width: 400px;">
+              <div class="grouper">
+                <% [BlogEntry, ShowSegment, NewsStory, ContentShell, Event, BreakingNewsAlert].each do |model| %>
+                  <%= guard model do %>
+                    <li>
+                      <a href="<%=model.admin_index_path%>"><%= model.to_title.pluralize %></a>
+                    
+                      <div class="btn-links">
+                        <a class="add btn btn-mini" href="<%=model.admin_new_path%>"><i class="icon-plus-sign"></i> Add</a>
+                      </div>
+                    </li>
+                  <% end %>
+                <% end %>
+                
+                <%= guard Homepage do %>
+                  <% if @current_homepage %>
+                    <li>
+                      <a href="<%=@current_homepage.admin_edit_path%>">Update Current Homepage (<%= format_date(@current_homepage.updated_at, format: :iso, time: true) %>)</a>
+                    </li>
+                  <% end %>
+                <% end %>
+              </div> <!-- grouper -->
+            </ul> <!-- dropdown-menu -->
+          </li> <!-- Quick Nav dropdown -->
+          
+          <!-- Full Navigation -->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-align-justify icon-white"></i> Navigation <b class="caret"></b></a>
+            <% models = admin_user.allowed_resources.sort_by(&:name) %>
+            <% per_col = 20 %>
+            <% cols = (models.size.to_f / per_col.to_f).ceil %>
 
+            <ul class="dropdown-menu cms-nav" style="width:<%= cols * 400 + cols * 10 %>px">
+              <% models.each_with_index do |model, index| %>
+                <% if index % per_col == 0 %>
+                  <div class="grouper">
+                <% end %>
+                
+                <li>
+                  <a href="<%=model.admin_index_path%>">
+                    <%= model.name.titleize.pluralize %>
+                  </a>
+                  
+                  <div class="btn-links">
+                    <% if model.respond_to?(:admin_new_path) %>
+                      <a class="add btn btn-mini" href="<%=model.admin_new_path%>"><i class="icon-plus-sign"></i> Add</a>
+                    <% end %>
+                  </div>
+                </li>
+                
+                <% if index % per_col == per_col - 1 or model == models.last %>
+                  </div>
+                <% end %>
+                
+              <% end %>
+            </ul> <!-- dropdown-menu -->
+          </li> <!-- dropdown -->
+          <li><a href="http://a.scpr.org/a/assets" target="_new"><i class="icon-camera icon-white"></i> AssetHost</a></li>
+        </ul> <!-- nav -->
+
+        <ul class="nav pull-right">
+          <li><a href="#ticket-modal" data-toggle="modal"><i class='icon-wrench icon-white'></i> Report a Problem</a></li>
+          
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class='icon-user icon-white'></i> <%= admin_user.name %> <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Your Activity", activity_admin_admin_user_path(admin_user) %></li>
+              <li><%= link_to "Edit CMS Account", admin_user.admin_edit_path %></li>
+              <% if admin_user.bio.present? %>
+                <li><%= link_to "Edit Bio", admin_user.bio.admin_edit_path %></li>
+              <% end %>
+              <li><%= link_to "Logout", admin_logout_path, id: "logout" %></li>
+            </ul>
+          </li>
+        </ul>
+      <% else %>
+        <ul class="nav pull-right">
+          <li><%= link_to "Login", admin_login_path %></li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% if admin_user %>
+  <div class="navbar navbar-fixed-top fixed-breadcrumbs">
+      <% if breadcrumbs.present? %>
+        <div class="breadcrumb unstyled">
+          <div class="container">
+            <ul class="breadcrumb">
+              <% breadcrumbs.each do |crumb| %>
+                <li>
+                  <% if crumb.link.present? %>
+                    <%= link_to crumb.title, crumb.link %>
+                  <% else %>
+                    <%= crumb.title %>
+                  <% end %>
+          
+                  <% unless crumb == breadcrumbs.last %>
+                    <span class="divider">/</span>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+  </div> <!-- navbar -->
+<% end %>
+
+<div id="main" class="container">
+  <div class="row">
+    <div class="span<%= content_for?(:sidebar) ? "9" : "12" %>">
+      <% flash.select { |k, v| v.is_a? String }.each do |name, msg| %>
+        <div class="alert alert-<%= flash_alert_type(name) %>">
+          <a class="close" data-dismiss="alert">&times;</a>
+          <%= msg.html_safe %>
+        </div>
+      <% end %>
+      
+      <%= yield %>
+    </div>
+    <% if content_for?(:sidebar) %>
+      <div class="span3" id="admin-sidebar">
+        <%= yield :sidebar %>
+      </div>
+    <% end %>
+  </div> <!-- row -->
+</div> <!-- container main -->
+
+<%= render '/admin/tickets/modal' %>
+<%= yield :footer %>
+
+<%= javascript_include_tag "#{Rails.application.config.node.server}/socket.io/socket.io.js" %>
 </body>
 </html>
