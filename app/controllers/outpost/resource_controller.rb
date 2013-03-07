@@ -2,6 +2,7 @@
 # ResourceController
 #
 # Adds in some default behavior for resources in the CMS.
+#
 class Outpost::ResourceController < Outpost::BaseController
   outpost_controller
   include Concern::Controller::Searchable

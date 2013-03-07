@@ -18,34 +18,6 @@
       <% if admin_user %>
         <ul class="nav">
           
-          <!-- Quick Nav -->
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-fast-forward icon-white"></i> Quick Nav <b class="caret"></b></a>
-            <ul class="dropdown-menu cms-nav" style="width: 400px;">
-              <div class="grouper">
-                <% [BlogEntry, ShowSegment, NewsStory, ContentShell, Event, BreakingNewsAlert].each do |model| %>
-                  <%= guard model do %>
-                    <li>
-                      <a href="<%=model.admin_index_path%>"><%= model.to_title.pluralize %></a>
-                    
-                      <div class="btn-links">
-                        <a class="add btn btn-mini" href="<%=model.admin_new_path%>"><i class="icon-plus-sign"></i> Add</a>
-                      </div>
-                    </li>
-                  <% end %>
-                <% end %>
-                
-                <%= guard Homepage do %>
-                  <% if @current_homepage %>
-                    <li>
-                      <a href="<%=@current_homepage.admin_edit_path%>">Update Current Homepage (<%= format_date(@current_homepage.updated_at, format: :iso, time: true) %>)</a>
-                    </li>
-                  <% end %>
-                <% end %>
-              </div> <!-- grouper -->
-            </ul> <!-- dropdown-menu -->
-          </li> <!-- Quick Nav dropdown -->
-          
           <!-- Full Navigation -->
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-align-justify icon-white"></i> Navigation <b class="caret"></b></a>
@@ -78,7 +50,6 @@
               <% end %>
             </ul> <!-- dropdown-menu -->
           </li> <!-- dropdown -->
-          <li><a href="http://a.scpr.org/a/assets" target="_new"><i class="icon-camera icon-white"></i> AssetHost</a></li>
         </ul> <!-- nav -->
 
         <ul class="nav pull-right">

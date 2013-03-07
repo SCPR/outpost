@@ -13,13 +13,13 @@ module Outpost
         #--------------
         # /admin/blog_entries/new
         def admin_new_path
-          @admin_new_path ||= Rails.application.routes.url_helpers.send("new_admin_#{self.singular_route_key}_path")
+          @admin_new_path ||= Rails.application.routes.url_helpers.send("new_outpost_#{self.singular_route_key}_path")
         end
         
         #--------------
         # /admin/blog_entries
         def admin_index_path
-          @admin_index_path ||= Rails.application.routes.url_helpers.send("admin_#{self.route_key}_path")
+          @admin_index_path ||= Rails.application.routes.url_helpers.send("outpost_#{self.route_key}_path")
         end
       end
 
@@ -27,13 +27,13 @@ module Outpost
       #--------------
       # /admin/blog_entries/20/edit
       def admin_edit_path
-        @admin_edit_path ||= Rails.application.routes.url_helpers.send("edit_admin_#{self.class.singular_route_key}_path", self.id)
+        @admin_edit_path ||= Rails.application.routes.url_helpers.send("edit_outpost_#{self.class.singular_route_key}_path", self.id)
       end
 
       #--------------
       # /admin/blog_entries/20
       def admin_show_path
-        @admin_show_path ||= Rails.application.routes.url_helpers.send("admin_#{self.class.singular_route_key}_path", self.id)
+        @admin_show_path ||= Rails.application.routes.url_helpers.send("outpost_#{self.class.singular_route_key}_path", self.id)
       end
       
       #-------------

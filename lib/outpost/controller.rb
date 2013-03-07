@@ -9,6 +9,8 @@ module Outpost
     autoload :Actions
     autoload :Callbacks
     autoload :Helpers
+    autoload :Authentication
+    autoload :Authorization
 
     #----------------------
 
