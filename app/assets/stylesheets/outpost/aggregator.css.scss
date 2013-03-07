@@ -1,0 +1,79 @@
+.aggregator {
+  // Fancy UI things
+  .dim {
+    @include opacity(30);
+    @include transition(opacity 0.1s linear)
+  }
+  
+  // Override the Twitter pagination
+  // To reduce the padding
+  .pagination {
+    margin: 0 0 10px 0;
+  }
+  
+  input {
+    max-width: 250px;
+  }
+
+  .drop-zone.empty {
+    position: relative;
+    color: $grayLight;
+    h1 { 
+      position: absolute;
+      top: 60px;
+      left: 50px;
+    }
+  }
+  
+  .drop-zone, .content-list {
+    min-height: 200px;
+    @extend .unstyled;
+    
+    li {
+      @extend .clearfix;
+      
+      background: #fff;
+      border: 1px solid $grayLight;
+      margin: 5px 0;
+      padding: 5px;
+      cursor: move;
+      
+      @include box-shadow(2px 2px 6px #ccc);
+      @include border-radius(3px);
+      
+      // Dragging any content
+      &.dragging {
+        @include box-shadow(2px 2px 10px #ccc);
+      }
+      
+      // Adding content from the right panel
+      &.adding {
+        border-color: #0f0;
+      }
+      
+      // Removing content from drop zone
+      &.removing {
+        background-color: #f2dede;
+        border-color: #f00;
+        &>div { @include opacity(30); }
+      }
+      
+      img {
+        float: left;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .content-full {
+    img {
+      max-width: 120px;
+    }
+  }
+  
+  .content-minimal {
+    img {
+      max-width: 60px;
+    }
+  }
+}

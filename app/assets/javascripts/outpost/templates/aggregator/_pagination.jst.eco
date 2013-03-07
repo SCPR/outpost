@@ -1,0 +1,12 @@
+<div class="pagination pagination-mini pagination-centered">
+  <ul>
+    <li class="<%= 'disabled' if !@prev %>">
+      <a href="#" data-page="<%=@prev%>">&laquo; Back</a>
+    </li>
+    <li>
+      <a href="#" data-page="<%=@current%>"><i data-page="<%=@current%>" class="icon-refresh" style="vertical-align:sub"></i></a>
+    <li class="<%= 'disabled' if !@next %>">
+      <a href="#" data-page="<%=@next%>">More &raquo;</a>
+    </li>
+  </ul>
+</div>

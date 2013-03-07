@@ -1,0 +1,4 @@
+<strong>There has been an error</strong><br />
+Try dragging in URLs to the drop zone until we can fix this problem.<br /><br />
+
+<small><%=@xhr.statusText%> (<%=@xhr.status%>)</small>
