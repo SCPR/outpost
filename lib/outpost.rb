@@ -13,6 +13,7 @@ module Outpost
   autoload :Hook
   autoload :Helpers
   autoload :List
+  autoload :Breadcrumb, 'outpost/breadcrumbs'
   autoload :Breadcrumbs
 
   #----------------------
