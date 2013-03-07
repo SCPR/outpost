@@ -2,10 +2,9 @@ module Outpost
   module Controller
     module Callbacks
       extend ActiveSupport::Concern
-      
-      included do
-        include Outpost::Controller::Helpers
+      include Outpost::Controller::Helpers
 
+      included do
         before_filter :remove_preferences, only: [:index, :search]
         before_filter :set_order, :set_sort_mode, only: [:index, :search]
       end

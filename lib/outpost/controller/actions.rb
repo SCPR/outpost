@@ -9,11 +9,9 @@ module Outpost
   module Controller
     module Actions
       extend ActiveSupport::Concern
-
-      included do
-        include Outpost::Controller::Callbacks
-      end
-
+      include Outpost::Controller::Callbacks
+      include Outpost::Breadcrumbs
+      
       #------------------
       
       def index
