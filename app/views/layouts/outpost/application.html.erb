@@ -2,8 +2,8 @@
 <html lang="en" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
   <title><%= @PAGE_TITLE ? @PAGE_TITLE + " | Outpost" : "Outpost" %></title>
-  <%= stylesheet_link_tag "admin/admin" %>
-  <%= javascript_include_tag "shared", "admin/admin" %>
+  <%= stylesheet_link_tag "outpost/application" %>
+  <%= javascript_include_tag "outpost/application" %>
   
   <link rel="shortcut icon" href="http://media.scpr.org/favicon.ico" />
   <%= csrf_meta_tags %>
@@ -13,7 +13,7 @@
 <div class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container">
-      <a href="<%=admin_root_path%>" class="brand">Outpost</a>
+      <a href="<%=outpost_root_path%>" class="brand">Outpost</a>
       
       <% if admin_user %>
         <ul class="nav">
@@ -58,18 +58,18 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class='icon-user icon-white'></i> <%= admin_user.name %> <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Your Activity", activity_admin_admin_user_path(admin_user) %></li>
+              <li><%= link_to "Your Activity", activity_outpost_admin_user_path(admin_user) %></li>
               <li><%= link_to "Edit CMS Account", admin_user.admin_edit_path %></li>
               <% if admin_user.bio.present? %>
                 <li><%= link_to "Edit Bio", admin_user.bio.admin_edit_path %></li>
               <% end %>
-              <li><%= link_to "Logout", admin_logout_path, id: "logout" %></li>
+              <li><%= link_to "Logout", outpost_logout_path, id: "logout" %></li>
             </ul>
           </li>
         </ul>
       <% else %>
         <ul class="nav pull-right">
-          <li><%= link_to "Login", admin_login_path %></li>
+          <li><%= link_to "Login", outpost_login_path %></li>
         </ul>
       <% end %>
     </div>
@@ -122,7 +122,7 @@
   </div> <!-- row -->
 </div> <!-- container main -->
 
-<%= render '/admin/tickets/modal' %>
+<%= render '/outpost/tickets/modal' %>
 <%= yield :footer %>
 
 <%= javascript_include_tag "#{Rails.application.config.node.server}/socket.io/socket.io.js" %>

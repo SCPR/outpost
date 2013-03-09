@@ -5,7 +5,7 @@
 #
 # Example:
 #
-#   Outpost::Helpers::Naming.to_class("admin/news_stories")
+#   Outpost::Helpers::Naming.to_class("outpost/news_stories")
 #
 module Outpost
   module Helpers
@@ -13,8 +13,8 @@ module Outpost
       extend self
       
       # These helpers expect a controller param, 
-      # such as 'admin/news_stories'
-      # "admin/news_stories" => NewsStory
+      # such as 'outpost/news_stories'
+      # "outpost/news_stories" => NewsStory
       def to_class(controller)
         controller.singularize.camelize.demodulize.constantize
       end

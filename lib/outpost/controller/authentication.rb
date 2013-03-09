@@ -15,7 +15,7 @@ module Outpost
         # Only allow in if admin_user is set
         if !admin_user
           session[:return_to] = request.fullpath
-          redirect_to admin_login_path and return false
+          redirect_to outpost_login_path and return false
         end
       end
     end # Authentication

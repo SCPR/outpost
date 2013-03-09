@@ -12,7 +12,7 @@
 #
 #   class PostsController < ApplicationController
 #     def new
-#       breadcrumb "New", admin_new_post_path
+#       breadcrumb "New", outpost_new_post_path
 #       @post = Post.new
 #     end
 #   end
@@ -28,7 +28,7 @@
 # You can also define multiple breadcrumbs at once.
 # Every 2 arguments is a new breadcrumb:
 #
-#   breadcrumb "Edit", admin_edit_post_path(@post.id), @post.title, admin_post_path(@post)
+#   breadcrumb "Edit", outpost_edit_post_path(@post.id), @post.title, outpost_post_path(@post)
 #
 # Don't want the crumb to be linked? Just leave the 
 # second argument off, or +nil+ if you're defining

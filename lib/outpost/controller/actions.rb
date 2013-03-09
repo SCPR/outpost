@@ -15,7 +15,7 @@ module Outpost
       #------------------
       
       def index
-        respond_with :admin, @records
+        respond_with :outpost, @records
       end
 
       #------------------
@@ -23,7 +23,7 @@ module Outpost
       def new
         breadcrumb "New"
         @record = model.new
-        respond_with :admin, @record
+        respond_with :outpost, @record
       end
 
       #------------------
@@ -36,7 +36,7 @@ module Outpost
 
       def edit
         breadcrumb "Edit", nil, @record.to_title
-        respond_with :admin, @record
+        respond_with :outpost, @record
       end
 
       #------------------
@@ -46,7 +46,7 @@ module Outpost
         
         if @record.save
           notice "Saved #{@record.simple_title}"
-          respond_with :admin, @record, location: requested_location
+          respond_with :outpost, @record, location: requested_location
         else
           breadcrumb "New"
           render :new
@@ -58,7 +58,7 @@ module Outpost
       def update
         if @record.update_attributes(params[model.singular_route_key])
           notice "Saved #{@record.simple_title}"
-          respond_with :admin, @record, location: requested_location
+          respond_with :outpost, @record, location: requested_location
         else
           breadcrumb "Edit", nil, @record.to_title
           render :edit
@@ -70,7 +70,7 @@ module Outpost
       def destroy
         @record.destroy
         notice "Deleted #{@record.simple_title}"
-        respond_with :admin, @record
+        respond_with :outpost, @record
       end
       
       #--------------
