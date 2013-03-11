@@ -14,7 +14,10 @@ module Outpost
     #
     # Returns a String of the table, or a message if no records are present.
     def list_table(records, model, &block)
-      render '/outpost/shared/list_table', model: model, records: records, table: capture(&block)
+      render '/outpost/shared/list_table', 
+        :model   => model, 
+        :records => records, 
+        :table   => capture(&block)
     end
 
     # Public: Render a fieldset.
@@ -33,7 +36,9 @@ module Outpost
     # Returns a String of the fieldset.
     #
     def form_block(title="", &block)
-      render "/outpost/shared/form_block", title: title, body: capture(&block)
+      render "/outpost/shared/form_block", 
+        :title => title, 
+        :body  => capture(&block)
     end
   end
 end
