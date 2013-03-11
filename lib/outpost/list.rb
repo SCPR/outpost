@@ -1,6 +1,5 @@
 ##
 # Outpost::List
-
 module Outpost
   module List
     extend ActiveSupport::Autoload

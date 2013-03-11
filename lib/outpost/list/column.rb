@@ -6,8 +6,6 @@ module Outpost
 
       alias_method :quick_edit?, :quick_edit
       alias_method :sortable?, :sortable
-
-      #------------------
       
       def initialize(attribute, list, attributes={})
         @attribute = attribute.to_s
@@ -21,9 +19,7 @@ module Outpost
 
         @default_sort_mode = attributes[:default_sort_mode] || "asc"
       end
-      
-      #------------------
-      
+            
       def header
         @header ||= @attribute.titleize 
       end

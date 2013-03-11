@@ -2,7 +2,6 @@
 # Naming
 #
 # Some methods for naming things, and stuff
-#
 module Outpost
   module Model
     module Naming
@@ -15,7 +14,6 @@ module Outpost
         end
       end
       
-      #-------------
       # Convert any AR object into a human-readable title
       # Tries the attributes in config.title_attributes
       # And falls back to "BlogEntry #99"
@@ -47,13 +45,9 @@ module Outpost
         end
       end
       
-      #-------------
-      
       def to_title
         @to_title ||= self.send(self.title_method)
       end
-      
-      #-------------
       
       def simple_title
         @simple_title ||= begin

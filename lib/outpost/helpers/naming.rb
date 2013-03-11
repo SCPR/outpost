@@ -6,7 +6,6 @@
 # Example:
 #
 #   Outpost::Helpers::Naming.to_class("outpost/news_stories")
-#
 module Outpost
   module Helpers
     module Naming

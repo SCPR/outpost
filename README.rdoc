@@ -1,5 +1,5 @@
 = Outpost
 
-======A Rails Engine for quickly standing up a CMS for a Newsroom.
+A Rails Engine for quickly standing up a CMS for a Newsroom.
 
 **WIP, do not use.**

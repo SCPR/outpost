@@ -2,7 +2,6 @@
 # Outpost::Hook
 #
 # Hook into Newsroom.js
-#
 module Outpost
   class Hook
     attr_accessor :data, :path
@@ -12,7 +11,6 @@ module Outpost
       @data = options[:data] || { touch: true }
     end
     
-    #--------------
     # Publish the message
     def publish
       response = connection.post do |request|
@@ -22,9 +20,7 @@ module Outpost
       
       response
     end
-    
-    #--------------
-    
+        
     private
     
     def connection

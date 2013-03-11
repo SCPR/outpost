@@ -3,7 +3,6 @@ module Outpost
     module Serializer
       extend ActiveSupport::Concern
       
-      #-------------
       # This method should be overridden
       # Don't override as_json unless you don't
       # want its baked-in goodies
@@ -11,7 +10,6 @@ module Outpost
         {}
       end
       
-      #-------------
       # Define some defaults for as_json
       # Override +#json+ to add attributes
       # or override any of these.

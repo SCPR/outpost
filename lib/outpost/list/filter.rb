@@ -6,8 +6,6 @@ module Outpost
     class Filter
       attr_accessor :attribute, :collection, :title
       
-      #---------------
-      
       def initialize(attribute, list, options={})
         @attribute  = attribute
         @title      = options[:title] || attribute.to_s.titleize
@@ -26,8 +24,6 @@ module Outpost
           end
         end
       end
-      
-      #---------------
       
       private
       

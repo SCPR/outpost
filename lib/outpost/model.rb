@@ -1,6 +1,5 @@
 ##
 # Outpost::Model
-#
 module Outpost
   module Model
     extend ActiveSupport::Concern

@@ -2,7 +2,6 @@
 # Outpost::Model::Methods
 #
 # This could be renamed to something more specific
-#
 module Outpost
   module Model
     module Methods

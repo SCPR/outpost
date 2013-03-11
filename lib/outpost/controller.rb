@@ -1,6 +1,5 @@
 ##
 # Outpost::Controller
-#
 module Outpost
   module Controller
     extend ActiveSupport::Autoload
@@ -12,19 +11,14 @@ module Outpost
     autoload :Authentication
     autoload :Authorization
 
-    #----------------------
 
     included do
       helper_method :list, :model, :fields
     end
 
-    #----------------------
-
     def model
       self.class.model
     end
-
-    #----------------------
 
     def list
       self.class.list
@@ -34,29 +28,15 @@ module Outpost
       self.class.fields
     end
 
-    #----------------------
-    #----------------------
-
     module ClassMethods
       attr_accessor :model
       attr_writer :fields
       attr_reader :list
-
-      #----------------------
     
       def fields
         @fields ||= default_fields
       end
 
-      #----------------------
-      # Get the List object for this controller.
-      #
-      # If `list` hasn't yet been defined,
-      # then we'll figure out some sensible columns to use.
-      # Otherwise use the defined list.
-
-
-      #----------------------
       # Define the list for this controller.
       #
       # Pass a block.
@@ -66,7 +46,6 @@ module Outpost
         @list.instance_eval(&block)
       end
 
-      #----------------------
       # Declare a controller as being a controller for
       # Outpost.
       #
@@ -86,8 +65,6 @@ module Outpost
         include Outpost::Controller::Actions
         include Outpost::Controller::Helpers
       end
-
-      #----------------------
 
       private
 

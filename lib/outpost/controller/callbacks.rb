@@ -9,25 +9,18 @@ module Outpost
         before_filter :set_order, :set_sort_mode, only: [:index, :search]
       end
 
-      #-----------------
-
       def get_record
         @record = model.find(params[:id])
       end
-
-      #-----------------
 
       def get_records
         @records = model.page(params[:page]).per(self.list.per_page)
       end
 
-      #-----------------
-
       def order_records
         @records = @records.order("#{model.table_name}.#{order} #{sort_mode}")
       end
 
-      #------------------
       # Set which attribute is doing the sorting
       #
       # If params[:order] is present, then set the
@@ -50,7 +43,6 @@ module Outpost
         end
       end
 
-      #------------------
       # Set the sort mode
       #
       # It will either be the requested sort mode, or if not available, 
@@ -68,7 +60,6 @@ module Outpost
         end
       end
 
-      #-----------------
       # Remove the preference specified if available
       def remove_preferences
         preferred_sort_mode_key = "#{model.content_key}_sort_mode"
@@ -82,8 +73,6 @@ module Outpost
           unset_preference(preferred_order_key)
         end
       end
-
-      #-----------------
       
       def filter_records
         if params[:filter].is_a? Hash

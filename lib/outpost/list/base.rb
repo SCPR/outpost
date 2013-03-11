@@ -1,6 +1,5 @@
 ##
 # Outpost::List::Base
-
 module Outpost
   module List
     class Base
@@ -19,7 +18,6 @@ module Outpost
         @per_page          = List::DEFAULT_PER_PAGE
       end
       
-      #---------------
       # Default order
       attr_accessor :default_order, :default_sort_mode
       attr_reader :columns, :fields, :filters, :per_page
@@ -37,7 +35,6 @@ module Outpost
 
       alias_method :list_per_page, :per_page=
 
-      #---------------
       # This is the method that should be used to add columns
       # to a list, rather than directly creating a new Column
       #
@@ -62,15 +59,11 @@ module Outpost
         column
       end
       
-      #---------------
-      
       def filter(attribute, options={})
         filter = Filter.new(attribute, self, options)
         @filters.push filter
         filter
       end
-
-      #---------------
 
       private
 
