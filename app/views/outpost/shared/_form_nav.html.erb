@@ -1,0 +1,12 @@
+<% if @sections.present? %>
+  <h5>Jump to Section</h5>
+  <div id="form-nav">
+    <ul class="nav nav-list">
+      <% @sections.each do |id, title| %>
+        <li><a href="#<%=id%>"><%= title %></a></li>
+      <% end %>
+    </ul>
+  </div>
+  
+  <hr />
+<% end %>

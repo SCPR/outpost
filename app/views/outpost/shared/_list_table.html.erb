@@ -1,0 +1,7 @@
+<table class="table table-striped index-list list-<%=model.route_key%>">
+  <%= any_to_list? records, message: "No #{model.to_title.pluralize} were found." do %>
+    <%= table %>
+  <% end %>
+</table>
+
+<%= render "/outpost/shared/pagination", records: records %>

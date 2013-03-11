@@ -1,0 +1,18 @@
+<% if title.present? %>
+  <% id = "form-block-#{title.parameterize}" %>
+  <% @sections[id] = title if @sections %>
+  <fieldset class="form-block" id="<%=id%>">
+  <legend><%= title %></legend>
+  
+  <div class="hidden notification">
+    <p class="muted"><i>Click header to show fields</i></p>
+  </div>
+  
+<% else %>
+  <fieldset class="form-block">
+<% end %>
+
+  <div class="fields">
+    <%= body %>
+  </div>
+</fieldset>
