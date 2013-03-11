@@ -10,7 +10,7 @@ module Outpost
     #   <i class="<%= sort_mode_icon('asc') %>">
     #   # => <i class="icon-arrow-up">
     #
-    # Returns the icon class as a String.
+    # Returns String of the icon class.
     def sort_mode_icon(sort_mode)
       case sort_mode
       when "desc" then "icon-arrow-down"
@@ -35,7 +35,7 @@ module Outpost
     #      )
     #   }) %>
     #
-    # Returns a String of the sort mode, "asc" or "desc"
+    # Returns String of the sort mode, "asc" or "desc"
     def switch_sort_mode(column, current_order, current_sort_mode)
       if column.attribute == current_order
         case current_sort_mode
@@ -59,7 +59,7 @@ module Outpost
     #   <tr class="<%= column_type_class(BlogEntry, 'created_at') %>">
     #   # => <tr class="column-datetime">
     #
-    # Returns a String to be used as a CSS class.
+    # Returns String to be used as a CSS class.
     def column_type_class(model, attribute)
       if column = model.columns_hash[attribute]
         "column-#{column.type}"
@@ -77,7 +77,7 @@ module Outpost
     #   <td class="<%= column_attribute_class('created_at') %>">
     #   # => <td class="column-created_at">
     #
-    # Returns a String to be used as a CSS class.
+    # Returns String to be used as a CSS class.
     def column_attribute_class(attribute)
       "column-#{attribute}"
     end

@@ -12,7 +12,7 @@ module Outpost
     #   <div class="alert alert-<%= flash_alert_type(:notice) %>">
     #   # => <div class="alert alert-success">
     #
-    # Returns the appropriate String for Bootstrap alerts.
+    # Returns String of appropriate CSS class for Bootstrap alerts.
     def flash_alert_type(name)
       name_bootstrap_map = {
         notice: "success",
