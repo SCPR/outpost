@@ -1,5 +1,3 @@
-##
-# Outpost
 require "outpost/engine"
 require 'active_record'
 require 'action_controller'
@@ -16,8 +14,6 @@ module Outpost
   autoload :Breadcrumb, 'outpost/breadcrumbs'
   autoload :Breadcrumbs
 
-  #----------------------
-
   class << self
     attr_writer :config
     def config
@@ -26,13 +22,9 @@ module Outpost
   end
 end
 
-#----------------------
-
 if defined?(ActiveRecord::Base)
   ActiveRecord::Base.send :include, Outpost::Model
 end
-
-#----------------------
 
 if defined?(ActionController::Base)
   ActionController::Base.send :include, Outpost::Controller
