@@ -6,7 +6,7 @@ module Outpost
     # model   - (Class) The ActiveRecord model for this table.
     # block   - The rendered table. Should return a String.
     #
-    # Examples:
+    # Examples
     #
     #   <%= list_table @posts, Post do %>
     #     <table>...</table>
@@ -34,7 +34,6 @@ module Outpost
     #   <% end %>
     #
     # Returns a String of the fieldset.
-    #
     def form_block(title="", &block)
       render "/outpost/shared/form_block", 
         :title => title, 
