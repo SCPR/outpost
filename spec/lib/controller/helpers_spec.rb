@@ -1,4 +1,4 @@
-require File.expand_path("../../../spec_helper", __FILE__)
+require 'spec_helper'
 
 describe Outpost::Controller::Helpers do
   let(:controller) { Outpost::Test::PeopleController.new }

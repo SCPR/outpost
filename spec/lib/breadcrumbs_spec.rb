@@ -1,4 +1,4 @@
-require File.expand_path("../../spec_helper", __FILE__)
+require 'spec_helper'
 
 describe Outpost::Breadcrumb do
   it "has a title and a link" do
