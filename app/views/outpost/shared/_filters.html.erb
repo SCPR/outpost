@@ -1,0 +1,16 @@
+<% if list.filters.present? %>
+  <div class="filters pull-left" style="margin-right:40px;">
+    <span class="filter label">Filter by:</span>
+
+    <%= form_tag model.admin_index_path, method: :get, class: "form-inline" do %>
+      <% list.filters.each do |filter| %>
+        <%= select_tag filter.attribute, 
+          options_for_select(filter.collection.call, params[:filter].present? ? params[:filter][filter.attribute] : nil), include_blank: true, 
+          data: { placeholder: filter.title }, name: "filter[#{filter.attribute}]", class: "input-medium" %>
+      <% end %>
+
+      <%= submit_tag "Go", class: "btn" %>
+      <%= render "/outpost/shared/cancel_link", href: url_for(request.parameters.except("filter")) %>
+    <% end %>
+  </div>
+<% end %>

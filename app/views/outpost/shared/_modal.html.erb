@@ -1,0 +1,16 @@
+<a class="btn btn-primary" href="#<%=options[:id]%>" data-toggle="modal"><%= options[:title] %></a>
+
+<div id="<%= options[:id] %>" class="modal hide fade" role="dialog">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">x</button>
+    <h3><%= options[:title] %></h3>
+  </div>
+
+  <div class="modal-body">
+    <%= body %>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal">Close</button>
+  </div>
+</div>

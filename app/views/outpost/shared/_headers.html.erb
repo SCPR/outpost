@@ -1,0 +1,16 @@
+<th class="column-manage">Manage</th>
+
+<% list.columns.each do |column| %>
+  <% is_sorting = order == column.attribute.to_s %>
+
+  <th class="<%='header-highlighted' if is_sorting%> <%='header-sortable' if column.sortable?%> <%=column_attribute_class(column.attribute)%> <%=column_type_class(model, column.attribute)%>">
+    <% if column.sortable? || is_sorting %>
+      <i class="icon <%=sort_mode_icon(is_sorting ? sort_mode : column.default_sort_mode)%>"></i>
+
+      <%= link_to_if column.sortable?, column.header, request.parameters.merge(order: column.attribute, sort_mode: switch_sort_mode(column, order, sort_mode)), class: "js-sort-link" %>
+      <%= render('/outpost/shared/cancel_link', href: url_for(request.parameters.merge(order: "", sort_mode: ""))) if (is_sorting && (order != list.default_order || sort_mode != list.default_sort_mode)) %>
+    <% else %>
+      <%= column.header %>
+    <% end %>
+  </th>
+<% end %>
