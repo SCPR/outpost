@@ -29,7 +29,7 @@ module ListHelper
       elsif record.class.respond_to?(:reflect_on_association) && 
         record.class.reflect_on_association(column.attribute.to_sym)
         # For associations, display the associated object's #to_title
-        display_helper = :display_association
+        display_helper = :display_record
         
       elsif record.class.respond_to?(:columns_hash) && 
         (ar_column = record.class.columns_hash[column.attribute]) && 
@@ -80,9 +80,9 @@ module ListHelper
     attrib.present? ? attrib.to_s : content_tag(:em, "[blank]")
   end
 
-  # Private: Display the attribute
+  # Public: Display the attribute as a string.
   #
-  # attrib - (String) The attribute to display
+  # attrib - (String) The attribute to display.
   #
   # Examples
   #
@@ -94,20 +94,57 @@ module ListHelper
     attrib.to_s
   end
 
-  def display_association(attrib)
-    attrib.try(:to_title)
+  # Public: Displays an String representation of the record using +#to_title+.
+  #
+  # record - (String) The associated record.
+  #
+  # Examples
+  # 
+  #   user = User.last
+  #   user.to_title # => "James Earl Jones"
+  #   display_record(User.last)
+  #   # => "James Earl Jones"
+  #
+  # Returns String representation of the passed-in record.
+  def display_record(record)
+    record.try(:to_title)
   end
   
+  # Public: Display a formatted DateTime.
+  #
+  # datetime - (DateTime) The DateTime object to format.
+  #
+  # Examples
+  #
+  #   display_datetime(Time.now)
+  #   # => "March 13th, 2013,  4:12pm"
+  #
+  # Returns String of the formatted date and time.
   def display_datetime(datetime)
     format_date(datetime, format: :full_date, time: true)
   end
   
+  # Public: Display a boolean attribute as a sweet icon.
+  #
+  # boolean - (boolean) true or false
+  #
+  # Examples
+  #
+  #   display_boolean(true)
+  #   # => <span class="badge badge-important">
+  #   # =>   <i class="icon-white icon-ok"></i>
+  #   # => </span>
+  #
+  # Returns String of the appropriate icon. 
   def display_boolean(boolean)
     content_tag(:span, 
       content_tag(:i, "", class: boolean_bootstrap_map[!!boolean][:icon]), 
       class: boolean_bootstrap_map[!!boolean][:badge])
   end
 
+  # Private: Map for booleans to Bootstrap classes.
+  #
+  # Returns Hash
   def boolean_bootstrap_map
     {
       true  => { icon: "icon-white icon-ok",     badge: "badge badge-success"},
