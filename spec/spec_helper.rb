@@ -1,12 +1,7 @@
-ENV["RAILS_ENV"] = "test"
-
-require 'bundler'
 Bundler.require :default, :test
-
 Combustion.initialize! :active_record, :action_controller
 
 require 'rspec/rails'
-require 'rspec/autorun'
 require 'factory_girl'
 load 'factories.rb'
 
