@@ -1,6 +1,9 @@
-# Configure Rails Envinronment
 ENV["RAILS_ENV"] = "test"
-require File.expand_path("../dummy/config/environment.rb",  __FILE__)
+
+require 'bundler'
+Bundler.require :default, :test
+
+Combustion.initialize! :active_record, :action_controller
 
 require 'rspec/rails'
 require 'rspec/autorun'
