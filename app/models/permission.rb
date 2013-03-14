@@ -1,6 +1,3 @@
-##
-# Permission
-#
 class Permission < ActiveRecord::Base
   #-------------------
   # Association
