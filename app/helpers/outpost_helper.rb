@@ -61,81 +61,81 @@ module OutpostHelper
 
     date.strftime(format_str)
   end
-end
 
-# Public: Render a block of content or fallback to a message.
-#
-# records - (Array) The list of records to check.
-# options - (Hash) A hash of options (default: {}):
-#           :message - (String) The fallback message to display.
-#           :title   - (String) The title of the collection.
-# block   - The block to capture if the collection is present.
-#
-# Examples
-#
-#   records = []
-#   any_to_list? records, message: "Empty!" do
-#     "Hidden"
-#   end
-#   # => "Empty!"
-#
-#   records = [1, 2, 3]
-#   any_to_list? records, message: "Empty!" do
-#     "Numbers!"
-#   end
-#   # => "Numbers!"
-#
-# Returns String of the captured block.
-def any_to_list?(records, options={}, &block)
-  if records.present?
-    return capture(&block)
-  else
-    if options[:message].blank?
-      if options[:title].present?
-        options[:message] = "There are currently no #{options[:title]}"
-      else
-        options[:message] = "There is nothing here to list."
+  # Public: Render a block of content or fallback to a message.
+  #
+  # records - (Array) The list of records to check.
+  # options - (Hash) A hash of options (default: {}):
+  #           :message - (String) The fallback message to display.
+  #           :title   - (String) The title of the collection.
+  # block   - The block to capture if the collection is present.
+  #
+  # Examples
+  #
+  #   records = []
+  #   any_to_list? records, message: "Empty!" do
+  #     "Hidden"
+  #   end
+  #   # => "Empty!"
+  #
+  #   records = [1, 2, 3]
+  #   any_to_list? records, message: "Empty!" do
+  #     "Numbers!"
+  #   end
+  #   # => "Numbers!"
+  #
+  # Returns String of the captured block.
+  def any_to_list?(records, options={}, &block)
+    if records.present?
+      return capture(&block)
+    else
+      if options[:message].blank?
+        if options[:title].present?
+          options[:message] = "There are currently no #{options[:title]}"
+        else
+          options[:message] = "There is nothing here to list."
+        end
       end
+
+      return options[:message].html_safe
     end
-
-    return options[:message].html_safe
   end
-end
 
-# Public: Set the first part of the page title.
-#
-# elements - Zero or more strings to prepend onto the page title.
-#            The final argument can optionally be hash:
-#            :separator - (String) The separator to use between 
-#                         elements (default: " | ").
-# 
-# Examples
-#
-#   set_page_title "Events", "Forum", separator: " :: "
-#   # => "Events :: Forum"
-#
-# Returns String of the first element, meant to allow you to use this
-# method to add to the page title and display a header at the same time.
-def add_to_page_title(*elements)
-  @TITLE_ELEMENTS ||= []
-  @TITLE_ELEMENTS += elements
-  elements.first
-end
+  # Public: Set the first part of the page title.
+  #
+  # elements - Zero or more strings to prepend onto the page title.
+  #            The final argument can optionally be hash:
+  #            :separator - (String) The separator to use between 
+  #                         elements (default: " | ").
+  # 
+  # Examples
+  #
+  #   set_page_title "Events", "Forum", separator: " :: "
+  #   # => "Events :: Forum"
+  #
+  # Returns String of the first element, meant to allow you to use this
+  # method to add to the page title and display a header at the same time.
+  def add_to_page_title(*elements)
+    @TITLE_ELEMENTS ||= []
+    @TITLE_ELEMENTS += elements
+    elements.first
+  end
 
-# Public: Generate the full page title.
-#
-# last_element - (String) The string that will be appendended onto the 
-#                rest of the title.
-# separator    - (String) The separator to use between the title and the last
-#                element (default: " | ").
-#
-# Examples
-#
-#   content_for(:page_title) # => "Home"
-#   page_title("KPCC", "::")
-#   # => "Home :: KPCC"
-#
-# Returns String of the full title.
-def page_title(separator=" | ")
-  @TITLE_ELEMENTS.compact.join(separator).html_safe
+  # Public: Generate the full page title.
+  #
+  # last_element - (String) The string that will be appendended onto the 
+  #                rest of the title.
+  # separator    - (String) The separator to use between the title and the last
+  #                element (default: " | ").
+  #
+  # Examples
+  #
+  #   content_for(:page_title) # => "Home"
+  #   page_title("KPCC", "::")
+  #   # => "Home :: KPCC"
+  #
+  # Returns String of the full title.
+  def page_title(separator=" | ")
+    @TITLE_ELEMENTS.compact.join(separator).html_safe
+  end
 end
