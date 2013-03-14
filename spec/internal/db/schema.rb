@@ -27,4 +27,15 @@ ActiveRecord::Schema.define do
     t.datetime :last_login
     t.timestamps
   end
+
+  create_table :permissions, force: true do |t|
+    t.string :resource
+    t.timestamps
+  end
+
+  create_table :user_permissions, force: true do |t|
+    t.integer :permission_id
+    t.integer :user_id
+    t.timestamps
+  end
 end

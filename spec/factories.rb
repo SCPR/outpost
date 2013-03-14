@@ -22,4 +22,8 @@ FactoryGirl.define do
     is_superuser false
     password "secret"
   end
+
+  factory :permission do
+    resource "Post"
+  end
 end
