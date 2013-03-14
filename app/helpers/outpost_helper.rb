@@ -29,7 +29,7 @@ module OutpostHelper
   #           :format - (String) The format to use. Options are:
   #                     * "iso" (2012-10-11)
   #                     * "full_date" (October 11th, 2011)
-  #                     * "wday_month" (Wednesday, October 11)
+  #                     * "event" (Wednesday, October 11)
   #                     * "short_date" (Oct 11, 2011)
   #           :time   - (Boolean) Whether or not to show the time.
   #
@@ -53,8 +53,8 @@ module OutpostHelper
     format_str ||= case options[:format].to_s
       when "iso"       then "%F"
       when "full_date" then "%B #{date.day.ordinalize}, %Y"
-      when "event"     then "%A, %B %e"
-      else "%b %e, %Y"
+      when "event"     then "%A, %B %-d"
+      else "%b %-d, %Y"
     end
     
     format_str += ", %l:%M%P" if options[:time] == true

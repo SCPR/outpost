@@ -23,31 +23,31 @@ describe OutpostHelper do
   
   describe "#format_date" do
     before :each do
-      @date = Time.at(0) # 1969-12-31 16:00:00 -0800
+      @date = Time.at(0).utc # 1970-01-01 00:00:00 UTC
     end
     
     it "returns a `iso` format" do
-      helper.format_date(@date, format: :iso).should match "1969-12-31"
+      helper.format_date(@date, format: :iso).should match "1970-01-01"
     end
     
     it "returns a `full-date` format" do
-      helper.format_date(@date, format: :full_date).should match "December 31st, 1969"
+      helper.format_date(@date, format: :full_date).should match "January 1st, 1970"
     end
     
     it "returns a 'event' format" do
-      helper.format_date(@date, format: :event).should match "Wednesday, December 31"
+      helper.format_date(@date, format: :event).should match "Thursday, January 1"
     end
     
     it "accepts a custom format" do
-      helper.format_date(@date, with: "%D").should match "12/31/69"
+      helper.format_date(@date, with: "%D").should match "01/01/70"
     end
     
     it "prefers the custom format if a premade format is also specified" do
-      helper.format_date(@date, with: "%D", format: :event).should match "12/31/69"
+      helper.format_date(@date, with: "%D", format: :event).should match "01/01/70"
     end
     
     it "includes the time if specified" do
-      helper.format_date(@date, format: :event, time: true).should match "4:00pm"
+      helper.format_date(@date, format: :event, time: true).should match "12:00am"
     end
   end
 end
