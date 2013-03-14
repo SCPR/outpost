@@ -6,7 +6,7 @@ module Outpost
       included do
         has_secure_password
 
-        before_validation :downcase_email
+        before_validation :downcase_email, if: -> { self.email_changed? }
 
         validates :name, presence: true
         validates :email, presence: true, uniqueness: true
@@ -18,9 +18,9 @@ module Outpost
         end
       end
 
-      # Private: Downcase the user's e-mail
-      #
-      # Returns String of the e-mail
+
+      private
+
       def downcase_email
         if self.email.present?
           self.email = self.email.downcase
