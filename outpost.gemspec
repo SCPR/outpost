@@ -21,7 +21,13 @@ Gem::Specification.new do |s|
   s.add_dependency "jquery-rails"
   s.add_dependency "bcrypt-ruby", "~> 3.0"
 
+  s.add_dependency "eco", "~> 1.0"
+  s.add_dependency 'sass-rails', "~> 3.2"
+  s.add_dependency 'bootstrap-sass', '~> 2.2'
+  s.add_dependency 'coffee-rails', "~> 3.2"
+
   s.add_development_dependency "sqlite3", "~> 1.3"
+  s.add_development_dependency 'combustion', '~> 0.3'
   s.add_development_dependency "rspec-rails", "~> 2.13"
   s.add_development_dependency "factory_girl_rails", "~> 4.2"
   s.add_development_dependency "capybara", "~> 2.0"
