@@ -18,4 +18,13 @@ ActiveRecord::Schema.define do
     t.string :location
     t.timestamps
   end
+
+  create_table :users, force: true do |t|
+    t.string :username
+    t.string :email
+    t.string :password_digest
+    t.boolean :is_superuser
+    t.datetime :last_login
+    t.timestamps
+  end
 end
