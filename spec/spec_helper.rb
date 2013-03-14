@@ -7,6 +7,7 @@ Combustion.initialize! :active_record, :action_controller
 
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'factory_girl_rails'
 
 Rails.backtrace_cleaner.remove_silencers!
 
