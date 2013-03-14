@@ -15,11 +15,11 @@ module AuthorizationHelper
   #   <% end %>
   #
   # Returns String of either the message or the captured block.
-  def guard(resource, message="", &block)
+  def guard(resource, message=nil, &block)
     if current_user.can_manage?(resource)
       capture(&block)
     else
-      message
+      message.to_s
     end
   end
 
