@@ -15,13 +15,13 @@
     <div class="container">
       <a href="<%=outpost_root_path%>" class="brand">Outpost</a>
       
-      <% if admin_user %>
+      <% if current_user %>
         <ul class="nav">
           
           <!-- Full Navigation -->
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-align-justify icon-white"></i> Navigation <b class="caret"></b></a>
-            <% models = admin_user.allowed_resources.sort_by(&:name) %>
+            <% models = current_user.allowed_resources.sort_by(&:name) %>
             <% per_col = 20 %>
             <% cols = (models.size.to_f / per_col.to_f).ceil %>
 
@@ -56,12 +56,12 @@
           <li><a href="#ticket-modal" data-toggle="modal"><i class='icon-wrench icon-white'></i> Report a Problem</a></li>
           
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class='icon-user icon-white'></i> <%= admin_user.name %> <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class='icon-user icon-white'></i> <%= current_user.name %> <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Your Activity", activity_outpost_admin_user_path(admin_user) %></li>
-              <li><%= link_to "Edit CMS Account", admin_user.admin_edit_path %></li>
-              <% if admin_user.bio.present? %>
-                <li><%= link_to "Edit Bio", admin_user.bio.admin_edit_path %></li>
+              <li><%= link_to "Your Activity", activity_outpost_current_user_path(current_user) %></li>
+              <li><%= link_to "Edit CMS Account", current_user.admin_edit_path %></li>
+              <% if current_user.bio.present? %>
+                <li><%= link_to "Edit Bio", current_user.bio.admin_edit_path %></li>
               <% end %>
               <li><%= link_to "Logout", outpost_logout_path, id: "logout" %></li>
             </ul>
@@ -76,7 +76,7 @@
   </div>
 </div>
 
-<% if admin_user %>
+<% if current_user %>
   <div class="navbar navbar-fixed-top fixed-breadcrumbs">
       <% if breadcrumbs.present? %>
         <div class="breadcrumb unstyled">

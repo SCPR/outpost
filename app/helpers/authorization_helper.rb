@@ -16,7 +16,7 @@ module AuthorizationHelper
   #
   # Returns String of either the message or the captured block.
   def guard(resource, message="", &block)
-    if admin_user.can_manage?(resource)
+    if current_user.can_manage?(resource)
       capture(&block)
     else
       message
@@ -35,7 +35,7 @@ module AuthorizationHelper
   #
   # Returns String of either a link tag, or just the link title.
   def guarded_link_to(resource, *args)
-    if admin_user.can_manage?(resource)
+    if current_user.can_manage?(resource)
       link_to *args
     else
       args[0] # Just the link title

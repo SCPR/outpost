@@ -1,19 +1,32 @@
-##
-# Authentication
-#
-# Basic authentication methods for controllers
 module Outpost
   module Controller
     module Authentication
       extend ActiveSupport::Concern
 
       included do
-        before_filter :require_admin
+        before_filter :require_login
+        helper_method :current_user
       end
 
-      def require_admin
-        # Only allow in if admin_user is set
-        if !admin_user
+      # Public: The currently logged-in user.
+      #
+      # Returns AdminUser.
+      def current_user
+        begin
+          @current_user ||= AdminUser.where(is_staff: true).find(session[:user_id])
+        rescue ActiveRecord::RecordNotFound
+          session[:user_id]   = nil
+          @current_user       = nil
+        end
+      end
+
+      private
+
+      # Private: Callback to require login.
+      #
+      # Returns nothing.
+      def require_login
+        if !current_user
           session[:return_to] = request.fullpath
           redirect_to outpost_login_path and return false
         end
