@@ -5,6 +5,8 @@ module Outpost
     extend ActiveSupport::Concern
     extend ActiveSupport::Autoload
     
+    autoload :Authentication
+    autoload :Authorization
     autoload :Methods
     autoload :Identifier
     autoload :Routing
