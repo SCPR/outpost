@@ -12,7 +12,14 @@ FactoryGirl.define do
   end
 
   factory :pidgeon do
-    name "Bob"
+    name "Doc Brown"
     location "Everywhere"
+  end
+
+  factory :user do
+    name "Jackie Brown"
+    sequence(:email) { |n| "jbrown#{n}@qt.com" }
+    is_superuser false
+    password "secret"
   end
 end
