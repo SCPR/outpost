@@ -1,5 +1,7 @@
 = Outpost
 
+{<img src="https://travis-ci.org/scpr/outpost.png?branch=master" alt="Build Status" />}[https://travis-ci.org/scpr/outpost]
+
 A Rails Engine for quickly standing up a CMS for a Newsroom.
 
 **WIP, do not use.**
