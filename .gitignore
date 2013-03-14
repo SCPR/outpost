@@ -2,4 +2,4 @@
 /Gemfile.lock
 log/*.log
 pkg/
-spec/internal/db/*.sqlite3
+spec/internal/db/*.sqlite
