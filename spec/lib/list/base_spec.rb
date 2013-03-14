@@ -4,7 +4,7 @@ describe Outpost::List::Base do
   
   #--------------
   
-  let(:model) { Outpost::Test::Person }
+  let(:model) { Person }
   
   describe "initialize" do
     it "sets @columns to an empty array" do

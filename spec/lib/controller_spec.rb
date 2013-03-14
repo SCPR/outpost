@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Outpost::Controller do
-  let(:controller) { Outpost::Test::PeopleController.new }
+  let(:controller) { PeopleController.new }
 
   describe '::fields' do
     it 'sets default fields' do

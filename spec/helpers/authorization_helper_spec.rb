@@ -2,15 +2,15 @@ require 'spec_helper'
 
 describe AuthorizationHelper do
   describe "#guard" do
-    let(:admin_user) { create :admin_user, is_superuser: false }
+    let(:current_user) { create :current_user, is_superuser: false }
     let(:permission) { Permission.find_by_resource("NewsStory") }
 
     before :each do
-      helper.stub(:admin_user) { admin_user }
+      helper.stub(:current_user) { current_user }
     end
     
     it "returns the block if admin user has permission to manage the resource" do
-      admin_user.permissions.push permission
+      current_user.permissions.push permission
       helper.guard(NewsStory) { "hello" }.should eq "hello"
     end
     
@@ -26,15 +26,15 @@ describe AuthorizationHelper do
   #-----------------
   
   describe "#guarded_link_to" do
-    let(:admin_user) { create :admin_user, is_superuser: false }
+    let(:current_user) { create :current_user, is_superuser: false }
     let(:permission) { Permission.find_by_resource("NewsStory") }
 
     before :each do
-      helper.stub(:admin_user) { admin_user }
+      helper.stub(:current_user) { current_user }
     end
     
     it "sends to link_to if the user has permission" do
-      admin_user.permissions.push permission
+      current_user.permissions.push permission
       link = helper.guarded_link_to NewsStory, "Title", "/some/path"
       link.should eq helper.link_to("Title", "/some/path")
     end

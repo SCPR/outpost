@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Outpost::Controller::Helpers do
-  let(:controller) { Outpost::Test::PeopleController.new }
+  let(:controller) { PeopleController.new }
 
   describe "#model" do
     it "adds model as a helper" do

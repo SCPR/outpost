@@ -13,10 +13,10 @@ end
 describe Outpost::Breadcrumbs do
   describe "#breadcrumb" do
     context "ActionController::Base class" do
-      let(:controller) { Outpost::Test::PeopleController.new }
+      let(:controller) { PeopleController.new }
       
       it "has the breadcrumbs helper methods" do
-        Outpost::Test::PeopleController._helper_methods.should include :breadcrumbs
+        PeopleController._helper_methods.should include :breadcrumbs
       end
       
       it "has both a title and link when both specified" do
@@ -47,7 +47,7 @@ describe Outpost::Breadcrumbs do
     
     context "other class" do
       it "doesn't complain about helper_method" do
-        class Outpost::Test::Pidgeon; include Outpost::Breadcrumbs; end
+        class CoolGuy; include Outpost::Breadcrumbs; end
       end
     end
   end

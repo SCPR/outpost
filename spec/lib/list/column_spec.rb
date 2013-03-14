@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Outpost::List::Column do
-  let(:model) { Outpost::Test::Person }
+  let(:model) { Person }
 
   #----------------
   
