@@ -21,9 +21,11 @@ ActiveRecord::Schema.define do
 
   create_table :users, force: true do |t|
     t.string :name
+    t.string :username
     t.string :email
     t.string :password_digest
     t.boolean :is_superuser
+    t.boolean :can_login
     t.datetime :last_login
     t.timestamps
   end
