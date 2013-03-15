@@ -1,20 +1,20 @@
-= Outpost
-{<img src="https://travis-ci.org/SCPR/outpost.png?branch=master" alt="Build Status" />}[https://travis-ci.org/SCPR/outpost]
+#Outpost
+[![Build Status](https://travis-ci.org/SCPR/outpost.png)](https://travis-ci.org/SCPR/outpost)
 
 A Rails Engine for quickly standing up a CMS for a Newsroom.
 
 **WIP, do not use.**
 
-== Dependencies
+## Dependencies
 * `rails ~> 3.2`
 * `ruby ~> 1.9.2`
 
-== Usage
+## Usage
 Add `gem outpost` to your Gemfile.
 
 More documentation to come.
 
-== Contributing
+## Contributing
 Pull Requests are encouraged! This engine was built specifically for KPCC, 
 so its flexibility is limited... if you have improvements to make, please 
 make them.
