@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description = "This engine plugs into your Rails application and provides a plethora of useful methods, concerns, helpers, and conventions to help you quickly build a CMS for your Newsroom."
 
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 3.2.12"
