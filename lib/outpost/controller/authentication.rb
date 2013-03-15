@@ -20,8 +20,6 @@ module Outpost
         end
       end
 
-      private
-
       # Private: Callback to require login.
       #
       # Returns nothing.

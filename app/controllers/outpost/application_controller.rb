@@ -6,14 +6,12 @@ module Outpost
 
     abstract!
     protect_from_forgery
-
-    layout 'outpost'
     before_filter :root_breadcrumb
 
     #------------------------
     # Always want to add this link to the Breadcrumbs
     def root_breadcrumb
-      breadcrumb "Outpost", root_path
+      breadcrumb "Outpost", outpost_root_path
     end
   end
 end

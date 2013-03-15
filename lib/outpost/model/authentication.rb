@@ -15,7 +15,11 @@ module Outpost
 
       module ClassMethods
         def authenticate(username, unencrypted_password)
-          self.find_by_username(username).try(:authenticate, unencrypted_password)
+          if user = self.find_by_username(username)
+            user.authenticate(unencrypted_password)
+          else
+            false
+          end
         end
       end
 
