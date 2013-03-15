@@ -19,6 +19,10 @@ module Outpost
     def config
       @config || Outpost::Config.configure
     end
+
+    def user_class
+      @user_class ||= config.user_class.constantize
+    end
   end
 end
 

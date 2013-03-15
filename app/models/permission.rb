@@ -2,7 +2,7 @@ class Permission < ActiveRecord::Base
   #-------------------
   # Association
   has_many :user_permissions
-  has_many :users, through: :user_permissions, dependent: :destroy
+  has_many :users, class_name: Outpost.user_class, through: :user_permissions, dependent: :destroy
   
   #-------------------
   # Validation

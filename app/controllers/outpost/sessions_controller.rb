@@ -8,7 +8,7 @@ module Outpost
     end
     
     def create
-      if user = AdminUser.authenticate(params[:email], params[:unencrypted_password])
+      if user = Outpost.user_class.authenticate(params[:username], params[:unencrypted_password])
         session[:user_id] = user.id
         user.update_attribute(:last_login, Time.now)
         redirect_to session[:return_to] || outpost_root_path, notice: "Logged in."

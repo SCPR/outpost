@@ -7,7 +7,8 @@ module Outpost
     DEFAULTS = {
       :title_attributes      => [:name, :title],
       :excluded_form_fields  => ["id", "created_at", "updated_at"],
-      :excluded_list_columns => []
+      :excluded_list_columns => [],
+      :user_class            => "User"
     }
     
     # Pass a block to this method to define the configuration
@@ -24,6 +25,11 @@ module Outpost
       @registered_models || []
     end
     
+    attr_writer :user_class
+    def user_class
+      @user_class || DEFAULTS[:user_class]
+    end
+
     # Which attributes to look at for `to_title`
     attr_writer :title_attributes
     def title_attributes

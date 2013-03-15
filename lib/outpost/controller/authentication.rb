@@ -10,10 +10,10 @@ module Outpost
 
       # Public: The currently logged-in user.
       #
-      # Returns AdminUser.
+      # Returns Outpost.user_class instance.
       def current_user
         begin
-          @current_user ||= AdminUser.where(is_staff: true).find(session[:user_id])
+          @current_user ||= Outpost.user_class.where(can_login: true).find(session[:user_id])
         rescue ActiveRecord::RecordNotFound
           session[:user_id]   = nil
           @current_user       = nil
