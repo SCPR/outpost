@@ -42,7 +42,6 @@ module Outpost
       # Private: Downcase the user's e-mail
       #
       # Returns String of the e-mail
->>>>>>> parent of d816d7c... Remove username generation; use e-mail for login
       def downcase_email
         if self.email.present?
           self.email = self.email.downcase
