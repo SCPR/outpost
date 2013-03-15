@@ -6,8 +6,8 @@ A Rails Engine for quickly standing up a CMS for a Newsroom.
 **WIP, do not use.**
 
 ## Dependencies
-* `rails ~> 3.2`
-* `ruby ~> 1.9.2`
+* `rails >= 3.2` (not tested on rails 4 yet)
+* `ruby >= 1.9.2`
 
 ## Usage
 Add `gem outpost` to your Gemfile.
