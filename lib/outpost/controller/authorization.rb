@@ -9,7 +9,7 @@ module Outpost
       def authorize!(resource=nil)
         resource ||= Outpost::Helpers::Naming.to_class(params[:controller])
         
-        if !admin_user.can_manage?(resource)
+        if !current_user.can_manage?(resource)
           handle_unauthorized(resource)
         end
       end
