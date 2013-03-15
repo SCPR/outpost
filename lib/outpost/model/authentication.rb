@@ -10,7 +10,6 @@ module Outpost
         before_validation :generate_username, on: :create, if: -> { self.username.blank? }
 
         validates :name, presence: true
-        validates :email, presence: true
         validates :username, presence: true, uniqueness: true
       end
 
@@ -20,12 +19,12 @@ module Outpost
         end
       end
 
-      private
-
       # Private: Generate a username based on real name
       #
       # Returns String of the username
       def generate_username
+        return nil if !self.name.present?
+
         names       = self.name.to_s.split
         base        = (names.first.chars.first + names.last).downcase.gsub(/\W/, "")
         dirty_name  = base
