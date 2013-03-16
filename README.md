@@ -8,9 +8,17 @@ A Rails Engine for quickly standing up a CMS for a Newsroom.
 * `ruby >= 1.9.2`
 
 ## Usage
-Add `gem outpost` to your Gemfile.
+Add `gem 'outpost', github: 'SCPR/outpost'` to your Gemfile.
 
 More documentation to come.
+
+## Todo
+A ton of stuff. Here is a sampler:
+
+* Generators for resources (models, controllers).
+* Add record versioning (needs to be extracted from the SCPRv4 app).
+* Make the engine's layout actually work.
+* Documentation... oh man, the documentation...
 
 ## Contributing
 Pull Requests are encouraged! This engine was built specifically for KPCC, 
