@@ -20,8 +20,9 @@ module Outpost
       @config || Outpost::Config.configure
     end
 
+    # TODO can we cache this in development?
     def user_class
-      @user_class ||= config.user_class.constantize
+      config.user_class.constantize
     end
   end
 end
