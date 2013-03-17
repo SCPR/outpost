@@ -5,9 +5,5 @@ Rails.application.routes.draw do
     resources :sessions, only: [:create, :destroy]
     get 'login'  => "sessions#new", as: :login
     get 'logout' => "sessions#destroy", as: :logout
-
-    get "/activity"                                        => "versions#activity",  as: :activity
-    get "/:resources/:resource_id/history"                 => "versions#index",     as: :history
-    get "/:resources/:resource_id/history/:version_number" => "versions#show",      as: :version
   end
 end
