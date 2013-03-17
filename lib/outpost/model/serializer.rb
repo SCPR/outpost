@@ -19,8 +19,7 @@ module Outpost
           "obj_key"    => self.obj_key,
           "link_path"  => self.link_path,
           "to_title"   => self.to_title,
-          "edit_path"  => self.admin_edit_path,
-          "admin_path" => self.django_edit_url
+          "edit_path"  => self.admin_edit_path
         }).merge(self.json.stringify_keys!)
       end
     end # JSON
