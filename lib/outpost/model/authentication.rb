@@ -7,39 +7,18 @@ module Outpost
         has_secure_password
 
         before_validation :downcase_email, if: -> { self.email_changed? }
-        before_validation :generate_username, on: :create, if: -> { self.username.blank? }
-
         validates :name, presence: true
-        validates :username, presence: true, uniqueness: true
+        validates Outpost.config.authentication_attribute, presence: true, uniqueness: true
       end
 
       module ClassMethods
-        def authenticate(username, unencrypted_password)
-          if user = self.find_by_username(username)
+        def authenticate(login, unencrypted_password)
+          if user = self.send("find_by_#{Outpost.config.authentication_attribute}", login)
             user.authenticate(unencrypted_password)
           else
             false
           end
         end
-      end
-
-      # Private: Generate a username based on real name
-      #
-      # Returns String of the username
-      def generate_username
-        return nil if !self.name.present?
-
-        names       = self.name.to_s.split
-        base        = (names.first.chars.first + names.last).downcase.gsub(/\W/, "")
-        dirty_name  = base
-
-        i = 1
-        while self.class.exists?(username: dirty_name)
-          dirty_name = base + i.to_s
-          i += 1
-        end
-
-        self.username = dirty_name
       end
 
       # Private: Downcase the user's e-mail
