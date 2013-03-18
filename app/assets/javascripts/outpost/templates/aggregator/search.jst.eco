@@ -1,6 +1,0 @@
-<input type="text" id="aggregator-search-input" placeholder="Search Query" />
-<a class="btn">Go</a>
-<hr />
-
-<div class="aggregator-pagination"></div>
-<ul id="aggregator-search-results" class="content-list"></ul>
