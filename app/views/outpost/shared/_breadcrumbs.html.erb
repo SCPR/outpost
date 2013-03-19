@@ -1,0 +1,15 @@
+<ul class="breadcrumb">
+  <% breadcrumbs.each do |crumb| %>
+    <li>
+      <% if crumb.link.present? %>
+        <%= link_to crumb.title, crumb.link %>
+      <% else %>
+        <%= crumb.title %>
+      <% end %>
+
+      <% unless crumb == breadcrumbs.last %>
+        <span class="divider">/</span>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

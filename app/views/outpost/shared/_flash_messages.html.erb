@@ -1,0 +1,6 @@
+<% flash.each do |name, msg| %>
+  <div class="alert alert-<%= flash_alert_type(name) %>">
+    <a class="close" data-dismiss="alert">&times;</a>
+    <%= msg.to_s.html_safe %>
+  </div>
+<% end %>
