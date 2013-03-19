@@ -19,4 +19,20 @@ module OutpostHelper
     
     name_bootstrap_map[name.to_sym] || name.to_s
   end
+
+  def render_flash_messages
+    if flash.present?
+      render '/outpost/shared/flash_messages', flash: flash
+    end
+  end
+
+  def render_breadcrumbs
+    if breadcrumbs.present?
+      render '/outpost/shared/breadcrumbs', breadcrumbs: breadcrumbs
+    end
+  end
+
+  def render_navigation
+    render '/outpost/shared/navigation', current_user: current_user
+  end
 end
