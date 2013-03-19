@@ -5,10 +5,11 @@
 module Outpost
   class Config
     DEFAULTS = {
-      :title_attributes      => [:name, :title],
-      :excluded_form_fields  => ["id", "created_at", "updated_at"],
-      :excluded_list_columns => [],
-      :user_class            => "User"
+      :title_attributes           => [:name, :title],
+      :excluded_form_fields       => ["id", "created_at", "updated_at"],
+      :excluded_list_columns      => [],
+      :user_class                 => "User",
+      :authentication_attribute   => :email
     }
     
     # Pass a block to this method to define the configuration
@@ -28,6 +29,12 @@ module Outpost
     attr_writer :user_class
     def user_class
       @user_class || DEFAULTS[:user_class]
+    end
+
+    # Which attribute to use to authenticate
+    attr_writer :authentication_attribute
+    def authentication_attribute
+      @authentication_attribute || DEFAULTS[:authentication_attribute]
     end
 
     # Which attributes to look at for `to_title`

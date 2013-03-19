@@ -36,10 +36,10 @@ describe Outpost::SessionsController do
     end
     
     describe "authentication passes" do
-      let(:user) { create :user }
+      let(:user) { create :user, email: "bricker@kpcc.org" }
 
       before :each do
-        post :create, password: "secret", username: user.username
+        post :create, password: "secret", email: user.email
       end
       
       it "sets the session" do
@@ -52,6 +52,19 @@ describe Outpost::SessionsController do
       
       it "sets the flash" do
         controller.flash[:notice].should be_present
+      end
+    end
+
+    describe "alternate login attributes" do
+      let(:user) { create :user }
+
+      it "logs in properly" do
+        User.should_receive(:find_by_username).with("bricker").and_return(user)
+        
+        Outpost.config.authentication_attribute = :username
+        post :create, password: "secret", username: "bricker"
+        controller.session[:user_id].should eq user.id
+        Outpost.config.authentication_attribute = nil
       end
     end
   end

@@ -3,8 +3,8 @@
 <%= form_tag outpost_sessions_path, id: "login" do %>
   <fieldset>
     <legend>Login</legend>
-    <%= label_tag :username %>
-    <%= text_field_tag :username, nil, autofocus: "autofocus" %>
+    <%= label_tag @authentication_attribute %>
+    <%= text_field_tag @authentication_attribute, nil, autofocus: "autofocus" %>
 
     <%= label_tag "Password" %>
     <%= password_field_tag :password, nil, id: "password" %>
