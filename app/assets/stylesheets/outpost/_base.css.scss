@@ -1,0 +1,130 @@
+// Core ext.
+body {
+    // Allow space for the submit-row
+    padding-bottom: 120px;
+    padding-top: 100px;
+}
+
+body, p {
+  line-height: 14px;
+}
+
+small { 
+  font-size: 11px;
+}
+
+.breadcrumb {
+  &.unstyled {
+    padding: 0;
+  }
+  
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0;
+}
+
+// Override a bug in bootstrap
+.dropup .btn-large .caret {
+    border-bottom-color: $white;
+}
+
+.alert .close {
+  line-height: 12px;
+}
+
+$iconRedSpritePath: 'glyphicons-halflings-red.png';
+.icon-red {
+  background-image: url($iconRedSpritePath);
+}
+
+/////////////////////////////////
+$navOffset: 40px;
+$breadcrumbOffset: 36px;
+
+.cms-nav {
+  max-width: 820px;
+  
+  .grouper {
+    display: inline-block;
+    width: 400px;
+    vertical-align: top;
+  }
+  
+  li {
+    clear: both;
+    border-bottom: 1px solid $grayLighter;
+    
+    &:hover {
+      background: $linkColor;
+      &> a { 
+        color: $white;
+        text-decoration: none;
+      }
+    }
+    
+    &> a {
+      clear: none;
+      width: 285px;
+      display: inline-block;
+
+      // Everything below is copied from Bootstrap .dropdown-menu > li > a
+      // It has to be this way because of the .grouper div
+      // This should be fixed.
+      padding: 3px 20px;
+      font-weight: normal;
+      line-height: 20px;
+      color: #333333;
+      white-space: nowrap;
+    }
+    
+    .btn-links {
+      display: inline-block;
+      clear: both;
+      vertical-align: bottom;
+      margin-bottom: 3px;
+      width: 60px;
+      
+      &> a {
+        margin: 0px 2px;
+        &.add { float: right; }
+      }
+    }
+  }
+}
+
+.fixed-breadcrumbs {
+  z-index: 5;
+  margin-top: 40px;
+  @include box-shadow(0 2px 6px rgba(0,0,0,.2));
+}
+
+p.help-block {
+    color: $grayLight;
+    font-style: italic;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.list-status {
+    text-align: center;
+}
+
+.add-on.populate {
+    cursor: pointer;
+}
+
+// Style the dropdown buttons so they look like links
+ul.dropdown-menu li button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    &:hover {
+        background: $grayLighter;
+    }
+}
+
+#fixed-sidebar.affix {
+  top: $navOffset + $breadcrumbOffset + 4px;
+}

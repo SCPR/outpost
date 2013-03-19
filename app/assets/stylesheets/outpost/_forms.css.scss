@@ -1,0 +1,109 @@
+// We want content input to always be pretty big
+.simple_form {
+  input:not([type=submit]) {
+      @extend .span4;
+  }
+}
+
+form.simple_form {
+  table.field-rows {
+    td, th {
+      text-align: left; 
+      padding: 5px 10px; 
+    }
+
+    tbody tr { padding: 5px 0; }
+
+    .controls { margin: 0; }
+    .control-group { margin: 0; }
+  }
+
+  input.wide, textarea {
+      @extend .span7;
+  }
+  
+  input, textarea {
+    &.span1 { @extend .span1 }
+    &.span2 { @extend .span2 }
+    &.span3 { @extend .span3 }
+    &.span4 { @extend .span4 }
+    &.span5 { @extend .span5 }
+    &.span6 { @extend .span6 }
+    &.span7 { @extend .span7 }
+    &.span8 { @extend .span8 }
+    &.span9 { @extend .span9 }
+    &.span10 { @extend .span10 }
+    &.span11 { @extend .span11 }
+    &.span12 { @extend .span12 }
+  }
+  
+  input.thin, textarea.thin {
+      @extend .span2;
+  }
+  
+  input.tiny {
+      @extend .span1;
+  }
+  
+  // For code inputs
+  textarea.fixed-font, input.fixed-font {
+    @include font-monospace($size: 11px);
+    background: #000;
+    color: #FFFF00;
+  }
+  
+  textarea {
+      &.tiny { height: 100px; }
+      &.short { height: 200px; }
+      &.tall { height: 600px; }
+  }
+  
+  fieldset legend {
+      cursor: pointer;
+      &:hover {
+          background: #ffffcc;
+      }
+  }
+  
+  .counter-notify {
+      @extend .span7;
+  }
+  
+  .inline { // Extend bootstrap .inline
+      display: inline-block;
+      margin-right: 5px;
+      input[type=text] { @extend .span2; }
+      input[type=checkbox] { width: 20px; }
+      
+      .controls {
+          margin-left: 10px;
+      }
+  }
+  
+  .control-group.vertical {
+      label { 
+          float: none;
+          text-align: left;
+      }
+      .controls { margin-left: 2px; }
+  }
+}
+
+// Select 2 overrides
+.select[class*="span"] {
+  margin-left: 0;
+  float: none;
+}
+
+.select2-container {
+  min-width: 200px;
+}
+
+// Select2 has z-index:9999 by default... no thanks
+.select2-drop-mask {
+  z-index: 4;
+}
+
+.select2-drop {
+  z-index: 4;
+}

@@ -1,0 +1,13 @@
+// Styles for Editing/New pages
+
+.submit-row:last-of-type {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: 0px;
+    background: $grayDark;
+    padding: 10px 0;
+    z-index: 10;
+    @include box-shadow(0 -2px 10px rgba(0,0,0,.2));
+}

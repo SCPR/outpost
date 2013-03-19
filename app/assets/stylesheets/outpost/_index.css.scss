@@ -1,0 +1,68 @@
+// Styles for index lists
+// To manage column widths, go to columns.css
+
+.filters {
+    .select2-container {
+        min-width: 130px;
+    }
+    
+    .filter.label {
+    display: inline-block; 
+    margin-right: 10px;
+    }
+
+    form {
+    display: inline-block;
+    }
+}
+
+.header-highlighted {
+    background-color: $successBackground;
+}
+
+th.clickable {
+    cursor: pointer;
+    &:hover {
+        background-color: $infoBackground;
+    }
+}
+
+.index-list {
+    position: relative;
+
+    th, td {
+        overflow: hidden;
+        .cancel-link { float: right; }
+    }
+
+    tbody.list {
+        tr {
+            // Style quick-edit cells
+            td[data-updatable=true] {
+                background: $warningBackground;
+
+                &:hover {
+                    background: $infoBackground;
+                    cursor: text;
+                }
+            }
+        }
+    }
+
+    thead {
+        background: $white;
+
+        &.ready {
+            position: absolute;
+
+            &.affix {
+                z-index: 5;
+                border: 1px solid $grayLight;
+                position: fixed; // Have to use redefine it here to override .ready
+                top: $navOffset + $breadcrumbOffset + 10px !important;
+                background: $warningBackground;
+                @include box-shadow(0 2px 6px rgba(0,0,0,.2));
+            }
+        }
+    }
+}

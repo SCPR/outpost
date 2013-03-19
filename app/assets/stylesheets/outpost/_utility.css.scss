@@ -1,0 +1,16 @@
+.transparent { 
+    @include opacity(0.2);
+    @include transition(.1s linear all);
+}
+
+.hidden {
+    display: none;
+}
+
+a.fake {
+    cursor: pointer;
+}
+
+a.toggled {
+    color: $black;
+}

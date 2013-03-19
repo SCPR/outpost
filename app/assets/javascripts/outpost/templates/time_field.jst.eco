@@ -1,0 +1,3 @@
+<div class="input-prepend inline">
+  <span class="add-on populate time"><i class="icon-time"></i></span><input type="text" class="timestamp-el" placeholder="<%=@time_format%>" id="<%= @time_id %>">
+</div>
