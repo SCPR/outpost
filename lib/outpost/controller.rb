@@ -11,65 +11,78 @@ module Outpost
     autoload :Authentication
     autoload :Authorization
 
-
     included do
       helper_method :list, :model, :fields
     end
 
+
+    # Public: Proxy to the controller's model
     def model
       self.class.model
     end
 
+    # Public: Proxy to the controller's list
     def list
       self.class.list
     end
 
+    # Public: Proxy to the controller's fields
     def fields
       self.class.fields
     end
 
+
     module ClassMethods
       attr_accessor :model
+
       attr_writer :fields
-      attr_reader :list
-    
       def fields
         @fields ||= default_fields
       end
 
-      # Define the list for this controller.
-      #
-      # Pass a block.
-      #
-      def define_list(&block)
-        @list = List::Base.new(model)
-        @list.instance_eval(&block)
+      def list
+        @list ||= define_list do
+          default_columns.each do |attribute|
+            column attribute
+          end
+        end
       end
 
-      # Declare a controller as being a controller for
-      # Outpost.
+      # Public: Define the list for this controller.
       #
-      # Attributes:
+      # block - A block to define the list. See List::Base for more.
       #
-      # * model - (constant) the model for this controller
+      # Returns nothing.
+      def define_list(&block)
+        @list = List::Base.new(model, &block)
+      end
+
+      # Public: Declare a controller as being a controller for Outpost.
       #
-      # Example:
+      # model - (constant) The model for this controller.
+      #
+      # Examples
       #
       #   class Admin::NewsStoriesController < Admin::ResourceController
       #     outpost_controller model: NewsStory
       #   end
       #
       def outpost_controller(attributes={})
-        @model = attributes[:model]
+        @model = attributes[:model] || find_model
 
         include Outpost::Controller::Actions
         include Outpost::Controller::Helpers
       end
 
+
       private
 
       def default_fields
         @model.column_names - Outpost.config.excluded_form_fields
+      end
+
+      def find_model
+        self.name.demodulize.underscore.split("_")[0...-1].join("_").classify.constantize
       end
     end # ClassMethods
   end # Controller

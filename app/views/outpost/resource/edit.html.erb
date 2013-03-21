@@ -1,0 +1,56 @@
+<% add_to_page_title "Editing: #{@record.to_title}" %>
+
+<%= simple_form_for [:outpost, @record], html: { multipart: @record.respond_to?(:audio), class: "form-horizontal" } do |f| %>
+  <%= render 'errors', f: f %>
+  <%= render 'form_fields', record: @record, f: f %>
+  <%= render 'extra_fields', f: f %>
+  <%= render "/outpost/shared/submit_row", record: @record %>
+<% end %>
+
+<% content_for :sidebar do %>
+  <ul class="story-status unstyled">
+    <h5>Status</h5>
+    <% if @record.respond_to? :status_text %>
+      <li>
+        <span class="<%=status_bootstrap_map[@record.status]%>"><%= @record.status_text %></span>
+        
+        <% if @record.respond_to?(:published_at) && @record.respond_to?(:published?) && @record.published? %>
+          on <strong><%= format_date @record.published_at, time: true %></strong>
+        <% end %>
+        
+        <% if @record.respond_to?(:alarm) && @record.alarm.present? && @record.alarm.fire_at.present? %>
+          Alarm - <strong><%= format_date @record.alarm.fire_at, time: true %></strong>
+        <% end %>
+      </li>
+    <% end %>
+    
+    <li>
+      <a href="<%= outpost_history_path(@record.class.route_key, @record.id) %>" title="history">
+        Last Updated: <strong><%= format_date @record.updated_at, time: true %></strong>
+      </a>
+    </li>
+  </ul>
+  
+  <hr />
+  
+  <div id="fixed-sidebar" data-spy="affix" data-offset-top="140">
+    <!-- Be sure to change the data-offset-top attribute on this element if you move it vertically -->
+    <%= render "/outpost/shared/form_nav" %>
+  
+    <h5>Currently Editing on This Page</h5>
+    <div id="newsroom-edit_user-list" class="viewers"></div>
+  </div>
+<% end %>
+
+<% content_for :footer do %>
+  <script type="text/javascript">
+    preview = new scpr.Preview({baseUrl: '<%= @record.admin_show_path %>'});
+
+    newsroom = new scpr.Newsroom(
+      "<%= @record.obj_key %>", // room ID
+      <%= j current_user.to_json.html_safe %>, // user info
+      { "record": <%= j @record.to_json.html_safe %>,
+        "el": "#newsroom-edit_user-list" }
+    );
+  </script>  
+<% end %>

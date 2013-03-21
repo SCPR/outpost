@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
-  <title><%= @PAGE_TITLE ? @PAGE_TITLE + " | Outpost" : "Outpost" %></title>
+  <% add_to_page_title "Outpost" %>
+  <title><%= page_title %></title>
   <%= stylesheet_link_tag "outpost/application" %>
   <%= javascript_include_tag "outpost/application" %>
   
-  <link rel="shortcut icon" href="http://media.scpr.org/favicon.ico" />
+  <link rel="shortcut icon" href="/favicon.ico" />
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -53,16 +54,9 @@
         </ul> <!-- nav -->
 
         <ul class="nav pull-right">
-          <li><a href="#ticket-modal" data-toggle="modal"><i class='icon-wrench icon-white'></i> Report a Problem</a></li>
-          
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class='icon-user icon-white'></i> <%= current_user.name %> <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Your Activity", activity_outpost_current_user_path(current_user) %></li>
-              <li><%= link_to "Edit CMS Account", current_user.admin_edit_path %></li>
-              <% if current_user.bio.present? %>
-                <li><%= link_to "Edit Bio", current_user.bio.admin_edit_path %></li>
-              <% end %>
               <li><%= link_to "Logout", outpost_logout_path, id: "logout" %></li>
             </ul>
           </li>
@@ -81,21 +75,7 @@
       <% if breadcrumbs.present? %>
         <div class="breadcrumb unstyled">
           <div class="container">
-            <ul class="breadcrumb">
-              <% breadcrumbs.each do |crumb| %>
-                <li>
-                  <% if crumb.link.present? %>
-                    <%= link_to crumb.title, crumb.link %>
-                  <% else %>
-                    <%= crumb.title %>
-                  <% end %>
-          
-                  <% unless crumb == breadcrumbs.last %>
-                    <span class="divider">/</span>
-                  <% end %>
-                </li>
-              <% end %>
-            </ul>
+            <%= render_breadcrumbs %>
           </div>
         </div>
       <% end %>
@@ -105,13 +85,7 @@
 <div id="main" class="container">
   <div class="row">
     <div class="span<%= content_for?(:sidebar) ? "9" : "12" %>">
-      <% flash.select { |k, v| v.is_a? String }.each do |name, msg| %>
-        <div class="alert alert-<%= flash_alert_type(name) %>">
-          <a class="close" data-dismiss="alert">&times;</a>
-          <%= msg.html_safe %>
-        </div>
-      <% end %>
-      
+      <%= render_flash_messages %>
       <%= yield %>
     </div>
     <% if content_for?(:sidebar) %>
@@ -122,9 +96,6 @@
   </div> <!-- row -->
 </div> <!-- container main -->
 
-<%= render '/outpost/tickets/modal' %>
 <%= yield :footer %>
-
-<%= javascript_include_tag "#{Rails.application.config.node.server}/socket.io/socket.io.js" %>
 </body>
 </html>

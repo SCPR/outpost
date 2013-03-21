@@ -1,0 +1,9 @@
+<% fields.each do |field| %>
+  <% association = field.gsub(/_id/, "").to_sym %>
+  <% reflection = f.object.class.reflect_on_association(association) %>
+  <% if reflection && !reflection.options[:polymorphic] %>
+    <%= f.association association %>
+  <% else %>
+    <%= f.input field %>
+  <% end %>
+<% end %>

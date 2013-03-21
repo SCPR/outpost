@@ -9,7 +9,13 @@ module Outpost
         helper_method :sort_mode, :order, :preference
       end
 
-      attr_reader :order, :sort_mode
+      def order
+        @order ||= set_order
+      end
+
+      def sort_mode
+        @sort_mode ||= set_sort_mode
+      end
 
       # Adds to the flash[:notice] object, only if
       # the request format is HTML.      
