@@ -5,7 +5,7 @@ A Rails Engine for quickly standing up a CMS for a Newsroom.
 
 ## Dependencies
 * `rails >= 3.2`
-* `ruby >= 1.9.2`
+* `ruby >= 1.9.3`
 
 ## Installation
 Add `gem 'outpost', github: 'SCPR/outpost'` to your Gemfile.
