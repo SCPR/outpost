@@ -1,0 +1,50 @@
+<!-- This block is part of a form -->
+<div class="form-actions submit-row">
+  <div class="container">
+    <div class="btn-group dropup pull-left">
+      <%= button_tag "Save", name: "commit_action", value: "edit", class: "btn btn-primary btn-large span2" %>
+      <button class="btn btn-primary btn-large dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><%= button_tag "Save &amp; Add Another".html_safe, name: "commit_action", value: "new" %></li>
+        <li><%= button_tag "Save &amp; Return to List".html_safe, name: "commit_action", value: "index" %></li>
+      </ul>
+    </div>
+
+    <div class="pull-right">
+      <% if controller.action_methods.include? "preview" %>
+        <div class="btn-group dropup" id="preview-submit">
+          <a href="#" class="btn btn-info js-preview-btn" data-window-options="width=1200,height=1000">Preview</a>
+          <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#" class="js-preview-btn" data-window-options="width=320,height=480">Mobile Portrait (320x480)</a></li>
+            <li><a href="#" class="js-preview-btn" data-window-options="width=480,height=320">Mobile Landscape (480x320)</a></li>
+            <li><a href="#" class="js-preview-btn" data-window-options="width=768,height=1024">Tablet Portrait (768x1024)</a></li>
+            <li><a href="#" class="js-preview-btn" data-window-options="width=1024,height=768">Tablet Landscape (1024x768)</a></li>
+            <li><a href="#" class="js-preview-btn" data-window-options="width=960,height=900">Small Desktop (960x900)</a></li>
+          </ul>
+        </div>
+      <% end %>
+
+      <% if record.persisted? %>
+        <%= link_to("View Live", record.link_path, class: "btn btn-success", target: "_blank") if record.link_path.present? %>
+        <%= link_to("Delete", 
+              [:outpost, record], 
+              class: "btn btn-danger", 
+              method: :delete, 
+              data: { confirm: "Click OK to delete this #{model.to_title}.\nClick CANCEL to return to editing." }
+              ) %>
+      <% end %>
+    </div> <!-- pull-right -->
+  </div> <!-- container -->
+</div> <!-- form-actions -->
+
+
+<% content_for :footer do %>
+  <script>
+    field_manager = new scpr.FieldManager();
+  </script>
+<% end %>

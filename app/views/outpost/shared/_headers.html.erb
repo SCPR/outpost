@@ -1,6 +1,6 @@
 <th class="column-manage">Manage</th>
 
-<% list.columns.each do |column| %>
+<% list.columns.each do |attribute, column| %>
   <% is_sorting = order == column.attribute.to_s %>
 
   <th class="<%='header-highlighted' if is_sorting%> <%='header-sortable' if column.sortable?%> <%=column_attribute_class(column.attribute)%> <%=column_type_class(model, column.attribute)%>">

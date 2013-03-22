@@ -4,14 +4,15 @@
 module Outpost
   module List
     class Filter
-      attr_accessor :attribute, :collection, :title
+      BOOLEAN_COLLECT = [["Yes", 1], ["No", 0]]
+
+      attr_accessor :attribute, :collection, :title, :list
       
       def initialize(attribute, list, options={})
-        @attribute  = attribute
-        @title      = options[:title] || attribute.to_s.titleize
+        @attribute  = attribute.to_s
         @list       = list
+        @title      = options[:title] || @attribute.titleize
         
-        # Set the collection
         collection = options[:collection]
         @collection = begin
           case collection
@@ -20,15 +21,16 @@ module Outpost
           when Proc
             collection
           when Symbol
-            send("_#{collection}_collection")
+            send "_#{collection}_collection"
           end
         end
       end
       
+
       private
       
       def _boolean_collection
-        -> { [["Yes", 1], ["No", 0]] }
+        -> { BOOLEAN_COLLECT }
       end
     end
   end
