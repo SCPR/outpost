@@ -1,4 +1,4 @@
-##
+  ##
 # Outpost::Controller
 module Outpost
   module Controller
@@ -34,16 +34,27 @@ module Outpost
 
     module ClassMethods
       attr_accessor :model
-
       attr_writer :fields
+      
+      # Public: The fields for a form.
+      #
+      # If no fields have been defined, then the default fields will be used.
+
+      # Returns Array of fields.
       def fields
         @fields ||= default_fields
       end
 
+      # Public: The list for this controller.
+      #
+      # If no list has been defined yet, this method will
+      # also define the list with the class's default columns.
+      #
+      # Returns the list.
       def list
-        @list ||= define_list do
-          default_columns.each do |attribute|
-            column attribute
+        @list ||= define_list do |l|
+          l.default_columns.each do |attribute|
+            l.column attribute
           end
         end
       end
@@ -51,6 +62,13 @@ module Outpost
       # Public: Define the list for this controller.
       #
       # block - A block to define the list. See List::Base for more.
+      #
+      # Examples
+      #
+      #   define_list do |l|
+      #     l.per_page = 50
+      #     l.column :name
+      #   end
       #
       # Returns nothing.
       def define_list(&block)
