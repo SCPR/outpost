@@ -7,8 +7,6 @@ A Rails Engine for quickly standing up a CMS for a Newsroom.
 * `rails >= 3.2`
 * `ruby >= 1.9.3`
 
-See `.travis.yml` to see which Ruby versions are officially supported.
-
 ## Installation
 Add `gem 'outpost', github: 'SCPR/outpost'` to your Gemfile.
 
