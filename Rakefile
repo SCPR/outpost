@@ -24,4 +24,3 @@ Combustion.initialize! :active_record, :action_controller
 Combustion::Application.load_tasks
 
 RSpec::Core::RakeTask.new(:test)
-task :default => :test
