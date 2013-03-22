@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
+gem 'rails', '~> 4.0.0.beta1'
 gem 'eco', '~> 1.0.0'
 gem 'sass-rails',   '~> 4.0.0.beta1'
 gem 'bootstrap-sass', '~> 2.2'
@@ -14,7 +15,7 @@ group :test do
   gem 'activerecord'
   gem 'actionpack'
   gem "sqlite3", "~> 1.3"
-  gem 'combustion', github: "bricker/combustion"
+  gem 'combustion'
   gem "rspec-rails", "~> 2.13"
   gem "factory_girl", "~> 4.2"
 end

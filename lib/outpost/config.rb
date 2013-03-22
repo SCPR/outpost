@@ -9,7 +9,8 @@ module Outpost
       :excluded_form_fields       => ["id", "created_at", "updated_at"],
       :excluded_list_columns      => [],
       :user_class                 => "User",
-      :authentication_attribute   => :email
+      :authentication_attribute   => :email,
+      :preferences                => [:order, :sort_mode]
     }
     
     # Pass a block to this method to define the configuration
@@ -26,6 +27,11 @@ module Outpost
       @registered_models || []
     end
     
+    attr_writer :preferences
+    def preferences
+      @preferences || DEFAULTS[:preferences]
+    end
+
     attr_writer :user_class
     def user_class
       @user_class || DEFAULTS[:user_class]

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PeopleController do
+describe Outpost::PeopleController do
   describe "current_user" do
     it "looks up the ID stored in the session" do
       user = create :user

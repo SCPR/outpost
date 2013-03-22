@@ -54,17 +54,16 @@ module Outpost
         set_preference(key, nil)
       end
 
-      # Remove the preference specified if available
+
+      private
+      
       def remove_preferences
-        preferred_sort_mode_key = "#{model.content_key}_sort_mode"
-        preferred_order_key     = "#{model.content_key}_order"
+        Outpost.config.preferences.each do |preference|
+          key = "#{model.content_key}_#{preference}"
 
-        if params[:sort_mode] == "" && preference(preferred_sort_mode_key).present?
-          unset_preference(preferred_sort_mode_key)
-        end
-
-        if params[:order] == "" && preference(preferred_order_key).present?
-          unset_preference(preferred_order_key)
+          if params[preference] == "" && preference(key).present?
+            unset_preference(key)
+          end
         end
       end
     end

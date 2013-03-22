@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Outpost::Controller do
   describe '::fields' do
-    let(:controller) { PeopleController.new }
+    let(:controller) { Outpost::PeopleController.new }
 
     it 'sets default fields' do
       controller.fields.should include "name"

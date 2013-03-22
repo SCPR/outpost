@@ -41,11 +41,21 @@ module Outpost
 
     module ClassMethods
       attr_accessor :model
-      attr_writer :fields, :permitted_params
-      
-      def permitted_params
-        @permitted_params ||= []
-      end
+      attr_writer :fields
+
+      # Public: Set the parameters permitted for the controller.
+      # This gets passed to Rails 4's `Parameters#permit`.
+      #
+      # Accepts an array of parameters, in the same format that
+      # Parameters#permit accepts them. See Rails documentation
+      # for more.
+      #
+      # Examples
+      #
+      #   self.permitted_params = [:name, :location, :age]
+      #
+      # Returns Array of parameters. 
+      attr_writer :permitted_params
 
       # Public: The fields for a form.
       #
@@ -116,11 +126,18 @@ module Outpost
         before_filter :filter_records, only: [:index]
       end
 
+      # Private: Array of permitted parameters, for Rails 4 compliance.
+      #
+      # Returns Array of parameters.
+      def permitted_params
+        @permitted_params ||= []
+      end
+
 
       private
 
       def default_fields
-        @model.column_names - Outpost.config.excluded_form_fields
+        model.column_names - Outpost.config.excluded_form_fields
       end
 
       def find_model
