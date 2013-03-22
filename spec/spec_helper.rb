@@ -1,3 +1,6 @@
+require 'bundler/setup'
+require 'combustion'
+
 unless defined?(RAKED)
   Bundler.require :default, :test
   Combustion.initialize! :active_record, :action_controller

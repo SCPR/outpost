@@ -1,15 +1,11 @@
 source "https://rubygems.org"
 
-gem 'rails', '~> 4.0.0.beta1'
+gem 'appraisal'
+gem 'simple_form' # So the initializer works...
 gem 'eco', '~> 1.0.0'
-gem 'sass-rails',   '~> 4.0.0.beta1'
-gem 'bootstrap-sass', '~> 2.2'
-gem 'coffee-rails', '~> 4.0.0.beta1'
 gem 'uglifier', '>= 1.0.3'
-gem 'jquery-rails'
 gem 'ckeditor_rails'
 gem 'kaminari', github: "amatsuda/kaminari"
-gem 'simple_form', github: "plataformatec/simple_form"
 
 group :test do
   gem 'activerecord'
