@@ -1,0 +1,23 @@
+<% add_to_page_title "Editing: #{@record.to_title}" %>
+
+<%= simple_form_for [:outpost, @record], html: { class: "form-horizontal" } do |f| %>
+  <%= render 'errors', f: f %>
+  <%= render 'form_fields', record: @record, f: f %>
+  <%= render 'extra_fields', f: f %>
+  <%= render "/outpost/shared/submit_row", record: @record %>
+<% end %>
+
+<% content_for :sidebar do %>
+  <ul class="story-status unstyled">
+    <li>
+      Last Updated: <strong><%= format_date @record.updated_at, time: true %></strong>
+    </li>
+  </ul>
+  
+  <hr />
+  
+  <div id="fixed-sidebar" data-spy="affix" data-offset-top="140">
+    <!-- Be sure to change the data-offset-top attribute on this element if you move it vertically -->
+    <%= render "/outpost/shared/form_nav" %>
+  </div>
+<% end %>

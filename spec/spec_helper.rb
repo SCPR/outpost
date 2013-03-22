@@ -1,5 +1,7 @@
-Bundler.require :default, :test
-Combustion.initialize! :active_record, :action_controller
+unless defined?(RAKED)
+  Bundler.require :default, :test
+  Combustion.initialize! :active_record, :action_controller
+end
 
 require 'rspec/rails'
 require 'factory_girl'

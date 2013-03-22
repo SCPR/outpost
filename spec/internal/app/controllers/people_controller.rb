@@ -1,15 +1,9 @@
 class PeopleController < ApplicationController
-  include Outpost::Controller::Authentication
-  include Outpost::Controller::Authorization
-  include Outpost::Breadcrumbs
-  outpost_controller
+  def index
+    @people = Person.all
+  end
 
-  self.model = Person
-
-  define_list do
-    column :name
-    column :email
-    column :location
-    column :age
+  def show
+    @person = Person.find(params[:id])
   end
 end

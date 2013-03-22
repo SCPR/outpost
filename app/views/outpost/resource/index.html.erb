@@ -1,0 +1,22 @@
+<% add_to_page_title model.to_title.pluralize %>
+
+<%= render "/outpost/shared/index_header", model: model %>
+
+<%= list_table @records, model do %>
+  <thead>
+    <tr>
+      <%= render "/outpost/shared/headers", list: list %>
+    </tr>
+  </thead>
+  <tbody class="list">
+    <% @records.each do |record| %>
+      <tr class="<%= model.singular_route_key.dasherize %>">
+        <td class="column-manage">
+          <%= link_to "Edit", record.admin_edit_path, class: "btn" %>
+        </td>
+
+        <%= render "/outpost/shared/columns", list: list, record: record %>
+      </tr>
+    <% end %>
+  </tbody>
+<% end %>

@@ -23,8 +23,8 @@
 //= require ckeditor/plugins/mediaembed/plugin
 //= require ckeditor/plugins/codemirror/plugin
 
-//= require base
-//= require templates
+//= require outpost/base
+//= require outpost/templates
 
 //= require outpost/notification
 //= require outpost/field_manager

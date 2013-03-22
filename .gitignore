@@ -3,3 +3,5 @@
 log/*.log
 pkg/
 spec/internal/db/*.sqlite
+.sass-cache/
+tmp/

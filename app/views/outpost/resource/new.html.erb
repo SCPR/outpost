@@ -1,0 +1,21 @@
+<% add_to_page_title "Add #{model.to_title}" %>
+
+<%= simple_form_for [:outpost, @record], html: { multipart: @record.respond_to?(:audio), class: "form-horizontal" } do |f| %>
+  <%= render 'errors', f: f %>
+  <%= render 'form_fields', record: @record, f: f %>
+  <%= render 'extra_fields', f: f %>
+  <%= render "/outpost/shared/submit_row", record: @record %>
+<% end %>
+
+<% content_for :sidebar do %>
+  <div id="fixed-sidebar" data-spy="affix" data-offset-top="30">
+    <!-- Be sure to change the data-offset-top attribute on this element if you move it vertically -->
+    <%= render "/outpost/shared/form_nav" %>
+  </div>
+<% end %>
+
+<% content_for :footer do %>
+  <script>
+    preview = new scpr.Preview({baseUrl: '<%= model.admin_index_path %>'});
+  </script>
+<% end %>
