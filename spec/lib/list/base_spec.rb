@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Outpost::List::Base do
-  
+
   #--------------
   
   let(:model) { Person }

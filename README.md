@@ -4,11 +4,29 @@
 A Rails Engine for quickly standing up a CMS for a Newsroom.
 
 ## Dependencies
-* `rails >= 3.2` (not tested on rails 4 yet)
+* `rails >= 3.2`
 * `ruby >= 1.9.2`
 
-## Usage
+## Installation
 Add `gem 'outpost', github: 'SCPR/outpost'` to your Gemfile.
+
+This gem also has some hard dependencies that aren't in the gemspec.
+My goal is to reduce these dependencies as much as possible, but as this
+was extracted from the KPCC application, these are fairly strict at this
+point:
+
+* `simple_form` - for Rails 3.2, the latest release is fine.
+For Rails 4.0, you'll need to point your Gemfile to the [simple_form 
+master branch](https://github.com/plataformatec/simple_form).
+* `kaminari` - You need to use the 
+[kaminari master branch](https://github.com/amatsuda/kaminari).
+* `ckeditor_rails`
+* `eco`
+* `sass-rails`
+* `bootstrap-sass`
+* `coffee-rails`
+
+## Usage
 
 More documentation to come.
 

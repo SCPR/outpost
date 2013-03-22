@@ -1,0 +1,7 @@
+<h2>People</h2>
+
+<ul>
+  <% @people.each do |person| %>
+    <li><%= link_to person.name, person.link_path %></li>
+  <% end %>
+</ul>

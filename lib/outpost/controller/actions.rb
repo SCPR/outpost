@@ -6,11 +6,7 @@
 # area.
 module Outpost
   module Controller
-    module Actions
-      extend ActiveSupport::Concern
-      include Outpost::Controller::Callbacks
-      include Outpost::Breadcrumbs
-            
+    module Actions      
       def index
         respond_with :outpost, @records
       end
@@ -31,7 +27,7 @@ module Outpost
       end
 
       def create
-        @record = model.new(params[model.singular_route_key])
+        @record = model.new(form_params)
         
         if @record.save
           notice "Saved #{@record.simple_title}"
@@ -60,6 +56,14 @@ module Outpost
       
       private
       
+      def form_params
+        if defined?(ActionController::Parameters)
+          params.require(model.singular_route_key).permit(*self.permitted_params)
+        else
+          params[model.singular_route_key]
+        end
+      end
+
       def requested_location
         case params[:commit_action]
         when "edit" then @record.admin_edit_path

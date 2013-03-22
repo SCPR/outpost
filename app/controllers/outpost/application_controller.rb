@@ -19,7 +19,6 @@ module Outpost
       breadcrumb "Outpost", outpost_root_path
     end
 
-      
     #----------------------
     
     def render_error(status, e=StandardError)

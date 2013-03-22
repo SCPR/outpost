@@ -8,6 +8,9 @@ module Outpost
     autoload :Actions
     autoload :Callbacks
     autoload :Helpers
+    autoload :Ordering
+    autoload :Filtering
+    autoload :Preferences
     autoload :Authentication
     autoload :Authorization
 
@@ -16,33 +19,45 @@ module Outpost
     end
 
 
-    # Public: Proxy to the controller's model
+    # Public: Proxy to the controller's model.
     def model
       self.class.model
     end
 
-    # Public: Proxy to the controller's list
+    # Public: Proxy to the controller's list.
     def list
       self.class.list
     end
 
-    # Public: Proxy to the controller's fields
+    # Public: Proxy to the controller's fields.
     def fields
       self.class.fields
     end
 
+    # Public: Proxy to the controller's permitted params.
+    def permitted_params
+      self.class.permitted_params
+    end
 
     module ClassMethods
       attr_accessor :model
-      attr_writer :fields
+      attr_writer :fields, :permitted_params
       
+      def permitted_params
+        @permitted_params ||= []
+      end
+
       # Public: The fields for a form.
       #
       # If no fields have been defined, then the default fields will be used.
-
+      # Using the default fields will also set the permitted params to those
+      # fields.
+      #
       # Returns Array of fields.
       def fields
-        @fields ||= default_fields
+        @fields ||= begin
+          self.permitted_params = default_fields
+        end
       end
 
       # Public: The list for this controller.
@@ -88,8 +103,17 @@ module Outpost
       def outpost_controller(attributes={})
         @model = attributes[:model] || find_model
 
-        include Outpost::Controller::Actions
         include Outpost::Controller::Helpers
+        include Outpost::Controller::Callbacks
+        include Outpost::Controller::Actions
+        include Outpost::Controller::Ordering
+        include Outpost::Controller::Filtering
+        include Outpost::Controller::Preferences
+
+        before_filter :authorize_resource
+        before_filter :get_record, only: [:show, :edit, :update, :destroy]
+        before_filter :get_records, only: [:index]
+        before_filter :filter_records, only: [:index]
       end
 
 

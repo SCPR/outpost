@@ -4,8 +4,8 @@ module Outpost
       def initialize(model, &block)
         @model   = model
         @columns = ActiveSupport::HashWithIndifferentAccess.new
-        @fields  = []
         @filters = ActiveSupport::HashWithIndifferentAccess.new
+        @fields  = []
 
         yield self if block_given?
 
