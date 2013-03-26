@@ -15,6 +15,8 @@ module ListHelper
     if column.display.is_a? Proc
       # If we passed a Proc to :display, use it.
       record.instance_eval(&column.display)
+    elsif column.display.is_a? Symbol
+      display_helper = column.display
     else
       if column._display_helper.present?
         # If we've already figured out which method to use for
