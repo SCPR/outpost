@@ -15,11 +15,7 @@ module Outpost
           # If attributes have been changed, then fetch
           # the persisted record from the database
           # Otherwise just use self
-          if self.changed_attributes.present?
-            self.class.find(self.id)
-          else
-            self
-          end
+          self.changed? ? self.class.find(self.id) : self
         end
       end
     end # Methods
