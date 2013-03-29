@@ -14,11 +14,10 @@ Add `gem 'outpost', github: 'SCPR/outpost'` to your Gemfile.
 
 This gem also has some hard dependencies that aren't in the gemspec.
 My goal is to reduce these dependencies as much as possible, but as this was 
-extracted from the KPCC application, these are fairly strict at this point:
+extracted from the KPCC application, these are fairly strict at this point.
 
-* `simple_form` - for Rails 3.2, the latest release is fine.
-For Rails 4.0, you'll need to point your Gemfile to the 
-[simple_form master branch](https://github.com/plataformatec/simple_form).
+* `simple_form` - for Rails 3.2, use `~> 2.1.0`.
+For Rails 4.0, you'll need to use `~> 3.0.0.beta1`
 * `kaminari` - You need to use the 
 [kaminari master branch](https://github.com/amatsuda/kaminari).
 * `ckeditor_rails`
