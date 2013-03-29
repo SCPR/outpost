@@ -4,10 +4,8 @@ module Outpost
     include Outpost::Controller::Authorization
     include Outpost::Controller::Authentication
 
-    unless Rails.application.config.consider_all_requests_local
-      rescue_from StandardError, with: ->(e) { render_error(500, e) }
-      rescue_from ActionController::RoutingError, ActionView::MissingTemplate, ActionController::UnknownController, ::AbstractController::ActionNotFound, ActiveRecord::RecordNotFound, with: ->(e) { render_error(404, e) }
-    end
+    rescue_from StandardError, with: ->(e) { render_error(500, e) }
+    rescue_from ActionController::RoutingError, ActionView::MissingTemplate, ActionController::UnknownController, ::AbstractController::ActionNotFound, ActiveRecord::RecordNotFound, with: ->(e) { render_error(404, e) }
 
     abstract!
     protect_from_forgery
@@ -22,7 +20,11 @@ module Outpost
     #----------------------
     
     def render_error(status, e=StandardError)
-      render template: "/errors/error_#{status}", status: status, locals: { errors: e }
+      if Rails.application.config.consider_all_requests_local
+        raise e
+      else
+        render template: "/errors/error_#{status}", status: status, locals: { errors: e }
+      end
     end
   end
 end
