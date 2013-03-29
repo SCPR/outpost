@@ -39,7 +39,7 @@ module Outpost
       end
 
       def update
-        if @record.update_attributes(params[model.singular_route_key])
+        if @record.update_attributes(form_params)
           notice "Saved #{@record.simple_title}"
           respond_with :outpost, @record, location: requested_location
         else
