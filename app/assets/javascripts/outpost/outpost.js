@@ -31,5 +31,6 @@
 //= require outpost/date_time_input
 //= require outpost/auto_slug_field
 //= require outpost/field_counter
+//= require outpost/preview
 //= require outpost/index_manager
 //= require outpost/global_plugins
