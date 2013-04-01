@@ -1,6 +1,10 @@
 require "outpost/engine"
+
 require 'active_record'
 require 'action_controller'
+require 'action_view'
+require 'action_view/helpers/form_builder'
+
 require 'outpost/config'
 
 module Outpost
