@@ -35,4 +35,15 @@ module OutpostHelper
   def render_navigation
     render '/outpost/shared/navigation', current_user: current_user
   end
+
+  # Public: Place a modal anywhere with a button to toggle it.
+  # 
+  # options - (Hash) Options to pass into the modal template. Useful for 
+  #           CSS ID, and modal title.
+  # block   - The block that gets captured and rendered inside of the modal.
+  #
+  # Returns String of rendered modal and toggle button.
+  def modal_toggle(options={}, &block)
+    render "/outpost/shared/modal", options: options, body: capture(&block)
+  end
 end
