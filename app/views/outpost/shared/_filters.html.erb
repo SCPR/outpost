@@ -3,10 +3,10 @@
     <span class="filter label">Filter by:</span>
 
     <%= form_tag model.admin_index_path, method: :get, class: "form-inline" do %>
-      <% list.filters.each do |filter| %>
-        <%= select_tag filter.attribute, 
-          options_for_select(filter.collection.call, params[:filter].present? ? params[:filter][filter.attribute] : nil), include_blank: true, 
-          data: { placeholder: filter.title }, name: "filter[#{filter.attribute}]", class: "input-medium" %>
+      <% list.filters.each do |attribute, filter| %>
+        <%= select_tag attribute, 
+          options_for_select(filter.collection.call, params[:filter].present? ? params[:filter][attribute] : nil), include_blank: true, 
+          data: { placeholder: filter.title }, name: "filter[#{attribute}]", class: "input-medium" %>
       <% end %>
 
       <%= submit_tag "Go", class: "btn" %>
