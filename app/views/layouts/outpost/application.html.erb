@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://ogp.me/ns/fb#">
+<html lang="en">
 <head>
   <% add_to_page_title "Outpost" %>
   <title><%= page_title %></title>
@@ -72,13 +72,13 @@
 
 <% if current_user %>
   <div class="navbar navbar-fixed-top fixed-breadcrumbs">
-      <% if breadcrumbs.present? %>
-        <div class="breadcrumb unstyled">
-          <div class="container">
-            <%= render_breadcrumbs %>
-          </div>
+    <% if breadcrumbs.present? %>
+      <div class="breadcrumb unstyled">
+        <div class="container">
+          <%= render_breadcrumbs %>
         </div>
-      <% end %>
+      </div>
+    <% end %>
   </div> <!-- navbar -->
 <% end %>
 

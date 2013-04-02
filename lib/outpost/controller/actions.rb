@@ -6,7 +6,7 @@
 # area.
 module Outpost
   module Controller
-    module Actions      
+    module Actions
       def index
         respond_with :outpost, @records
       end
