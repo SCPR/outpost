@@ -10,6 +10,7 @@ ActiveRecord::Schema.define do
   create_table :posts, force: true do |t|
     t.string :title
     t.text :body
+    t.integer :person_id
     t.timestamps
   end
 

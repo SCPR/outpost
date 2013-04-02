@@ -43,7 +43,7 @@ module ListHelper
 
       else
         # Fallback to just using attribute.to_s
-        display_helper = :display_as_string
+        display_helper = :display_string
       end
 
       value = record.send(column.attribute)
@@ -93,11 +93,11 @@ module ListHelper
   #
   # Examples
   #
-  #   display_as_string("anything")
+  #   display_string("anything")
   #   # => "anything"
   #
   # Returns String of the attribute
-  def display_as_string(attrib)
+  def display_string(attrib)
     attrib.to_s
   end
 
