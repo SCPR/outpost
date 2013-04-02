@@ -46,10 +46,9 @@ module ListHelper
         display_helper = :display_as_string
       end
 
-        value = record.send(column.attribute)
-        column._display_helper = display_helper
-        send(display_helper, value)
-      end
+      value = record.send(column.attribute)
+      column._display_helper = display_helper
+      send(display_helper, value)
     end
   end
 
