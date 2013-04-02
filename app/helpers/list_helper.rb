@@ -15,14 +15,15 @@ module ListHelper
     if column.display.is_a? Proc
       # If we passed a Proc to :display, use it.
       record.instance_eval(&column.display)
-    elsif column.display.is_a? Symbol
-      display_helper = column.display
     else
       if column._display_helper.present?
         # If we've already figured out which method to use for
         # this column, then use it. This is to prevent this method
         # from having to fully run hundreds of times on each page.
         display_helper = column._display_helper
+
+      elsif column.display.is_a? Symbol
+        display_helper = column.display
 
       elsif self.methods.include? :"display_#{column.attribute}"
         # If we have explicitly defined a helper for this attribute, use it.
@@ -45,9 +46,10 @@ module ListHelper
         display_helper = :display_as_string
       end
 
-      value = record.send(column.attribute)
-      column._display_helper = display_helper
-      send(display_helper, value)
+        value = record.send(column.attribute)
+        column._display_helper = display_helper
+        send(display_helper, value)
+      end
     end
   end
 
@@ -67,19 +69,23 @@ module ListHelper
 
   # Public: Display the attribute or "[blank]" if not present
   #
-  # attrib - (String) The attribute to display
+  # attrib  - (String) The attribute to display
+  # options - (Hash) A hash of options (default: {}).
+  #           fallback - (String) The string to use as placeholder text
+  #                      (default: "[blank]").
   #
   # Examples
   #
   #   display_or_fallback("Foo")
   #   # => Foo
   #
-  #   display_or_fallback("")
-  #   # => [blank]
+  #   display_or_fallback("", fallback: "none")
+  #   # => none
   #
   # Returns String of either the attribute (if present) or "[blank]"
-  def display_or_fallback(attrib)
-    attrib.present? ? attrib.to_s : content_tag(:em, "[blank]")
+  def display_or_fallback(attrib, options={})
+    fallback = options[:fallback] || "[blank]"
+    attrib.present? ? attrib.to_s : content_tag(:em, fallback)
   end
 
   # Public: Display the attribute as a string.
@@ -88,7 +94,7 @@ module ListHelper
   #
   # Examples
   #
-  #   display_as_is("anything")
+  #   display_as_string("anything")
   #   # => "anything"
   #
   # Returns String of the attribute
