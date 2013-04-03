@@ -119,7 +119,6 @@ or a link:
 <%= guarded_link_to Post, "Linked if authorized, plaintext if not", posts_path %>
 ```
 
-You can also 
 
 ### Preferences
 Preferences are stored in the session, and on a per-resource basis.
