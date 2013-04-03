@@ -57,11 +57,7 @@ module Outpost
       private
       
       def form_params
-        if defined?(ActionController::Parameters)
-          params.require(model.singular_route_key).permit(*self.permitted_params)
-        else
-          params[model.singular_route_key]
-        end
+        params[model.singular_route_key]
       end
 
       def requested_location

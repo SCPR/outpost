@@ -13,6 +13,11 @@ module Outpost
       l.column :age
     end
 
-    self.permitted_params = [:name, :email, :location, :age]
+    private
+
+    def form_params
+      params.require(model.singular_route_key)
+        .permit(:name, :email, :location, :age)
+    end
   end
 end
