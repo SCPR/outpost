@@ -101,9 +101,9 @@ module Outpost
         include Outpost::Controller::Filtering
         include Outpost::Controller::Preferences
 
-        before_filter :authorize_resource
         before_filter :get_record, only: [:show, :edit, :update, :destroy]
         before_filter :get_records, only: [:index]
+        before_filter :authorize_resource
         before_filter :filter_records, only: [:index]
       end
 
