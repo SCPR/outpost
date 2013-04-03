@@ -75,6 +75,7 @@ Outpost comes with a built-in `Permission` model, whose only attribute is
 a String `resource`, which stores a class name which you want to be
 authorized throughout the application. Run this migration to set it up:
 
+
 ```ruby
 create_table :permissions do |t|
   t.string :resource
@@ -90,6 +91,16 @@ end
 add_index :permissions, :resource
 add_index :user_permissions, :user_id
 add_index :user_permissions, :permission_id
+```
+
+You can include `Outpost::Model::Authorization` into your User model
+to provide the Permission association, and also add the `can_manage?` 
+method:
+
+```ruby
+if !current_user.can_manage?(Post)
+  redirect_to outpost_root_path, alert: "Not Authorized"
+end
 ```
 
 Authorization is "All-or-None"... in other words, a user can either 
@@ -108,6 +119,7 @@ or a link:
 <%= guarded_link_to Post, "Linked if authorized, plaintext if not", posts_path %>
 ```
 
+You can also 
 
 ### Preferences
 Preferences are stored in the session, and on a per-resource basis.
