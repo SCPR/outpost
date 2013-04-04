@@ -1,5 +1,5 @@
 module Outpost
-  class ResourceController < Outpost::ApplicationController
+  class ResourceController < Outpost::BaseController
     before_filter :extend_breadcrumbs_with_resource_root
     respond_to :html, :json, :js
 
