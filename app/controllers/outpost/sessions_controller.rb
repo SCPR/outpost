@@ -1,5 +1,5 @@
 module Outpost
-  class SessionsController < Outpost::ApplicationController
+  class SessionsController < Outpost::BaseController
     skip_before_filter :require_login
     before_filter :get_authentication_attribute
 

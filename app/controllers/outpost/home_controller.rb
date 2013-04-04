@@ -1,2 +1,2 @@
-class Outpost::HomeController < Outpost::ApplicationController
+class Outpost::HomeController < Outpost::BaseController
 end
