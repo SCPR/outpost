@@ -20,7 +20,6 @@ extracted from the KPCC application, these are fairly strict at this point.
 For Rails 4.0, you'll need to use `~> 3.0.0.beta1`
 * `kaminari` - You need to use the 
 [kaminari master branch](https://github.com/amatsuda/kaminari).
-* `ckeditor_rails`
 * `eco`
 * `sass-rails`
 * `bootstrap-sass`

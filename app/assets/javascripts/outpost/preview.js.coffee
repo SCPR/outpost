@@ -15,8 +15,9 @@ class outpost.Preview
                 
                 # Update any hidden textareas that are using CKEditor
                 # Then serialize the form.
-                for id,instance of CKEDITOR.instances
-                    instance.updateElement()
+                if CKEDITOR?
+                    for id,instance of CKEDITOR.instances
+                        instance.updateElement()
 
                 data = form.serialize()
 
