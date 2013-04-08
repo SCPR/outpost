@@ -13,7 +13,8 @@ module Outpost
     autoload :Preferences
     autoload :Authentication
     autoload :Authorization
-
+    autoload :CustomErrors
+    
     included do
       helper_method :list, :model, :fields
     end

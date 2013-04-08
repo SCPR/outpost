@@ -1,10 +1,11 @@
 $gridColumnWidth: 75px;
 
 @import "outpost/bootstrap/bootstrap";
+@import "select2";
 
 @import "outpost/base";
 @import "outpost/edit";
 @import "outpost/forms";
 @import "outpost/index";
 @import "outpost/utility";
-@import "outpost/select2";
+

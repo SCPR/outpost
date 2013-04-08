@@ -34,7 +34,7 @@ small {
 
 $iconRedSpritePath: 'glyphicons-halflings-red.png';
 .icon-red {
-  background-image: url($iconRedSpritePath);
+  background-image: image-url($iconRedSpritePath);
 }
 
 /////////////////////////////////

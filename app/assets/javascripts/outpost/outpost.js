@@ -19,10 +19,6 @@
 //= require bootstrap-tooltip
 //= require bootstrap-datepicker
 
-//= require ckeditor-jquery
-//= require ckeditor/plugins/mediaembed/plugin
-//= require ckeditor/plugins/codemirror/plugin
-
 //= require outpost/base
 //= require outpost/templates
 
