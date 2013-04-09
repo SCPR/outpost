@@ -1,1 +1,1 @@
-//= require outpost/outpost
+//= require outpost
