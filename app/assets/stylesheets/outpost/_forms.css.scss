@@ -95,6 +95,13 @@ form.simple_form {
   float: none;
 }
 
+
+// Work around incompatibility with CKEditor and Select2
+.select2-offscreen {
+  position: static;
+  display: none !important;
+}
+
 .select2-container {
   min-width: 200px;
 }

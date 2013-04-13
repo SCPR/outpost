@@ -1,4 +1,8 @@
 $gridColumnWidth: 75px;
+$navOffset: 40px;
+$breadcrumbOffset: 36px;
+$iconRedSpritePath: 'glyphicons-halflings-red.png';
+
 
 @import "outpost/bootstrap/bootstrap";
 @import "select2";
@@ -8,4 +12,3 @@ $gridColumnWidth: 75px;
 @import "outpost/forms";
 @import "outpost/index";
 @import "outpost/utility";
-
