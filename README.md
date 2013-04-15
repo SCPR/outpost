@@ -215,7 +215,7 @@ def preview
   @post = ContentBase.obj_by_key(params[:obj_key]) || Post.new
   
   with_rollback @post do
-    @post.assign_attributes(params[:post])
+    @post.assign_attributes(form_params)
 
     if @post.valid?
       render "/posts/_post", layout: "application", locals: { post: @post }
@@ -224,6 +224,28 @@ def preview
     end
   end
 end
+```
+
+You'll also need to add two routes for the preview action:
+
+```ruby
+resources :posts do
+  put "preview", on: :member
+  post "preview", on: :collection
+end
+```
+
+You need both `post` and `put` to allow the preview to happen from either the New or Edit pages. If you're using Rails 4, use `patch` instead of `put`. In fact, if you're using Rails 4 (or the `routing_concerns` gem), then you can use Routing Concerns:
+
+```ruby
+concern :previewable do
+  patch "preview", on: :member
+  post "preview", on: :collection
+end
+
+resources :posts, concerns: [:previewable]
+resources :reporters, concerns: [:previewable]
+resources :stories, concerns: [:previewable]
 ```
 
 
