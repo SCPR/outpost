@@ -21,3 +21,10 @@
     <%= render "/outpost/shared/form_nav" %>
   </div>
 <% end %>
+
+
+<% content_for :footer do %>
+  <script>
+    preview = new outpost.Preview({baseUrl: '<%= @record.admin_show_path %>'});
+  </script>
+<% end %>
