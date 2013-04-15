@@ -119,7 +119,7 @@ or a link:
 ```
 
 
-### Preferences
+### User Preferences
 Preferences are stored in the session, and on a per-resource basis.
 Outpost provides built-in hooks in the controller and views for 
 Order (attribute) and Sort Mode ("asc", "desc"). In order to manage other 
@@ -165,6 +165,32 @@ preference('posts_color') # => nil
 
 If you have a preference for a non-resourceful page, you need to manage its
 cleanup manually.
+
+
+
+## Javascripts
+
+Outpost comes with a bunch of useful scripts built-in. Some of them are automatically used, and some are provided as "opt-in" functionality.
+
+
+### Field Counter
+
+![Field Counter](http://i.imgur.com/MUPrplL.png)
+
+This will add a counter above any field which will show the number of characters entered into that field, the target length, and the +/- fuzziness, as well as a color indicating where in that range they are.
+
+#### Use
+
+Add the class `field-counter` to a div wrapping the input field, and two data-attributes containing integers:
+
+* `data-target` - The target length (default: 145)
+* `data-fuzziness` - The fuzziness allowed (default: 20)
+
+If you're using `simple_form`, it might look like this:
+
+```ruby
+f.input :title, wrapper_html; { class: "field-counter", data: { target: 50, fuzziness: 10} }
+```
 
 #### More documentation to come.
 
