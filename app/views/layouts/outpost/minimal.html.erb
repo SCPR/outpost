@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% add_to_page_title "Outpost" %>
+  <title><%= page_title %></title>
+  <%= stylesheet_link_tag "outpost/application" %>
+  <%= javascript_include_tag "outpost/application" %>
+  
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a href="<%=outpost_root_path%>" class="brand">Outpost</a>
+    </div>
+  </div>
+</div>
+
+<div id="main" class="container-fluid">
+  <%= yield %>
+</div> <!-- container main -->
+
+</body>
+</html>

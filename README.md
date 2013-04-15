@@ -192,6 +192,41 @@ If you're using `simple_form`, it might look like this:
 f.input :title, wrapper_html; { class: "field-counter", data: { target: 50, fuzziness: 10} }
 ```
 
+
+### Preview
+
+![Preview](http://i.imgur.com/OZhlIOd.png)
+
+The Javascript for Preview is what handles sending the form data to the server, but you'll need to handle the server-side stuff yourself. The "Preview" button will show up once you've added a `preview` action to that controller. 
+
+#### Use
+
+The `preview` action needs to do a few things:
+
+* Find the object from the passed-in `obj_key` (You can use `Outpost::obj_by_key`). You'll also need to handle what happens if the record hasn't been saved yet.
+* Merge in the changed attributes.
+* Render the proper template/layout, or any validation errors (using `render_preview_validation_errors`).
+* Make sure you don't save anything. For this, I recommend doing any object updating inside of a database transaction, because assigning associations to a persisted object will save the object. Outpost provides a controller method, `with_rollback`, which will perform the block inside of a database transaction and force an `ActiveRecord::Rollback` at the end.
+
+Here is a full example of what your `preview` action could look like:
+
+```ruby
+def preview
+  @post = ContentBase.obj_by_key(params[:obj_key]) || Post.new
+  
+  with_rollback @post do
+    @post.assign_attributes(params[:post])
+
+    if @post.valid?
+      render "/posts/_post", layout: "application", locals: { post: @post }
+    else
+      render_preview_validation_errors(@post)
+    end
+  end
+end
+```
+
+
 #### More documentation to come.
 
 ## Todo

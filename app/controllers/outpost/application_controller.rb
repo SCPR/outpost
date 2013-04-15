@@ -21,5 +21,20 @@ module Outpost
     def set_sections
       @sections = {}
     end
+
+    #----------------------
+
+    def with_rollback(object)
+      object.transaction do
+        yield if block_given?
+        raise ActiveRecord::Rollback
+      end
+    end
+
+    #----------------------
+
+    def render_preview_validation_errors(record)
+      render "/outpost/shared/_preview_errors", layout: "outpost/minimal", locals: { record: record }
+    end
   end
 end
