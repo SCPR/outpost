@@ -78,7 +78,7 @@ authorized throughout the application. Run this migration to set it up:
 ```ruby
 create_table :permissions do |t|
   t.string :resource
-  t.timestamp
+  t.timestamps
 end
 
 create_table :user_permissions do |t|
