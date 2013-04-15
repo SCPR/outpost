@@ -1,6 +1,6 @@
 # Find slug fields and load them up
 $ ->
-    for field in $("form.simple_form input[name*='[slug]']")
+    for field in $("form input[name*='[slug]']")
         new outpost.AutoSlugField(field: field)
 
 ##

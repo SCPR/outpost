@@ -1,7 +1,7 @@
 
 $ ->
     # Initialize a FieldCounter for any field that asks for it.
-    for field in $("form.simple_form .field-counter")
+    for field in $("form .field-counter")
         el        = $(field)
         target    = el.attr("data-target")
         fuzziness = el.attr("data-fuzziness")

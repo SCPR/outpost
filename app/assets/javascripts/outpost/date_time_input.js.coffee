@@ -1,7 +1,7 @@
 # Find the inputs and load them.
 $ ->
-    outpost.DateTimeInput.buildDateTimeInputs($("form.simple_form"))
-    outpost.DateTimeInput.buildDateInputs($("form.simple_form"))
+    outpost.DateTimeInput.buildDateTimeInputs($("form"))
+    outpost.DateTimeInput.buildDateInputs($("form"))
 
 ##
 # DateTimeInput

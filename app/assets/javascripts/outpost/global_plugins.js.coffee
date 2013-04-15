@@ -9,7 +9,7 @@ nav    = "#form-nav"
 $ ->
     # Prevent firefox from submitting a form when the "Enter" 
     # key is pressed inside of a text field...
-    $(".simple_form input[type=text]").on
+    $("form input[type=text]").on
         keydown: (event) ->
             key = event.keyCode || event.which
 
