@@ -12,6 +12,20 @@
     <li>
       Last Updated: <strong><%= format_date @record.updated_at, time: true %></strong>
     </li>
+
+    <li>
+      <% if @record.respond_to? :status_text %>
+        <span class="<%=status_bootstrap_map[@record.status]%>"><%= @record.status_text %></span>
+      <% end %>
+
+      <% if @record.respond_to?(:published_at) && @record.respond_to?(:published?) && @record.published? %>
+        on <strong><%= format_date @record.published_at, time: true %></strong>
+      <% end %>
+      
+      <% if @record.respond_to?(:publish_alarm) && @record.publish_alarm.present? && @record.publish_alarm.fire_at.present? %>
+        Alarm - <strong><%= format_date @record.publish_alarm.fire_at, time: true %></strong>
+      <% end %>
+    </li>
   </ul>
   
   <hr />
