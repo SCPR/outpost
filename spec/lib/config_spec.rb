@@ -2,11 +2,6 @@ require 'spec_helper'
 
 describe Outpost::Config do
   describe "::configure" do
-    it "generates a new Config object" do
-      Outpost::Config.should_receive(:new)
-      Outpost::Config.configure
-    end
-    
     it "accepts a block with the config object" do
       Outpost::Config.configure do |config|
         config.should be_a Outpost::Config
@@ -14,7 +9,6 @@ describe Outpost::Config do
     end
     
     it "sets Outpost.config to the new Config object" do
-      Outpost::Config.configure
       Outpost.config.should be_a Outpost::Config
     end
   end
@@ -23,8 +17,12 @@ describe Outpost::Config do
 
   describe "#registered_models" do
     it "returns an empty array if nothing is set" do
+      original_value = Outpost.config.registered_models
+      
       Outpost.config.registered_models = nil
       Outpost.config.registered_models.should eq []
+
+      Outpost.config.registered_models = original_value
     end
   end
 

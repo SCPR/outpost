@@ -16,9 +16,8 @@ module Outpost
     # Pass a block to this method to define the configuration
     # If no block is passed, config will be defaults
     def self.configure
-      config = new
-      yield config if block_given?
-      Outpost.config = config
+      yield Outpost.config if block_given?
+      Outpost.config
     end
     
     # An array of models that should show up

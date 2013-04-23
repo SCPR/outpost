@@ -23,7 +23,7 @@ module Outpost
   class << self
     attr_writer :config
     def config
-      @config || Outpost::Config.configure
+      @config ||= Outpost::Config.new
     end
 
     # TODO can we cache this in development?
@@ -57,14 +57,16 @@ module Outpost
     #--------------------
     
     def model_classes
-      klasses = {}
-      
-      Outpost.config.registered_models.each do |name|
-        klass = name.constantize
-        klasses.merge!(klass.content_key => klass)
+      @model_classes ||= begin
+        klasses = {}
+        
+        Outpost.config.registered_models.each do |name|
+          klass = name.constantize
+          klasses.merge!(klass.content_key => klass)
+        end
+        
+        klasses
       end
-      
-      klasses
     end
   end
 end
