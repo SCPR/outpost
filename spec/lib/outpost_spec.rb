@@ -19,7 +19,6 @@ describe Outpost do
     
       it "finds and returns the record if everything matches" do
         post = create :post
-        puts Post.find(post.id)
         Outpost.obj_by_key(post.obj_key).should eq post
       end
     end
