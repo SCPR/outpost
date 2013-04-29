@@ -26,7 +26,9 @@ module Outpost
         if Rails.application.config.consider_all_requests_local
           raise e
         else
-          render template: "errors/error_#{status}", status: status, locals: { error: e }
+          format.html { render template: "/errors/error_#{status}", status: status, locals: { error: e } }
+          format.xml { render xml: { error: status.to_s }, status: status }
+          format.text { render text: status, status: status}
         end
       end
     end # CustomErrors
