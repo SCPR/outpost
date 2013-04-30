@@ -23,9 +23,10 @@ module Outpost
           raise e
         else
           respond_to do |format|
+            format.html { render template: "/errors/error_#{status}", status: status, locals: { error: e } }
             format.xml { render xml: { error: status.to_s }, status: status }
             format.text { render text: status, status: status}
-            format.any { render template: "/errors/error_#{status}", status: status, locals: { error: e } }
+            format.any
           end
         end
       end
