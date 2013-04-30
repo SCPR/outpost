@@ -69,6 +69,23 @@ end
 ```
 
 
+##### Routes
+
+Note that this gem doesn't provide any routes for you. It is expected that you'll want to use the path globbing to render Outpost-style 404's inside of Outpost (rather than your application's 404 page), so it gets too messy and complicated to try to combine your routes with path globbing.
+
+You'll want to put this at the bottom of you `outpost` namespace in your routes:
+
+```ruby
+root to: 'home#dashboard'
+
+resources :sessions, only: [:create, :destroy]
+get 'login'  => "sessions#new", as: :login
+get 'logout' => "sessions#destroy", as: :logout
+
+get "*path" => 'errors#not_found'
+```
+
+
 ### Authorization
 Outpost comes with a built-in `Permission` model, whose only attribute is
 a String `resource`, which stores a class name which you want to be
