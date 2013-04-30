@@ -5,7 +5,6 @@ module Outpost
       
       NOT_FOUND_ERROR_CLASSES = [
         ActionController::RoutingError, 
-        ActionView::MissingTemplate, 
         ActionController::UnknownController, 
         AbstractController::ActionNotFound, 
         ActiveRecord::RecordNotFound
@@ -19,16 +18,21 @@ module Outpost
       #----------------------
       
       def render_error(status, e=StandardError)
+        response.status = status
+
         if Rails.application.config.consider_all_requests_local
           raise e
         else
           respond_to do |format|
             format.html { render template: "/errors/error_#{status}", status: status, locals: { error: e } }
-            format.xml { render xml: { error: status.to_s }, status: status }
-            format.text { render text: status, status: status}
-            format.any
+            format.xml { render xml: { error: response.message, code: status }, status: status }
+            format.json { render json: { error: response.message, code: status }, status: status }
+            format.text { render text: "#{status} - #{response.message}", status: status}
+            format.any { head status }
           end
         end
+
+        return false
       end
     end # CustomErrors
   end
