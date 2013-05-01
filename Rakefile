@@ -11,7 +11,7 @@ RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.title    = 'Outpost'
   rdoc.markup   = 'tomdoc'
   rdoc.options << '--line-numbers'
-  rdoc.rdoc_files.include('README.rdoc')
+  rdoc.rdoc_files.include('README.md')
   rdoc.rdoc_files.include('lib/**/*.rb')
   rdoc.rdoc_files.include('app/helpers/**/*.rb')
   rdoc.rdoc_files.include('app/models/**/*.rb')
