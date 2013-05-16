@@ -5,10 +5,14 @@ module Outpost
       
       NOT_FOUND_ERROR_CLASSES = [
         ActionController::RoutingError, 
-        ActionController::UnknownController, 
+        ActionController::UnknownController,
         AbstractController::ActionNotFound, 
         ActiveRecord::RecordNotFound
       ]
+
+      if defined?(ActionController::UnknownFormat)
+        NOT_FOUND_ERROR_CLASSES << ActionController::UnknownFormat
+      end
 
       included do
         rescue_from StandardError, with: ->(e) { render_error(500, e) }
