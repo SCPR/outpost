@@ -24,7 +24,7 @@ module Outpost
       def allowed_resources
         @allowed_resources ||= begin
           p = self.is_superuser? ? Permission.all : self.permissions
-          p.map { |p| p.resource.constantize }
+          p.map { |p| p.resource.safe_constantize }.compact
         end
       end
     end

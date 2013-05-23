@@ -31,6 +31,36 @@ describe Outpost::Model::Authorization do
   #--------------------
 
   describe '#allowed_resource' do
-    pending
+    let(:permission1) { create :permission, resource: "Post" }
+    let(:permission2) { create :permission, resource: "Pidgeon" }
+
+    context 'superuser' do
+      before :each do
+        # eager load
+        permission1
+        permission2
+      end
+
+      let(:superuser) { create :user, is_superuser: true }
+
+      it 'returns all Permissions' do
+        superuser.allowed_resources.should eq [Post, Pidgeon]
+      end
+    end
+
+    context 'user' do
+      let(:user) { create :user, is_superuser: false }
+
+      it "returns only that user's permissions" do
+        user.permissions = [permission1]
+        user.allowed_resources.should eq [Post]
+      end
+
+      it "ignores missing constants" do
+        bad_permission = create :permission, resource: "NotAModel"
+        user.permissions = [permission1, bad_permission]
+        user.allowed_resources.should eq [Post]
+      end
+    end
   end
 end
