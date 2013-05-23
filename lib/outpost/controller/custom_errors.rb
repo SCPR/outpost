@@ -15,8 +15,8 @@ module Outpost
       end
 
       included do
-        rescue_from StandardError, with: ->(e) { render_error(500, e) }
         rescue_from *NOT_FOUND_ERROR_CLASSES, with: ->(e) { render_error(404, e) }
+        rescue_from StandardError, with: ->(e) { render_error(500, e) }
       end
       
       #----------------------
