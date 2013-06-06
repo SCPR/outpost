@@ -117,4 +117,20 @@ module UtilityHelper
   def page_title(separator=" | ")
     @TITLE_ELEMENTS.compact.join(separator).html_safe
   end
+
+  # Public: Render pure json from a partial.
+  # This helper is intended to be used to render jbuilder templates.
+
+  # path     - (String) The path to the json partial.
+  # location - (Hash) A hash of locals to pass directly to the partial
+  #            (default: {}).
+  #
+  # Examples
+  #
+  #   render_json('api/private/v1/posts/collection', posts: @posts)
+  #
+  # Returns String of a JSON object.
+  def render_json(path, locals={})
+    raw(j(render(partial: path, formats: [:json], locals: locals)))
+  end
 end
