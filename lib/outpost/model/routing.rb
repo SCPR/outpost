@@ -108,8 +108,8 @@ module Outpost
       
 
       # http://scpr.org/blogs/2012/...
-        if path = self.link_path(options)
       def public_url(options={})
+        if path = self.public_path(options)
           File.join(
             "http://#{Rails.application.default_url_options[:host]}", path)
         end
