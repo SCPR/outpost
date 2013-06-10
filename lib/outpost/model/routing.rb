@@ -10,7 +10,7 @@ module Outpost
     # Provides alias methods for non-GET routes:
     #
     # * admin_index_path => admin_create_path
-    # * admin_show_path  => admin_update_path, admin_delete_path
+    # * admin_show_path  => admin_update_path, admin_destroy_path
     #
     # So you can do, for example:
     #
@@ -74,7 +74,7 @@ module Outpost
       end
 
       alias_method :admin_update_path, :admin_show_path
-      alias_method :admin_delete_path, :admin_show_path
+      alias_method :admin_destroy_path, :admin_show_path
 
       # http://kpcc.org/outpost/blog_entries/20
       def admin_show_url
@@ -83,7 +83,7 @@ module Outpost
       end
 
       alias_method :admin_update_url, :admin_show_url
-      alias_method :admin_delete_url, :admin_show_url
+      alias_method :admin_destroy_url, :admin_show_url
 
       
       # Uses self.class::ROUTE_KEY to generate
