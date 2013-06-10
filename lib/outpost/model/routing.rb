@@ -90,17 +90,23 @@ module Outpost
       # the front-end path to this object
       # If an object doesn't have a front-end path,
       # do not define a ROUTE_KEY on the class.
-      def link_path(options={})
+      def public_path(options={})
         if self.route_hash.present? && defined?(self.class::ROUTE_KEY)
-          Rails.application.routes.url_helpers.send("#{self.class::ROUTE_KEY}_path", options.merge!(self.route_hash))
+          Rails.application.routes.url_helpers.send(
+            "#{self.class::ROUTE_KEY}_path", options.merge!(self.route_hash))
         end
       end
+
+      alias_method :link_path, :public_path
+      deprecate link_path: :public_path
+
 
       # Override this method manually for each model.
       def route_hash
         {}
       end
       
+
       # http://scpr.org/blogs/2012/...
       def remote_link_path(options={})
         if path = self.link_path(options)
@@ -108,6 +114,10 @@ module Outpost
             "http://#{Rails.application.default_url_options[:host]}", path)
         end
       end
+
+      alias_method :remote_link_path, :public_url
+      deprecate remote_link_path: :public_url
+
     end # Routing
   end # Model
 end # Outpost
