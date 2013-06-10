@@ -1,33 +1,42 @@
-##
-# Outpost::Model::Routing
-#
-# Provides easy access to any object's admin paths,
-# and any class's admin paths
 module Outpost
   module Model
+    # Routing
+    #
+    # Provides easy access to any object's admin paths,
+    # and any class's admin paths.
+    #
+    # These methods are just delegations to your app's routes.
+    #
     module Routing
       extend ActiveSupport::Concern
       
       module ClassMethods
         # /outpost/blog_entries/new
         def admin_new_path
-          @admin_new_path ||= Rails.application.routes.url_helpers.send("new_outpost_#{self.singular_route_key}_path")
+          @admin_new_path ||= Rails.application.routes.url_helpers.send(
+            "new_outpost_#{self.singular_route_key}_path")
         end
         
         # /outpost/blog_entries
         def admin_index_path
-          @admin_index_path ||= Rails.application.routes.url_helpers.send("outpost_#{self.route_key}_path")
+          @admin_index_path ||= Rails.application.routes.url_helpers.send(
+            "outpost_#{self.route_key}_path")
+        end
         end
       end
 
       # /outpost/blog_entries/20/edit
       def admin_edit_path
-        @admin_edit_path ||= Rails.application.routes.url_helpers.send("edit_outpost_#{self.class.singular_route_key}_path", self.id)
+        @admin_edit_path ||= Rails.application.routes.url_helpers.send(
+          "edit_outpost_#{self.class.singular_route_key}_path", self.id)
+      end
       end
 
       # /outpost/blog_entries/20
       def admin_show_path
-        @admin_show_path ||= Rails.application.routes.url_helpers.send("outpost_#{self.class.singular_route_key}_path", self.id)
+        @admin_show_path ||= Rails.application.routes.url_helpers.send(
+          "outpost_#{self.class.singular_route_key}_path", self.id)
+      end
       end
       
       # Uses self.class::ROUTE_KEY to generate
