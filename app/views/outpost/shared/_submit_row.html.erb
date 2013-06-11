@@ -30,7 +30,7 @@
       <% end %>
 
       <% if record.persisted? %>
-        <%= link_to("View Live", record.link_path, class: "btn btn-success", target: "_blank") if record.link_path.present? %>
+        <%= link_to("View Live", record.public_path, class: "btn btn-success", target: "_blank") if record.public_path.present? %>
         <%= link_to("Delete", 
               [:outpost, record], 
               class: "btn btn-danger", 

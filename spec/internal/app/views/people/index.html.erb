@@ -2,6 +2,6 @@
 
 <ul>
   <% @people.each do |person| %>
-    <li><%= link_to person.name, person.link_path %></li>
+    <li><%= link_to person.name, person.public_path %></li>
   <% end %>
 </ul>

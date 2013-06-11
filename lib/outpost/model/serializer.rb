@@ -17,7 +17,7 @@ module Outpost
         super.merge({
           "id"         => self.obj_key, 
           "obj_key"    => self.obj_key,
-          "link_path"  => self.link_path,
+          "link_path"  => self.public_path,
           "to_title"   => self.to_title,
           "edit_path"  => self.admin_edit_path
         }).merge(self.json.stringify_keys!)
