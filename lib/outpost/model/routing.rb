@@ -24,20 +24,20 @@ module Outpost
       module ClassMethods
         # /outpost/blog_entries/new
         def admin_new_path
-          @admin_new_path ||= Rails.application.routes.url_helpers.send(
+          Rails.application.routes.url_helpers.send(
             "new_outpost_#{self.singular_route_key}_path")
         end
         
         # http://kpcc.org/outpost/blog_entries/new
         def admin_new_url
-          @admin_new_url ||= Rails.application.routes.url_helpers.send(
+          Rails.application.routes.url_helpers.send(
             "new_outpost_#{self.singular_route_key}_url")
         end
 
 
         # /outpost/blog_entries
         def admin_index_path
-          @admin_index_path ||= Rails.application.routes.url_helpers.send(
+          Rails.application.routes.url_helpers.send(
             "outpost_#{self.route_key}_path")
         end
         
@@ -45,7 +45,7 @@ module Outpost
 
         # http://kpcc.org/outpost/blog_entries
         def admin_index_url
-          @admin_index_url ||= Rails.application.routes.url_helpers.send(
+          Rails.application.routes.url_helpers.send(
             "outpost_#{self.route_key}_url")
         end
 
@@ -56,20 +56,20 @@ module Outpost
 
       # /outpost/blog_entries/20/edit
       def admin_edit_path
-        @admin_edit_path ||= Rails.application.routes.url_helpers.send(
+        Rails.application.routes.url_helpers.send(
           "edit_outpost_#{self.class.singular_route_key}_path", self.id)
       end
 
       # http://kpcc.org/outpost/blog_entries/20/edit
       def admin_edit_url
-        @admin_edit_url ||= Rails.application.routes.url_helpers.send(
+        Rails.application.routes.url_helpers.send(
           "edit_outpost_#{self.class.singular_route_key}_url", self.id)
       end
 
 
       # /outpost/blog_entries/20
       def admin_show_path
-        @admin_show_path ||= Rails.application.routes.url_helpers.send(
+        Rails.application.routes.url_helpers.send(
           "outpost_#{self.class.singular_route_key}_path", self.id)
       end
 
@@ -78,7 +78,7 @@ module Outpost
 
       # http://kpcc.org/outpost/blog_entries/20
       def admin_show_url
-        @admin_show_url ||= Rails.application.routes.url_helpers.send(
+        Rails.application.routes.url_helpers.send(
           "outpost_#{self.class.singular_route_key}_url", self.id)
       end
 
