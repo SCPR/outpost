@@ -21,12 +21,12 @@ module Outpost
         # Wrappers for ActiveModel::Naming
         # NewsStory => news_stories
         def route_key
-          @route_key ||= ActiveModel::Naming.route_key(self)
+          ActiveModel::Naming.route_key(self)
         end
         
         # NewsStory => news_story
         def singular_route_key
-          @singular_route_key ||= ActiveModel::Naming.singular_route_key(self)
+          ActiveModel::Naming.singular_route_key(self)
         end
       end
       
