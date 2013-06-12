@@ -15,7 +15,7 @@ group :test do
   gem 'actionpack'
   gem "sqlite3", "~> 1.3"
   gem 'combustion'
-  gem "rspec-rails", "~> 2.13"
+  gem "rspec-rails", "~> 2.13.1"
   gem "factory_girl", "~> 4.2"
 end
 

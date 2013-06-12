@@ -22,6 +22,7 @@ FactoryGirl.define do
     can_login true
     is_superuser false
     password "secret"
+    password_confirmation "secret"
   end
 
   factory :permission do
