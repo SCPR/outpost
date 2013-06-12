@@ -52,6 +52,17 @@ describe Outpost::Model::Routing do
   context 'member routes' do
     let(:person) { create :person, name: "Thelonious Monk" }
 
+    describe 'non-persisted object' do
+      it 'has nil routes' do
+        person = build :person
+        person.admin_edit_path.should eq nil
+        person.admin_edit_url.should eq nil
+        person.admin_update_path.should eq nil
+        # etc...
+      end
+    end
+
+
     describe "#admin_edit_path" do
       it "figures out the edit path using singular_route_key and the record's id" do
         Person.stub(:singular_route_key) { "employee" }
