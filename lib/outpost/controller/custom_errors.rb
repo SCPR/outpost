@@ -35,8 +35,6 @@ module Outpost
             format.any { head status }
           end
         end
-
-        return false
       end
     end # CustomErrors
   end
