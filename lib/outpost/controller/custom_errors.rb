@@ -15,8 +15,8 @@ module Outpost
       end
 
       included do
-        rescue_from *NOT_FOUND_ERROR_CLASSES, with: ->(e) { render_error(404, e) }
-        rescue_from StandardError, with: ->(e) { render_error(500, e) }
+        rescue_from StandardError, with: ->(e) { render_error(500, e) and return false }
+        rescue_from *NOT_FOUND_ERROR_CLASSES, with: ->(e) { render_error(404, e) and return false }
       end
       
       #----------------------
@@ -28,7 +28,7 @@ module Outpost
           raise e
         else
           respond_to do |format|
-            format.html { render template: "/errors/error_#{status}", status: status, locals: { error: e } }
+            format.html { render template: "/errors/error_#{status}", layout: "application", status: status, locals: { error: e } }
             format.xml { render xml: { error: response.message, code: status }, status: status }
             format.json { render json: { error: response.message, code: status }, status: status }
             format.text { render text: "#{status} - #{response.message}", status: status}
