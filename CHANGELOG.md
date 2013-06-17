@@ -10,3 +10,4 @@
   just like the `admin_edit_path` method.
 * Added routing aliases for `create`, `update`, and `destroy`. Now you can
   call, for example, `PUT object.admin_update_path`. 
+* `render_error` no longer returns false.
