@@ -87,11 +87,6 @@ describe Outpost::List::Base do
   
   describe "per_page=" do
     let(:list) { Outpost::List::Base.new(model) }
-
-    it "sets @per_page to nil if val is 'all'" do
-      list.per_page = :all
-      list.per_page.should be_nil
-    end
     
     it "sets @per_page to passed-in value as an integer if specified" do
       list.per_page = "99"

@@ -25,7 +25,7 @@ module Outpost
       #
       # Returns nothing.
       def per_page=(val)
-        @per_page = (val == :all ? nil : val.to_i)
+        @per_page = val.to_i
       end
 
       # Public: Add a column to the list.

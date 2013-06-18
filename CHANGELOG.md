@@ -11,3 +11,5 @@
 * Added routing aliases for `create`, `update`, and `destroy`. Now you can
   call, for example, `PUT object.admin_update_path`. 
 * `render_error` no longer returns false.
+* Use `update_column` for updating a user's last_login, so it doesn't generate
+  a version in Secretary.
