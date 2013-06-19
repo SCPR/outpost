@@ -13,3 +13,4 @@
 * `render_error` no longer returns false.
 * Use `update_column` for updating a user's last_login, so it doesn't generate
   a version in Secretary.
+* `per_page = :all` is removed because Kaminari reverted this feature.
