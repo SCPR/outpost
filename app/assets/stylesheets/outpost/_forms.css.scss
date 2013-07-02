@@ -23,18 +23,18 @@ form.simple_form {
   }
   
   input, textarea {
-    &.span1 { @extend .span1 }
-    &.span2 { @extend .span2 }
-    &.span3 { @extend .span3 }
-    &.span4 { @extend .span4 }
-    &.span5 { @extend .span5 }
-    &.span6 { @extend .span6 }
-    &.span7 { @extend .span7 }
-    &.span8 { @extend .span8 }
-    &.span9 { @extend .span9 }
-    &.span10 { @extend .span10 }
-    &.span11 { @extend .span11 }
-    &.span12 { @extend .span12 }
+    &.span1 { @extend .span1; }
+    &.span2 { @extend .span2; }
+    &.span3 { @extend .span3; }
+    &.span4 { @extend .span4; }
+    &.span5 { @extend .span5; }
+    &.span6 { @extend .span6; }
+    &.span7 { @extend .span7; }
+    &.span8 { @extend .span8; }
+    &.span9 { @extend .span9; }
+    &.span10 { @extend .span10; }
+    &.span11 { @extend .span11; }
+    &.span12 { @extend .span12; }
   }
   
   input.thin, textarea.thin {
