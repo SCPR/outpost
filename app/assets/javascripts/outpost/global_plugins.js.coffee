@@ -21,13 +21,13 @@ $ ->
     # Select2
     # Set a blank placeholder for all selects.
     # Also allow clearing for any option.
-    # If you don't want this on a certain select element,
+    # If you don't want the "clear" option on a certain select element,
     # add the `include_blank: false` option to the rails
     # helper.
     #
     # Note: This also gets called in field_manager.
     # TODO: Make it so we don't have to call it twice.
-    $("select").select2
+    $("select").not('[data-disable-select2="true"]').select2
         placeholder: " "
         allowClear: true
     
