@@ -238,6 +238,6 @@ module ListHelper
   #
   # Returns String to be used as a CSS class.
   def column_attribute_class(attribute)
-    "column-#{attribute}"
+    "column-#{attribute}".parameterize
   end
 end
