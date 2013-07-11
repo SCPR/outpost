@@ -1,5 +1,5 @@
 <% list.columns.each do |attribute, column| %>
-  <td data-id="<%=record.id%>" class="<%=column_attribute_class(column.attribute)%> <%=column_type_class(model, column.attribute)%>" data-attribute="<%=column.attribute%>"<% if column.quick_edit? %> data-updatable="true"<% end %>>
+  <td data-id="<%=record.id%>" class="<%=column_attribute_class(column.attribute)%> <%=column_type_class(model, column.attribute)%>" data-attribute="<%=column.attribute.parameterize%>"<% if column.quick_edit? %> data-updatable="true"<% end %>>
     <%= render_attribute column, record %>
   </td>
 <% end %>
