@@ -1,7 +1,8 @@
-.bundle/
-/Gemfile.lock
+*.gem
+.bundle
+Gemfile.lock
 log/*.log
-pkg/
+pkg
 spec/internal/db/*.sqlite
-.sass-cache/
-tmp/
+.sass-cache
+tmp
