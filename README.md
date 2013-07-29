@@ -10,7 +10,17 @@ A Rails Engine for quickly standing up a CMS for a Newsroom.
 See `.travis.yml` to see which Ruby versions are officially supported.
 
 ## Installation
-Add `gem 'outpost', github: 'SCPR/outpost'` to your Gemfile.
+Add `gem 'outpost-cms'` to your Gemfile. The module you interact with is just
+`Outpost`.
+
+**A note about the gem/repository/module name discrepancy**  
+There is [another gem](http://rubygems.org/gems/outpost) called "Outpost"
+which occupies the same namespace as this gem. However, the other Outpost
+is meant for service monitoring, and I can't imagine a scenario where
+these two gems would be used together in the same application. Therefore,
+I'm keeping the module name, and just renaming the gem to `outpost-cms`
+so we can both exist on RubyGems.
+
 
 This gem also has some hard dependencies that aren't in the gemspec.
 My goal is to reduce these dependencies as much as possible, but as this was 

@@ -5,7 +5,7 @@ require "outpost/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "outpost"
+  s.name        = "outpost-cms"
   s.version     = Outpost::VERSION
   s.authors     = ["Bryan Ricker", "SCPR"]
   s.email       = ["bricker@scpr.org"]
