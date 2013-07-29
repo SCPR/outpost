@@ -1,0 +1,2 @@
+# Trick rubygems
+require 'outpost'
