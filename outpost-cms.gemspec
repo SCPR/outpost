@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.homepage    = "http://github.com/SCPR/outpost"
   s.summary     = "A Rails Engine for quickly standing up a CMS for a Newsroom"
   s.description = "This engine plugs into your Rails application and provides a plethora of useful methods, concerns, helpers, and conventions to help you quickly build a CMS for your Newsroom."
-
+  s.license     = 'MIT'
 
   s.files = Dir["{app,config,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["spec/**/*"]
