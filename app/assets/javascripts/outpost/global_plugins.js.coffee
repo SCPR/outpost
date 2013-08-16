@@ -19,9 +19,6 @@ $ ->
     $("select").not('[data-disable-select2="true"]').select2
         placeholder: " "
         allowClear: true
-    
-    # Tooltip
-    $('[rel="tooltip"]').tooltip()
 
     # Affix
     # Fix the width for all of these elements

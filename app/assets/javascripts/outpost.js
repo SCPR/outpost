@@ -16,7 +16,6 @@
 //= require bootstrap-scrollspy
 //= require bootstrap-alert
 //= require bootstrap-affix
-//= require bootstrap-tooltip
 //= require bootstrap-datepicker
 
 //= require outpost/base
