@@ -283,9 +283,10 @@ One some pages, like New and Edit, we don't want the "Enter" key to submit the
 form. You can prevent this by adding:
 
 ```javascript
-  <script>outpost.Utilities.preventEnterFromSubmittingForm();</script>
+  <script>outpost.Utilities.preventEnterFromSubmittingForm("#edit_blog_entry");</script>
 ```
 
+The form ID argument is optional. By default it will target all forms on the page.
 
 
 #### More documentation to come.

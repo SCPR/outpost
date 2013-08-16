@@ -12,6 +12,8 @@
 #### Deprecations
 * None
 
+#### Removals
+* Removed bootstrap-tooltip.
 
 
 ### 0.0.3 (2013-07-29)
