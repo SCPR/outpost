@@ -18,7 +18,7 @@ FactoryGirl.define do
 
   factory :user do
     name "Jackie Brown"
-    sequence(:email) { |n| "jbrown#{n}@qt.com" }
+    sequence(:email) { |n| "bricker#{n}@kpcc.org" }
     can_login true
     is_superuser false
     password "secret"
