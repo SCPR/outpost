@@ -5,6 +5,10 @@
   <%= render 'form_fields', record: @record, f: f %>
   <%= render 'extra_fields', f: f %>
   <%= render "/outpost/shared/submit_row", record: @record %>
+
+  <% content_for :footer do %>
+    <script>outpost.Utilities.preventEnterFromSubmittingForm("#<%=f.options[:html][:id]%>");</script>
+  <% end %>
 <% end %>
 
 <% content_for :sidebar do %>
@@ -17,6 +21,5 @@
 <% content_for :footer do %>
   <script>
     preview = new outpost.Preview({baseUrl: '<%= model.admin_index_path %>'});
-    outpost.Utilities.preventEnterFromSubmittingForm("#<%=f.options[:html][:id]%>");
   </script>
 <% end %>
