@@ -17,6 +17,6 @@
 <% content_for :footer do %>
   <script>
     preview = new outpost.Preview({baseUrl: '<%= model.admin_index_path %>'});
-    outpost.Utilities.preventEnterFromSubmittingForm();
+    outpost.Utilities.preventEnterFromSubmittingForm("#<%=f.options[:html][:id]%>");
   </script>
 <% end %>
