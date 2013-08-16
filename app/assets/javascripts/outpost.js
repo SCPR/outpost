@@ -30,3 +30,4 @@
 //= require outpost/preview
 //= require outpost/index_manager
 //= require outpost/global_plugins
+//= require outpost/utilities

@@ -1,6 +1,8 @@
 ### 0.0.4 (Unreleased)
 #### Additions
-* None
+* Added `utilities.js`, which will include some utilities functions to use
+  on various pages. First one is `preventEnterFromSubmittingForm()`.
+
 #### Changes
 * Update bcrypt-ruby dependency to `>= 3.0.0` to support Rails 4.1
 

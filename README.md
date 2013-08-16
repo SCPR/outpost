@@ -276,6 +276,18 @@ resources :stories, concerns: [:previewable]
 ```
 
 
+### Utilities
+
+#### Prevent the `enter` key from submitting your forms
+One some pages, like New and Edit, we don't want the "Enter" key to submit the
+form. You can prevent this by adding:
+
+```javascript
+  <script>outpost.Utilities.preventEnterFromSubmittingForm();</script>
+```
+
+
+
 #### More documentation to come.
 
 ## Todo
