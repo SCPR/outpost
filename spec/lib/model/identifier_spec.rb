@@ -35,7 +35,7 @@ describe Outpost::Model::Identifier do
   describe "#obj_key" do
     context "for persisted record" do
       it "uses the class's content_key, the record's ID, and joins by :" do
-        person = Person.create(name: "Bryan")
+        person = create :person
         person.id.should_not be_blank
         person.obj_key.should eq "people:#{person.id}"
       end
@@ -43,7 +43,7 @@ describe Outpost::Model::Identifier do
     
     context "for new record" do
       it "uses new in the key" do
-        person = Person.new(name: "Bryan")
+        person = build :person
         person.obj_key.should eq "people:new"
       end
     end
