@@ -10,7 +10,7 @@ gem 'jquery-rails'
 gem 'kaminari', github: "amatsuda/kaminari"
 gem 'simple_form', github: "plataformatec/simple_form"
 gem 'select2-rails'
-
+gem 'execjs', '~> 2.0.0'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 group :test do
