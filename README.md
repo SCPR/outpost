@@ -83,7 +83,7 @@ end
 
 Note that this gem doesn't provide any routes for you. It is expected that you'll want to use the path globbing to render Outpost-style 404's inside of Outpost (rather than your application's 404 page), so it gets too messy and complicated to try to combine your routes with path globbing.
 
-You'll want to put this at the bottom of you `outpost` namespace in your routes:
+You'll want to put this at the bottom of your `outpost` namespace in your routes:
 
 ```ruby
 root to: 'home#dashboard'
