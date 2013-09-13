@@ -5,6 +5,7 @@
 
 #### Changes
 * Update bcrypt-ruby dependency to `>= 3.0.0` to support Rails 4.1
+* Minor style tweaks
 
 #### Fixes
 * None

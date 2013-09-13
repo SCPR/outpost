@@ -8,8 +8,8 @@
 form.simple_form {
   table.field-rows {
     td, th {
-      text-align: left; 
-      padding: 5px 10px; 
+      text-align: left;
+      padding: 5px 10px;
     }
 
     tbody tr { padding: 5px 0; }
@@ -21,7 +21,7 @@ form.simple_form {
   input.wide, textarea {
       @extend .span7;
   }
-  
+
   input, textarea {
     &.span1 { @extend .span1; }
     &.span2 { @extend .span2; }
@@ -36,52 +36,61 @@ form.simple_form {
     &.span11 { @extend .span11; }
     &.span12 { @extend .span12; }
   }
-  
+
   input.thin, textarea.thin {
       @extend .span2;
   }
-  
+
   input.tiny {
       @extend .span1;
   }
-  
+
   // For code inputs
   textarea.fixed-font, input.fixed-font {
     @include font-monospace($size: 11px);
     background: #000;
     color: #FFFF00;
   }
-  
+
   textarea {
       &.tiny { height: 100px; }
       &.short { height: 200px; }
       &.tall { height: 600px; }
   }
-  
-  fieldset legend {
+
+  fieldset {
+    margin-bottom: 40px;
+
+    legend {
+      background: #000;
+      color: #fff;
+      padding: 0 5px;
       cursor: pointer;
+      line-height: 1.2em; // override bootstrap
+
       &:hover {
-          background: #ffffcc;
+          background: #666;
       }
+    }
   }
-  
+
   .counter-notify {
       @extend .span7;
   }
-  
+
   .inline { // Extend bootstrap .inline
       display: inline-block;
       margin-right: 5px;
       input[type=text] { @extend .span2; }
       input[type=checkbox] { width: 20px; }
-      
+
       .controls {
           margin-left: 10px;
       }
   }
-  
+
   .control-group.vertical {
-      label { 
+      label {
           float: none;
           text-align: left;
       }
@@ -113,4 +122,8 @@ form.simple_form {
 
 .select2-drop {
   z-index: 4;
+}
+
+.has-many-add-link {
+  @extend .btn;
 }
