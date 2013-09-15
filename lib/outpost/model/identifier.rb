@@ -8,14 +8,19 @@ module Outpost
     module Identifier
       extend ActiveSupport::Concern
 
+      OBJ_KEY_SEPARATOR = "-"
 
       module ClassMethods
         def content_key
-          if self.respond_to? :table_name
-            self.table_name.gsub(/_/, "/")
-          else
-            self.name.tableize
-          end
+          self.name.tableize.singularize
+        end
+
+        def obj_key(id)
+          [self.content_key, id || "new"].join(OBJ_KEY_SEPARATOR)
+        end
+
+        def new_obj_key
+          obj_key(nil)
         end
 
         # Wrappers for ActiveModel::Naming
@@ -32,7 +37,7 @@ module Outpost
 
       # Default obj_key pattern
       def obj_key
-        @obj_key ||= [self.class.content_key,self.id || "new"].join(":")
+        @obj_key ||= self.class.obj_key(self.id)
       end
     end # Identifier
   end # Model

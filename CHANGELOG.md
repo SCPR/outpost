@@ -2,10 +2,12 @@
 #### Additions
 * Added `utilities.js`, which will include some utilities functions to use
   on various pages. First one is `preventEnterFromSubmittingForm()`.
+* Added `new_obj_key` class method to Identifier module. `news_story-new`
 
 #### Changes
 * Update bcrypt-ruby dependency to `>= 3.0.0` to support Rails 4.1
 * Minor style tweaks
+* [BREAKING] Changed the obj_key format to be url-safe. New format is `news_story-999`.
 
 #### Fixes
 * None
