@@ -14,7 +14,7 @@ describe Outpost do
     
     context "match" do
       it "is nil if no record exists" do
-        Outpost.obj_by_key("blogs/entry:9999999").should eq nil
+        Outpost.obj_by_key("blog_entry-9999999").should eq nil
       end
     
       it "finds and returns the record if everything matches" do

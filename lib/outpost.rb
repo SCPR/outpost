@@ -10,7 +10,7 @@ require 'outpost/config'
 module Outpost
   extend ActiveSupport::Autoload
   
-  OBJ_KEY_REGEX = %r{([^:]+):(\d+)}
+  OBJ_KEY_REGEX = %r{([^-]+)-(\d+)}
 
   autoload :Controller
   autoload :Model
