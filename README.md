@@ -306,3 +306,6 @@ make them.
 Fork it, make your changes, and send me a pull request.
 
 Run tests with `bundle exec rake test`
+
+
+![Outpost](http://i.imgur.com/cU24Ylh.png)
