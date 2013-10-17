@@ -3,13 +3,13 @@ module ListHelper
   #
   # column  - (Outpost::Column) The column object.
   # record  - (Object) The ActiveRecord object being listed.
-  # 
+  #
   # Examples
-  #   
-  #   column.attribute # => :published_at 
+  #
+  #   column.attribute # => :published_at
   #   <%= render_attribute(column, @post) %>
   #   # => 2013-03-13 11:39:37 -0700
-  # 
+  #
   # Returns String of the rendered attribute.
   def render_attribute(column, record)
     if column.display.is_a? Proc
@@ -29,13 +29,13 @@ module ListHelper
         # If we have explicitly defined a helper for this attribute, use it.
         display_helper = :"display_#{column.attribute}"
 
-      elsif record.class.respond_to?(:reflect_on_association) && 
+      elsif record.class.respond_to?(:reflect_on_association) &&
         record.class.reflect_on_association(column.attribute.to_sym)
         # For associations, display the associated object's #to_title
         display_helper = :display_record
-        
-      elsif record.class.respond_to?(:columns_hash) && 
-        (ar_column = record.class.columns_hash[column.attribute]) && 
+
+      elsif record.class.respond_to?(:columns_hash) &&
+        (ar_column = record.class.columns_hash[column.attribute]) &&
         self.methods.include?(type_helper = :"display_#{ar_column.type}")
         # display_#{column_type} for generic display
         # Example: display_datetime
@@ -53,7 +53,7 @@ module ListHelper
   end
 
   # Public: Format a DateTime for displaying in lists
-  # 
+  #
   # date - (DateTime) The date to be formatted
   #
   # Examples
@@ -106,7 +106,7 @@ module ListHelper
   # record - (String) The associated record.
   #
   # Examples
-  # 
+  #
   #   user = User.last
   #   user.to_title # => "James Earl Jones"
   #   display_record(User.last)
@@ -116,7 +116,7 @@ module ListHelper
   def display_record(record)
     record.try(:to_title)
   end
-  
+
   # Public: Display a formatted DateTime.
   #
   # datetime - (DateTime) The DateTime object to format.
@@ -130,7 +130,7 @@ module ListHelper
   def display_datetime(datetime)
     format_date(datetime, format: :full_date, time: true)
   end
-  
+
   # Public: Display a boolean attribute as a sweet icon.
   #
   # boolean - (boolean) true or false
@@ -142,10 +142,10 @@ module ListHelper
   #   # =>   <i class="icon-white icon-ok"></i>
   #   # => </span>
   #
-  # Returns String of the appropriate icon. 
+  # Returns String of the appropriate icon.
   def display_boolean(boolean)
-    content_tag(:span, 
-      content_tag(:i, "", class: boolean_bootstrap_map[!!boolean][:icon]), 
+    content_tag(:span,
+      content_tag(:i, "", class: boolean_bootstrap_map[!!boolean][:icon]),
       class: boolean_bootstrap_map[!!boolean][:badge])
   end
 
@@ -162,52 +162,52 @@ module ListHelper
   # Public: Maps the passed-in sort mode (asc, desc) to the appropriate
   # Bootstrap Glyphicons (icon-arrow-up, icon-arrow-down respectively)
   #
-  # sort_mode - (String) The sort mode ("asc", "desc").
+  # direction - (String) "asc", "desc"
   #
   # Examples
   #
-  #   <i class="<%= sort_mode_icon('asc') %>">
+  #   <i class="<%= direction_icon('asc') %>">
   #   # => <i class="icon-arrow-up">
   #
   # Returns String of the icon class.
-  def sort_mode_icon(sort_mode)
-    case sort_mode
+  def direction_icon(direction)
+    case direction
     when "desc" then "icon-arrow-down"
     when "asc"  then "icon-arrow-up"
     end
   end
 
-  # Public: Which sort mode to switch to. Useful for creating links to 
+  # Public: Which sort mode to switch to. Useful for creating links to
   # switch the sort mode or change the list order.
   #
-  # column            - (Outpost::Column) The column on which the sort 
+  # column            - (Outpost::Column) The column on which the sort
   #                     will be performed.
-  # current_order     - (String) The attribute that is currently being
+  # current_attribute - (String) The attribute that is currently being
   #                     ordered.
-  # current_sort_mode - (String) The current sort mode ("asc", "desc").
+  # current_direction - (String) The current sort mode ("asc", "desc").
   #
   # Examples
-  #   
+  #
   #   <%= link_to column.header, request.parameters.merge({
-  #      :sort_mode => switch_sort_mode(
-  #          column, current_order, current_sort_mode
+  #      :direction => switch_direction(
+  #          column, current_attribute, current_direction
   #      )
   #   }) %>
   #
   # Returns String of the sort mode, "asc" or "desc"
-  def switch_sort_mode(column, current_order, current_sort_mode)
-    if column.attribute == current_order
-      case current_sort_mode
+  def switch_direction(column, current_attribute, current_direction)
+    if column.attribute == current_attribute
+      case current_direction
       when "asc"  then "desc"
       when "desc" then "asc"
-      else column.default_sort_mode
+      else column.default_order_direction
       end
     else
-      column.default_sort_mode
+      column.default_order_direction
     end
   end
 
-  # Public: Generate a CSS class for the column. If the column represents 
+  # Public: Generate a CSS class for the column. If the column represents
   # an association, the class will be "column-association".
   #
   # model     - (Class) The ActiveRecord model.

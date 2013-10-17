@@ -9,18 +9,27 @@ module Outpost
 
         yield self if block_given?
 
-        @default_order     ||= List::DEFAULT_ORDER
-        @default_sort_mode ||= List::DEFAULT_SORT_MODE
-        @per_page          ||= List::DEFAULT_PER_PAGE
+        @default_order_attribute     ||= List::DEFAULT_ORDER_ATTRIBUTE
+        @default_order_direction     ||= List::DEFAULT_ORDER_DIRECTION
+        @per_page                    ||= List::DEFAULT_PER_PAGE
       end
 
-      attr_accessor :default_order, :default_sort_mode
-      attr_reader :columns, :fields, :filters, :per_page, :model
-      
+
+      attr_accessor \
+        :default_order_attribute,
+        :default_order_direction
+
+      attr_reader \
+        :columns,
+        :fields,
+        :filters,
+        :per_page,
+        :model
+
       # Public: Set the per_page for pagination.
       #
       # val - (Integer) The value to send to pagination. Also accepts :all,
-      #       which passes `nil` to pagination and therefore will not 
+      #       which passes `nil` to pagination and therefore will not
       #       paginate.
       #
       # Returns nothing.
@@ -31,13 +40,13 @@ module Outpost
       # Public: Add a column to the list.
       #
       # attribute - (String) The attribute that this column represents.
-      # options   - (Hash) A hash of options. Gets passed directly to 
+      # options   - (Hash) A hash of options. Gets passed directly to
       #             List::Column (default: {}).
-      #             * header  - (String) The title of the column, displayed in 
-      #                         the table header 
+      #             * header  - (String) The title of the column, displayed in
+      #                         the table header
       #                         (default: self.attribute.titleize).
       #             * display - (Symbol or Proc) How to display this attribute.
-      #                         * If symbol, should be the name of a method in 
+      #                         * If symbol, should be the name of a method in
       #                           AdminListHelper
       #                         * If Proc, gets run as an instance of the class.
       #                         * See AdminListHelper for more info.
@@ -46,7 +55,8 @@ module Outpost
       #
       #   define_list do
       #     column :name, header: "Full Name", display: :display_full_name
-      #     column :user, header: "Associated User", display: proc { self.user.name }
+      #     column :user, 
+      #       header: "Associated User", display: proc { self.user.name }
       #   end
       #
       # Returns nothing.
@@ -54,7 +64,7 @@ module Outpost
         column = Column.new(attribute, self, options)
         @columns[attribute] = column
       end
-      
+
       # Public: Define a filter for the list.
       #
       # attribute - (String) The attribute on which to filter.

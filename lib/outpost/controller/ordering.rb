@@ -1,8 +1,50 @@
 module Outpost
   module Controller
     module Ordering
+      extend ActiveSupport::Concern
+
+      included do
+        helper_method :order_direction, :order_attribute, :order
+      end
+
+      # Public: The order that the records are currently sorted by.
+      # This gets passed directly to ActiveRecord, so it should be
+      # a valid database order.
+      #
+      # Returns String of the order.
+      def order_attribute
+        @order_attribute ||= set_order_attribute
+      end
+
+      # Public: The sort mode that the records are currently sorted by.
+      # This gets passed directory to ActiveRecord, so it should be
+      # a valid database sort mode.
+      #
+      # Examples
+      #
+      #   order_direction
+      #   # => "asc"
+      #
+      # Returns String of the sort mode.
+      def order_direction
+        @order_direction ||= set_order_direction
+      end
+
+      # Public: The order string to be passed into ActiveRecord
+      #
+      # Examples
+      #
+      #   order
+      #   # => "updated_at DESC"
+      #
+      # Returns String of the order.
+      def order
+        @order ||= "#{order_attribute} #{order_direction}"
+      end
+
+
       private
-      
+
       # Set which attribute is doing the sorting
       #
       # If params[:order] is present, then set the
@@ -12,33 +54,33 @@ module Outpost
       # then use the preferred order.
       #
       # Otherwise use the list order.
-      def set_order
+      def set_order_attribute
         key = "#{model.content_key}_order"
         preferred_order = preference(key)
 
-        @order = if params[:order].present?
+        @order_attribute = if params[:order].present?
           set_preference(key, params[:order])
         elsif preferred_order.present?
           preferred_order
         else
-          list.default_order
+          list.default_order_attribute
         end
       end
 
-      # Set the sort mode
+      # Set the order direction
       #
-      # It will either be the requested sort mode, or if not available, 
-      # then the table's default sort mode.
-      def set_sort_mode
+      # It will either be the requested direction, or if not available, 
+      # then the table's default direction.
+      def set_order_direction
         key = "#{model.content_key}_sort_mode"
-        preferred_sort_mode = preference(key)
+        preferred_direction = preference(key)
 
-        @sort_mode = if %w{ asc desc }.include?(params[:sort_mode])
-          set_preference(key, params[:sort_mode])
-        elsif preferred_sort_mode.present?
-          preferred_sort_mode
+        @order_direction = if %w{ asc desc }.include?(params[:direction])
+          set_preference(key, params[:direction])
+        elsif preferred_direction.present?
+          preferred_direction
         else
-          list.default_sort_mode
+          list.default_order_direction
         end
       end
     end

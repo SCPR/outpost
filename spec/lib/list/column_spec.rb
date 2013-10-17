@@ -39,8 +39,8 @@ describe Outpost::List::Column do
       col.sortable?.should eq false
     end
 
-    it "sets default_sort_mode to default if not specified" do
-      list.columns["name"].default_sort_mode.should eq Outpost::List::DEFAULT_SORT_MODE
+    it "sets default_order_direction to default if not specified" do
+      list.columns["name"].default_order_direction.should eq Outpost::List::DEFAULT_ORDER_DIRECTION
     end
   end
 end

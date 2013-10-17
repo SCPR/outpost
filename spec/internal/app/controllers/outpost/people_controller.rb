@@ -3,9 +3,9 @@ module Outpost
     outpost_controller model: Person
 
     define_list do |l|
-      l.default_order     = "name"
-      l.default_sort_mode = "desc"
-      l.per_page          = 25
+      l.default_order_attribute   = "name"
+      l.default_order_direction   = "desc"
+      l.per_page                  = 25
 
       l.column :name
       l.column :email

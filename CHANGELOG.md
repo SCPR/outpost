@@ -7,7 +7,18 @@
 #### Changes
 * Update bcrypt-ruby dependency to `>= 3.0.0` to support Rails 4.1
 * Minor style tweaks
-* [BREAKING] Changed the obj_key format to be url-safe. New format is `news_story-999`.
+* [BREAKING] Changed the obj_key format to be url-safe. New format is
+  `news_story-999`.
+* [BREAKING] `sort_mode_icon` helper renamed to `direction_icon`
+* [BREAKING] `switch_sort_mode` helper renamed to `switch_direction`
+* [BREAKING] `order` helper renamed to `order_attribute`
+* [BREAKING] `sort_mode` helper renamed to `order_direction`
+* [BREAKING] `order` helper now returns a contatenation of `order_attribute`
+  and `order_direction`.
+* [BREAKING] Moves ordering helpers into `controller/ordering.rb`
+* [BREAKING] `Column#default_sort_mode` renamed to `default_order_direction`
+* [BREAKING] `List#default_sort_mode` renamed to `default_order_direction`
+* [BREAKING] `List#default_order` renamed to `default_order_attribute`
 
 #### Fixes
 * None
