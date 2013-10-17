@@ -20,7 +20,8 @@ module Outpost
       # What to do when a user doesn't have proper permissions
       def handle_unauthorized(resource)
         redirect_to outpost_root_path, 
-          alert: "You don't have permission to manage #{resource.to_title.pluralize}"
+          alert: "You don't have permission to manage " \
+                 "#{resource.to_title.pluralize}"
         return false
       end
     end # Authorization

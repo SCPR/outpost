@@ -4,12 +4,12 @@ module Outpost
     include Outpost::Controller::Authorization
     include Outpost::Controller::Authentication
     include Outpost::Controller::CustomErrors
-    
+
     abstract!
     protect_from_forgery
     before_filter :root_breadcrumb
     before_filter :set_sections
-    
+
     #------------------------
     # Always want to add this link to the Breadcrumbs
     def root_breadcrumb
@@ -34,7 +34,9 @@ module Outpost
     #----------------------
 
     def render_preview_validation_errors(record)
-      render "/outpost/shared/_preview_errors", layout: "outpost/minimal", locals: { record: record }
+      render "/outpost/shared/_preview_errors",
+        :layout => "outpost/minimal",
+        :locals => { record: record }
     end
   end
 end

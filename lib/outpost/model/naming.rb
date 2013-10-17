@@ -6,14 +6,14 @@ module Outpost
   module Model
     module Naming
       extend ActiveSupport::Concern
-      
+
       module ClassMethods
         # NewsStory => News Story
         def to_title
           self.name.demodulize.titleize
         end
       end
-      
+
       # Convert any AR object into a human-readable title
       # Tries the attributes in config.title_attributes
       # And falls back to "BlogEntry #99"
@@ -30,9 +30,12 @@ module Outpost
       #
       # Usage:
       #
-      #   story = NewsStory.last #=> NewsStory(id: 900, title: "Cool Story, Bro")
-      #   blog  = Blog.last      #=> Blog(id: 5, name: "Some Blog")
-      #   photo = Photo.last     #=> Photo(id: 10, url: "http://photos.com/kitty")
+      #   story = NewsStory.last
+      #     #=> NewsStory(id: 900, title: "Cool Story, Bro")
+      #   blog  = Blog.last
+      #     #=> Blog(id: 5, name: "Some Blog")
+      #   photo = Photo.last
+      #     #=> Photo(id: 10, url: "http://photos.com/kitty")
       #
       #   story.to_title  #=> "Cool Story, Bro"
       #   blog.to_title   #=> "Some Blog"
@@ -44,11 +47,11 @@ module Outpost
           attributes.find { |a| self.respond_to?(a) }
         end
       end
-      
+
       def to_title
         @to_title ||= self.send(self.title_method)
       end
-      
+
       def simple_title
         @simple_title ||= begin
           if self.new_record?

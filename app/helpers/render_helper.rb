@@ -13,9 +13,9 @@ module RenderHelper
   #
   # Returns a String of the table, or a message if no records are present.
   def list_table(records, model, &block)
-    render '/outpost/shared/list_table', 
-      :model   => model, 
-      :records => records, 
+    render '/outpost/shared/list_table',
+      :model   => model,
+      :records => records,
       :table   => capture(&block)
   end
 
@@ -34,8 +34,8 @@ module RenderHelper
   #
   # Returns a String of the fieldset.
   def form_block(title="", &block)
-    render "/outpost/shared/form_block", 
-      :title => title, 
+    render "/outpost/shared/form_block",
+      :title => title,
       :body  => capture(&block)
   end
 end

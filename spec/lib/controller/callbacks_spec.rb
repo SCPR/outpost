@@ -13,14 +13,6 @@ describe Outpost::Controller::Callbacks do
     pending
   end
 
-  describe '#set_order' do
-    pending
-  end
-
-  describe '#set_sort_mode' do
-    pending
-  end
-
   describe '#remove_preferences' do
     pending
   end

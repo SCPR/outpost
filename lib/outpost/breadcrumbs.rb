@@ -3,7 +3,7 @@
 #
 # Super-simple breadcrumbs for you and me.
 # Include it into a controller
-# 
+#
 # Arguments:
 # Pairs of strings. Title of breadcrumb, Path
 #
@@ -28,9 +28,11 @@
 # You can also define multiple breadcrumbs at once.
 # Every 2 arguments is a new breadcrumb:
 #
-#   breadcrumb "Edit", outpost_edit_post_path(@post.id), @post.title, outpost_post_path(@post)
+#   breadcrumb "Edit",
+#     outpost_edit_post_path(@post.id),
+#     @post.title, outpost_post_path(@post)
 #
-# Don't want the crumb to be linked? Just leave the 
+# Don't want the crumb to be linked? Just leave the
 # second argument off, or +nil+ if you're defining
 # multiple breadcrumbs:
 #
@@ -40,32 +42,32 @@ module Outpost
   class Breadcrumb
     attr_accessor :title, :link
   end
-  
+
   #---------------
-  
+
   module Breadcrumbs
     extend ActiveSupport::Concern
-    
+
     included do
       attr_reader :breadcrumbs
-    
+
       if self < ActionController::Base
         helper_method :breadcrumbs
       end
     end
-    
+
     #--------------
     # Use this method to add breadcrumbs.
-    # See Outpost::Breadcrumbs 
+    # See Outpost::Breadcrumbs
     # for usage.
     def breadcrumb(*args)
       @breadcrumbs ||= []
-      
+
       args.each_slice(2).map do |pair|
         crumb       = Outpost::Breadcrumb.new
         crumb.title = pair[0]
         crumb.link  = pair[1]
-        
+
         @breadcrumbs.push crumb
       end
     end

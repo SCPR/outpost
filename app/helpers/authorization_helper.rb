@@ -1,9 +1,9 @@
 module AuthorizationHelper
-  # Public: Block out whole chunks of code based on permissions. 
+  # Public: Block out whole chunks of code based on permissions.
   #
-  # resource - (Class) The model that the user must have permission 
+  # resource - (Class) The model that the user must have permission
   #            to manage in order to see the block.
-  # message  - (String) The message to display if the user isn't 
+  # message  - (String) The message to display if the user isn't
   #            authorized (default: "").
   # block    - The block that will be captured if the user is authorized.
   #            Should return a String.

@@ -20,13 +20,13 @@ module Outpost
     # even though they are the same path.
     module Routing
       extend ActiveSupport::Concern
-      
+
       module ClassMethods
         # /outpost/blog_entries/new
         def admin_new_path
           collection_route("new_outpost_#{self.singular_route_key}_path")
         end
-        
+
         # http://kpcc.org/outpost/blog_entries/new
         def admin_new_url
           collection_route("new_outpost_#{self.singular_route_key}_url")
@@ -37,7 +37,7 @@ module Outpost
         def admin_index_path
           collection_route("outpost_#{self.route_key}_path")
         end
-        
+
         alias_method :admin_create_path, :admin_index_path
 
         # http://kpcc.org/outpost/blog_entries
@@ -83,13 +83,13 @@ module Outpost
       alias_method :admin_update_url, :admin_show_url
       alias_method :admin_destroy_url, :admin_show_url
 
-      
+
       # Uses self.class::ROUTE_KEY to generate
       # the front-end path to this object
       # If an object doesn't have a front-end path,
       # do not define a ROUTE_KEY on the class.
       #
-      # If the object isn't public, then leave route_hash 
+      # If the object isn't public, then leave route_hash
       # empty as well.
       def public_path(options={})
         if self.route_hash.present? && defined?(self.class::ROUTE_KEY)
@@ -110,7 +110,7 @@ module Outpost
       def route_hash
         {}
       end
-      
+
 
       # http://scpr.org/blogs/2012/...
       def public_url(options={})

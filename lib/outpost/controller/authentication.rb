@@ -13,7 +13,8 @@ module Outpost
       # Returns Outpost.user_class instance.
       def current_user
         begin
-          @current_user ||= Outpost.user_class.where(can_login: true).find(session[:user_id])
+          @current_user ||= Outpost.user_class
+            .where(can_login: true).find(session[:user_id])
         rescue ActiveRecord::RecordNotFound
           session[:user_id]   = nil
           @current_user       = nil

@@ -12,20 +12,20 @@ module Outpost
       :authentication_attribute   => :email,
       :preferences                => [:order, :sort_mode]
     }
-    
+
     # Pass a block to this method to define the configuration
     # If no block is passed, config will be defaults
     def self.configure
       yield Outpost.config if block_given?
       Outpost.config
     end
-    
+
     # An array of models that should show up
     attr_writer :registered_models
     def registered_models
       @registered_models || []
     end
-    
+
     attr_writer :preferences
     def preferences
       @preferences || DEFAULTS[:preferences]
@@ -47,13 +47,13 @@ module Outpost
     def title_attributes
       (@title_attributes ||= DEFAULTS[:title_attributes]) | [:simple_title]
     end
-    
+
     # Ignore these attributes when building a basic form
     attr_writer :excluded_form_fields
     def excluded_form_fields
       (@excluded_form_fields ||= []) | DEFAULTS[:excluded_form_fields]
     end
-    
+
     # Ignore these attributes when building a basic list
     attr_writer :excluded_list_columns
     def excluded_list_columns

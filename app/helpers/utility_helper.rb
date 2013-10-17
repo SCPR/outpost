@@ -26,7 +26,7 @@ module UtilityHelper
   # Returns String of the formatted date
   def format_date(date, options={})
     return nil if !date.respond_to?(:strftime)
-    
+
     format_str = options[:with] if options[:with].present?
 
     format_str ||= case options[:format].to_s
@@ -35,7 +35,7 @@ module UtilityHelper
       when "event"     then "%A, %B %-d"
       else "%b %-d, %Y"
     end
-    
+
     format_str += ", %l:%M%P" if options[:time] == true
 
     date.strftime(format_str)
@@ -84,9 +84,9 @@ module UtilityHelper
   #
   # elements - Zero or more strings to prepend onto the page title.
   #            The final argument can optionally be hash:
-  #            :separator - (String) The separator to use between 
+  #            :separator - (String) The separator to use between
   #                         elements (default: " | ").
-  # 
+  #
   # Examples
   #
   #   set_page_title "Events", "Forum", separator: " :: "
@@ -102,7 +102,7 @@ module UtilityHelper
 
   # Public: Generate the full page title.
   #
-  # last_element - (String) The string that will be appendended onto the 
+  # last_element - (String) The string that will be appendended onto the
   #                rest of the title.
   # separator    - (String) The separator to use between the title and the last
   #                element (default: " | ").

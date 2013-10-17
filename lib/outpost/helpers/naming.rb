@@ -10,7 +10,7 @@ module Outpost
   module Helpers
     module Naming
       extend self
-      
+
       # These helpers expect a controller param, 
       # such as 'outpost/news_stories'
       # "outpost/news_stories" => NewsStory

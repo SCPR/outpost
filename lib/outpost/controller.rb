@@ -14,7 +14,7 @@ module Outpost
     autoload :Authentication
     autoload :Authorization
     autoload :CustomErrors
-    
+
     included do
       helper_method :list, :model, :fields
     end
@@ -116,7 +116,13 @@ module Outpost
       end
 
       def find_model
-        self.name.demodulize.underscore.split("_")[0...-1].join("_").classify.constantize
+        self.name
+          .demodulize
+          .underscore
+          .split("_")[0...-1]
+          .join("_")
+          .classify
+          .constantize
       end
     end # ClassMethods
   end # Controller

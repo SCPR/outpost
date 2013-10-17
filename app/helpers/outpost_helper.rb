@@ -1,5 +1,5 @@
 module OutpostHelper
-  # Public: Maps the standard Rails flash keys (+notice+, +alert+) to the 
+  # Public: Maps the standard Rails flash keys (+notice+, +alert+) to the
   # appropriate Bootstrap alert class (+success+, +error+ respectively).
   # Falls back to just returning the passed-in symbol as a string.
   #
@@ -16,7 +16,7 @@ module OutpostHelper
       notice: "success",
       alert:  "error"
     }
-    
+
     name_bootstrap_map[name.to_sym] || name.to_s
   end
 
@@ -37,8 +37,8 @@ module OutpostHelper
   end
 
   # Public: Place a modal anywhere with a button to toggle it.
-  # 
-  # options - (Hash) Options to pass into the modal template. Useful for 
+  #
+  # options - (Hash) Options to pass into the modal template. Useful for
   #           CSS ID, and modal title.
   # block   - The block that gets captured and rendered inside of the modal.
   #
