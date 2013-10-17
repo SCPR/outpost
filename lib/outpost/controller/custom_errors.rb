@@ -32,12 +32,12 @@ module Outpost
         else
           respond_to do |format|
             format.html do
-              render {
+              render(
                 :template   => "/errors/error_#{status}",
                 :layout     => "application",
                 :status     => status,
                 :locals     => { error: e }
-              }
+              )
             end
 
             format.xml do
@@ -55,10 +55,10 @@ module Outpost
             end
 
             format.text do
-              render {
+              render(
                 :text     => "#{status} - #{response.message}",
                 :status   => status
-              }
+              )
             end
 
             format.any do
