@@ -23,7 +23,7 @@ module Outpost
       # Examples
       #
       #   order_direction
-      #   # => "asc"
+      #   # => "ASC"
       #
       # Returns String of the sort mode.
       def order_direction
@@ -55,7 +55,7 @@ module Outpost
       #
       # Otherwise use the list order.
       def set_order_attribute
-        key = "#{model.content_key}_order"
+        key = "#{model.content_key}_order_attribute"
         preferred_order = preference(key)
 
         @order_attribute = if params[:order].present?
@@ -72,10 +72,11 @@ module Outpost
       # It will either be the requested direction, or if not available, 
       # then the table's default direction.
       def set_order_direction
-        key = "#{model.content_key}_sort_mode"
+        key = "#{model.content_key}_order_direction"
         preferred_direction = preference(key)
 
-        @order_direction = if %w{ asc desc }.include?(params[:direction])
+        @order_direction = if [Outpost::ASCENDING, Outpost::DESCENDING]
+        .include?(params[:direction])
           set_preference(key, params[:direction])
         elsif preferred_direction.present?
           preferred_direction

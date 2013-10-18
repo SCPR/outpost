@@ -4,7 +4,7 @@ module Outpost
 
     define_list do |l|
       l.default_order_attribute   = "name"
-      l.default_order_direction   = "desc"
+      l.default_order_direction   = DESCENDING
       l.per_page                  = 25
 
       l.column :name

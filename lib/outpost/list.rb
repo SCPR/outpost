@@ -5,7 +5,7 @@ module Outpost
     extend ActiveSupport::Autoload
 
     DEFAULT_ORDER_ATTRIBUTE   = "id"
-    DEFAULT_ORDER_DIRECTION   = "DESC"
+    DEFAULT_ORDER_DIRECTION   = DESCENDING
     DEFAULT_PER_PAGE          = 25
 
     autoload :Base

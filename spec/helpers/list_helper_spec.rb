@@ -71,4 +71,38 @@ describe ListHelper do
       column._display_helper.should eq :display_string
     end
   end
+
+  describe '#direction_icon' do
+    it 'returns icon-arrow-down when descending' do
+      helper.direction_icon(Outpost::DESCENDING).should eq ListHelper::ICON_DOWN
+    end
+
+    it 'returns icon-arrow-up when ascending' do
+      helper.direction_icon(Outpost::ASCENDING).should eq ListHelper::ICON_UP
+    end
+  end
+
+  describe '#switch_direction' do
+    let(:list) { Outpost::List::Base.new(User.new) }
+    let(:column) { Outpost::List::Column.new("name", list,
+          default_order_direction: Outpost::DESCENDING) }
+
+    context 'attributes match' do
+      it 'switches direction' do
+        helper.switch_direction(
+          column, "name", Outpost::DESCENDING).should eq Outpost::ASCENDING
+      end
+
+      it 'uses the default direction if no current direction' do
+        helper.switch_direction(column, "name", nil).should eq Outpost::DESCENDING
+      end
+    end
+
+    context 'attributes do not match' do
+      it 'uses the column default order' do
+        helper.switch_direction(
+          column, "published", Outpost::DESCENDING).should eq Outpost::DESCENDING
+      end
+    end
+  end
 end

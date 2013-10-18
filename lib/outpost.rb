@@ -9,8 +9,11 @@ require 'outpost/config'
 
 module Outpost
   extend ActiveSupport::Autoload
-  
+
   OBJ_KEY_REGEX = %r{([^-]+)-(\d+)}
+
+  DESCENDING  = "DESC"
+  ASCENDING   = "ASC"
 
   autoload :Controller
   autoload :Model

@@ -1,4 +1,8 @@
 module ListHelper
+  ICON_DOWN = "icon-arrow-down"
+  ICON_UP   = "icon-arrow-up"
+
+
   # Public: Renders the attribute for this column and record
   #
   # column  - (Outpost::Column) The column object.
@@ -162,18 +166,20 @@ module ListHelper
   # Public: Maps the passed-in sort mode (asc, desc) to the appropriate
   # Bootstrap Glyphicons (icon-arrow-up, icon-arrow-down respectively)
   #
-  # direction - (String) "asc", "desc"
+  # direction - (String) "ASC", "DESC"
   #
   # Examples
   #
-  #   <i class="<%= direction_icon('asc') %>">
+  #   <i class="<%= direction_icon('ASC') %>">
   #   # => <i class="icon-arrow-up">
   #
   # Returns String of the icon class.
   def direction_icon(direction)
+    direction = direction.to_s.upcase
+
     case direction
-    when "desc" then "icon-arrow-down"
-    when "asc"  then "icon-arrow-up"
+    when Outpost::DESCENDING then ICON_DOWN
+    when Outpost::ASCENDING  then ICON_UP
     end
   end
 
@@ -184,7 +190,7 @@ module ListHelper
   #                     will be performed.
   # current_attribute - (String) The attribute that is currently being
   #                     ordered.
-  # current_direction - (String) The current sort mode ("asc", "desc").
+  # current_direction - (String) The current sort mode ("ASC", "DESC").
   #
   # Examples
   #
@@ -196,10 +202,12 @@ module ListHelper
   #
   # Returns String of the sort mode, "asc" or "desc"
   def switch_direction(column, current_attribute, current_direction)
+    direction = current_direction.to_s.upcase
+
     if column.attribute == current_attribute
-      case current_direction
-      when "asc"  then "desc"
-      when "desc" then "asc"
+      case direction
+      when Outpost::ASCENDING then Outpost::DESCENDING
+      when Outpost::DESCENDING then Outpost::ASCENDING
       else column.default_order_direction
       end
     else

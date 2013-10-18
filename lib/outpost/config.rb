@@ -10,7 +10,7 @@ module Outpost
       :excluded_list_columns      => [],
       :user_class                 => "User",
       :authentication_attribute   => :email,
-      :preferences                => [:order, :sort_mode]
+      :preferences                => [:order_attribute, :order_direction]
     }
 
     # Pass a block to this method to define the configuration
