@@ -19,6 +19,9 @@
 * [BREAKING] `Column#default_sort_mode` renamed to `default_order_direction`
 * [BREAKING] `List#default_sort_mode` renamed to `default_order_direction`
 * [BREAKING] `List#default_order` renamed to `default_order_attribute`
+* [BREAKING] Renamed default preferences: `sort_mode` -> `order_direction`,
+  `order` -> `order_attribute`
+* [BREAKING] Order directions are now in CAPS (ASC, DESC)
 
 #### Fixes
 * None
