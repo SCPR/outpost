@@ -22,6 +22,7 @@
 * [BREAKING] Renamed default preferences: `sort_mode` -> `order_direction`,
   `order` -> `order_attribute`
 * [BREAKING] Order directions are now in CAPS (ASC, DESC)
+* Changed text on Delete button to keep it from being Bui'd.
 
 #### Fixes
 * None
