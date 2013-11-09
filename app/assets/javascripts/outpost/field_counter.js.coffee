@@ -7,7 +7,7 @@ $ ->
         fuzziness = el.attr("data-fuzziness")
         new outpost.FieldCounter(el, target: target, fuzziness: fuzziness)
 
-##   
+##
 # FieldCounter
 # To turn a field into a field counter, add three attributes:
 #
@@ -15,7 +15,7 @@ $ ->
 #   data-target="50"        # Perfect length
 #   data-fuzziness="10"     # Lee-way in either direction (inclusive)
 #
-# Anything spanning the range of 
+# Anything spanning the range of
 #
 #   `(target - fuzziness) through (target + fuzziness)`
 #
@@ -32,7 +32,7 @@ class outpost.FieldCounter
         counterClass:    "counter-notify"
         counterWrapper:  ".controls"             # The element to which the counter will be prepended
         counterStyle:    "padding: 3px; margin: 0 0 2px 0;"
-        
+
     constructor: (@el, options={}) ->
         @options = _.defaults options, @DefaultOptions
 
@@ -40,22 +40,22 @@ class outpost.FieldCounter
         @field   = $("input, textarea", @el)
         @counterEl = $("<div />", class: @options.counterClass, style: @options.counterStyle)
         $(@options.counterWrapper, @el).prepend @counterEl
-        
+
         # Setup attributes
         @count     = 0
         @target    = parseInt(@options.target)
         @fuzziness = parseInt(@options.fuzziness)
         @rangeLow  = @target - @fuzziness
         @rangeHigh = @target + @fuzziness
-        
+
         @inRangeClass    = @options.inRangeClass
         @outOfRangeClass = @options.outOfRangeClass
-        
+
         # Register listeners
         @field.on
             keyup: (event) =>
                 @updateCount($(event.target).val().length)
-        
+
         @el.on
             updateCounter: (event, count) =>
                 @updateText(count)
@@ -63,25 +63,25 @@ class outpost.FieldCounter
 
         # Set the count on initialize
         @updateCount(@field.val().length)
-                
+
     #--------------
 
     inRange: ->
         @rangeLow <= @count and @count <= @rangeHigh
-                    
+
     #--------------
-    
+
     updateCount: (length) ->
         @count = length
         @el.trigger "updateCounter", @count
-    
+
     #--------------
-    
+
     updateText: (count) ->
         @counterEl.html("<strong>Optimal Length:</strong> #{count} of #{@target} (+/- #{@fuzziness})")
 
     #--------------
-    
+
     updateColor: (count) ->
         if @inRange()
             @counterEl.removeClass(@outOfRangeClass)
@@ -89,5 +89,5 @@ class outpost.FieldCounter
         else
             @counterEl.removeClass(@inRangeClass)
             @counterEl.addClass(@outOfRangeClass)
-        
-        
+
+

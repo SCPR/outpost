@@ -3,9 +3,9 @@ require 'spec_helper'
 describe Outpost::List::Base do
 
   #--------------
-  
+
   let(:model) { Person }
-  
+
   describe "initialize" do
     context "with block" do
       it "yields and sets attributes" do
@@ -48,7 +48,7 @@ describe Outpost::List::Base do
       end
     end
   end
-  
+
   #--------------
 
   describe "column" do
@@ -84,10 +84,10 @@ describe Outpost::List::Base do
   end
 
   #--------------
-  
+
   describe "per_page=" do
     let(:list) { Outpost::List::Base.new(model) }
-    
+
     it "sets @per_page to passed-in value as an integer if specified" do
       list.per_page = "99"
       list.per_page.should eq 99

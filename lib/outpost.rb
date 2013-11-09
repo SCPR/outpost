@@ -58,16 +58,16 @@ module Outpost
     end
 
     #--------------------
-    
+
     def model_classes
       @model_classes ||= begin
         klasses = {}
-        
+
         Outpost.config.registered_models.each do |name|
           klass = name.constantize
           klasses.merge!(klass.content_key => klass)
         end
-        
+
         klasses
       end
     end

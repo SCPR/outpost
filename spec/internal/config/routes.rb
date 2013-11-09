@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :people
 
     root to: 'home#dashboard'
-    
+
     resources :sessions, only: [:create, :destroy]
     get 'login'  => "sessions#new", as: :login
     get 'logout' => "sessions#destroy", as: :logout

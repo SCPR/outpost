@@ -1,4 +1,4 @@
-.transparent { 
+.transparent {
     @include opacity(0.2);
     @include transition(.1s linear all);
 }

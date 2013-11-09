@@ -7,7 +7,7 @@ describe RenderHelper do
         helper.form_block { "hello" }.should match /hello/
       end
     end
-    
+
     context "with title" do
       it "renders the form_block partial" do
         formblock = helper.form_block("some title") { "blah blah" }

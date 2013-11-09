@@ -32,9 +32,9 @@
       <% if record.persisted? %>
         <%= link_to("View Live", record.public_path, class: "btn btn-success", target: "_blank") if record.public_path.present? %>
         <%= link_to("Delete this #{model.to_title}",
-              [:outpost, record], 
-              class: "btn btn-danger", 
-              method: :delete, 
+              [:outpost, record],
+              class: "btn btn-danger",
+              method: :delete,
               data: { confirm: "Click OK to delete this #{model.to_title}.\nClick CANCEL to return to editing." }
               ) %>
       <% end %>

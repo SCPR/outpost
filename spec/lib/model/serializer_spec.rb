@@ -6,7 +6,7 @@ describe Outpost::Model::Serializer do
   end
 
   #----------------
-  
+
   describe "#json" do
     pending
   end

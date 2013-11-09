@@ -12,13 +12,13 @@ describe Outpost::Model::Naming do
   end
 
   #----------------
-  
+
   describe "#title_method" do
     pending
   end
-  
+
   #----------------
-  
+
   describe "#to_title" do
     it "uses one of the specified title attributes if available" do
       Outpost.config.title_attributes = [:name]
@@ -35,16 +35,16 @@ describe Outpost::Model::Naming do
       person.to_title.should eq "Simple Title"
     end
   end
-  
+
   #----------------
-  
+
   describe "#simple_title" do
     it "returns a simple name for a new object" do
       person = build :person
       person.new_record?.should be_true
       person.simple_title.should eq "New Person"
     end
-    
+
     it "returns a simple name for a persisted object" do
       person = create :person
       person.id.should be_present

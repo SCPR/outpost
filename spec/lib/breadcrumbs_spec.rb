@@ -14,25 +14,25 @@ describe Outpost::Breadcrumbs do
   describe "#breadcrumb" do
     context "ActionController::Base class" do
       let(:controller) { Outpost::PeopleController.new }
-      
+
       it "has the breadcrumbs helper methods" do
         Outpost::PeopleController._helper_methods.should include :breadcrumbs
       end
-      
+
       it "has both a title and link when both specified" do
         controller.breadcrumb "Title", "/some/path"
         controller.breadcrumbs.size.should eq 1
         controller.breadcrumbs.first.title.should eq "Title"
         controller.breadcrumbs.first.link.should eq "/some/path"
       end
-  
+
       it "only has a title when no link is specified" do
         controller.breadcrumb "Title"
         controller.breadcrumbs.size.should eq 1
         controller.breadcrumbs.first.title.should eq "Title"
         controller.breadcrumbs.first.link.should eq nil
       end
-      
+
       it "accepts multiple breadcrumbs" do
         controller.breadcrumb "Title", "/some/path", "Other", nil, "Page"
         controller.breadcrumbs.size.should eq 3
@@ -44,7 +44,7 @@ describe Outpost::Breadcrumbs do
         controller.breadcrumbs[2].link.should eq nil
       end
     end
-    
+
     context "other class" do
       it "doesn't complain about helper_method" do
         class CoolGuy; include Outpost::Breadcrumbs; end

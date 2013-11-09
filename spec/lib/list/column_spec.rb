@@ -4,10 +4,10 @@ describe Outpost::List::Column do
   let(:model) { Person }
 
   #----------------
-  
+
   describe "initialization" do
     let(:list) { Outpost::List::Base.new(model) }
-    
+
     before :each do
       list.column "name", {
         :quick_edit   => true,

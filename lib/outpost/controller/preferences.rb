@@ -22,7 +22,7 @@ module Outpost
       def preference(key)
         session["preference_#{key}"]
       end
-      
+
       # Public: Writer for preference.
       #
       # key   - (String) The key to write to.
@@ -34,7 +34,7 @@ module Outpost
       #   preference("posts_order")
       #   # => "updated_at"
       #
-      # Returns nothing. 
+      # Returns nothing.
       def set_preference(key, value)
         session["preference_#{key}"] = value
       end
@@ -56,7 +56,7 @@ module Outpost
 
 
       private
-      
+
       def remove_preferences
         Outpost.config.preferences.each do |preference|
           key = "#{model.content_key}_#{preference}"

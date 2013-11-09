@@ -4,10 +4,10 @@ describe Outpost::List::Filter do
   let(:model) { Person }
 
   #----------------
-  
+
   describe "initialization" do
     let(:list) { Outpost::List::Base.new(model) }
-    
+
     before :each do
       list.filter "is_public", {
         :title      => "Public?",

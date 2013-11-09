@@ -6,10 +6,10 @@
 class outpost.IndexManager
     DefaultOptions:
         cellFinder:    "*[data-updatable='true']"
-        
+
     constructor: (@baseUrl, options={}) ->
         @options = _.defaults options, @DefaultOptions
-        
+
         for cell in $(@options.cellFinder)
             new outpost.QuickEditCell $(cell), @baseUrl
 
@@ -26,23 +26,23 @@ class outpost.QuickEditCell
         id:             "data-id"
         highlightColor: "#dff0d8"
         highlightTime:  2000
-        
+
     constructor: (@el, baseUrl, options={}) ->
         @options = _.defaults options, @defaults
-        
+
         # Check values
         @value = null
         @keyup = false
-        
+
         # Attributes
         @attribute = @el.attr(@options.attribute)
         @id        = @el.attr(@options.id)
         @url       = "#{baseUrl}/#{@id}"
-        
+
         @ajaxOptions =
             dataType: 'json'
             url: @url
-            
+
         @el.on
             click: (event) => @buildForm()
 
@@ -57,7 +57,7 @@ class outpost.QuickEditCell
         , 'input'
 
     #-------------
-    
+
     buildForm: (event) ->
         $.ajax _.extend @ajaxOptions,
             type: "GET"
@@ -67,19 +67,19 @@ class outpost.QuickEditCell
                 @el.find("input").focus()
 
     #-------------
-    
+
     updateData: (event) ->
         input = $(event.target)
         value = input.val()
-        
+
         if value is @value
             @el.html(value)
             @keyup = false
             return
-            
+
         $.ajax _.extend @ajaxOptions,
             type: "PUT"
-            data: 
+            data:
                 data_point:
                     data_value: value
             success: (data, status, xhr) =>

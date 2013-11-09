@@ -1,5 +1,5 @@
 class outpost.Utilities
-    # Prevent forms from submitting when the "Enter" 
+    # Prevent forms from submitting when the "Enter"
     # key is pressed inside of a text field
     # Pass in an optional form ID to restrict it just to that form.
     @preventEnterFromSubmittingForm: (formId='') ->

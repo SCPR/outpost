@@ -8,16 +8,16 @@ describe Outpost::Controller::Helpers do
       controller._helper_methods.should include :model
     end
   end
-  
+
   #------------------------
-  
+
   describe "#notice" do
     context "HTML request" do
       it "adds the notice to flash" do
         pending
       end
     end
-    
+
     context "non-HTML request" do
       it "doesn't add anything to flash" do
         pending
@@ -26,7 +26,7 @@ describe Outpost::Controller::Helpers do
   end
 
   #------------------------
-  
+
   describe '#preference' do
     pending
   end
