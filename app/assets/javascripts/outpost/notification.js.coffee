@@ -5,17 +5,34 @@
 #
 class outpost.Notification
     constructor: (@wrapper, @type, @message) ->
-        @el = $("<div />", class: "alert alert-#{type}").html("#{message}")
+        @el = @_buildElement()
 
+    # Alias for #append
     render: ->
+        @append()
+
+    # Replaces the element.
+    # This is useful if you've changed the message or type.
+    rerender: ->
+        newEl = @_buildElement()
+        @el.replaceWith(newEl)
+        @el = newEl
+
+    # Append the element to the wrapper.
+    append: ->
         @wrapper.append @el
 
+    # Prepend the element to the wrapper.
     prepend: ->
         @wrapper.prepend @el
 
     # Replaces the wrapper's content with the alert
     replace: ->
         @wrapper.html @el
+
+    # Delegation for jQuery: @el.html("new text")
+    html: (html) ->
+        @el.html(html)
 
     # Delegation for jQuery: @el.is(":visible")
     isVisible: ->
@@ -44,3 +61,8 @@ class outpost.Notification
     # Delegation for jQuery: @el.remove()
     remove: ->
         @el.remove()
+
+
+    # Builds an element based on the attributes.
+    _buildElement: ->
+        $("<div />", class: "alert alert-#{@type}").html("#{@message}")

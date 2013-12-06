@@ -1,8 +1,9 @@
-### 0.0.4 (Unreleased)
+### 0.0.4
 #### Additions
 * Added `utilities.js`, which will include some utilities functions to use
   on various pages. First one is `preventEnterFromSubmittingForm()`.
 * Added `new_obj_key` class method to Identifier module. `news_story-new`
+* Added a bunch of functions to Notifications.
 
 #### Changes
 * Update bcrypt-ruby dependency to `>= 3.0.0` to support Rails 4.1
