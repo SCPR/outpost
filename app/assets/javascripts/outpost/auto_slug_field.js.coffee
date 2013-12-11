@@ -12,11 +12,11 @@ class outpost.AutoSlugField
     DefaultOptions:
         titleClass: ".sluggable"
         maxLength:  50
-    
+
     constructor: (options={}) ->
         @options = _.defaults options, @DefaultOptions
 
-        # Find the sluggable title field - if it doesn't 
+        # Find the sluggable title field - if it doesn't
         # exist then we can't auto-generate a slug
         @titleField = $(@options.titleClass)[0]
 
@@ -25,7 +25,7 @@ class outpost.AutoSlugField
             @maxLength  = @options.maxLength
             @button     = $ JST['outpost/templates/slug_generate_button']()
 
-            # If we found a matching field, 
+            # If we found a matching field,
             # render the generate button and add it after the slug field
             @slugField.after(@button)
             @button.on
@@ -37,12 +37,12 @@ class outpost.AutoSlugField
         true
 
     #------------------
-    
+
     updateSlug: (value) ->
         @slugField.val @slugify(value)
-    
+
     #------------------
-    
+
     slugify: (str) ->
         str.toLowerCase()
            .replace(/\s+/g, "-")     # Spaces -> `-`

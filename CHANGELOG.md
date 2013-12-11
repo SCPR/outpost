@@ -1,8 +1,9 @@
-### 0.0.4 (Unreleased)
+### 0.0.4
 #### Additions
 * Added `utilities.js`, which will include some utilities functions to use
   on various pages. First one is `preventEnterFromSubmittingForm()`.
 * Added `new_obj_key` class method to Identifier module. `news_story-new`
+* Added a bunch of functions to Notifications.
 * Added `FormBuilder#full_errors`, which renders full error messages for an attribute in an ALERT div. This is useful for when you have a validation on an attribute, but don't actually have a field for that attribute in the model, so simple_form can't attach the error to any field.
 
 #### Changes

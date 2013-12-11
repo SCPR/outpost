@@ -1,7 +1,7 @@
 # Bootstrap things
 
-# Scrollspy has to be initiated here, 
-# instead of via data- attributes, 
+# Scrollspy has to be initiated here,
+# instead of via data- attributes,
 # otherwise it's buggy. I don't know why.
 offset = 160
 nav    = "#form-nav"
@@ -25,9 +25,9 @@ $ ->
     $('[data-spy="affix"]').each ->
         $(@).width $(@).width()
 
-    # For table headers, we want them to act cool so we have 
+    # For table headers, we want them to act cool so we have
     # to treat them special. First fix the widths of the "th"
-    # elements. Then make the top margin of the table the 
+    # elements. Then make the top margin of the table the
     # same as the height of the header. Then move the header
     # up its height in pixels to give the appearance of
     # sitting on top.

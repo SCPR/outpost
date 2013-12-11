@@ -14,7 +14,7 @@ module Outpost
 
       alias_method :quick_edit?, :quick_edit
       alias_method :sortable?, :sortable
-      
+
       def initialize(attribute, list, attributes={})
         @attribute = attribute.to_s
         @list      = list

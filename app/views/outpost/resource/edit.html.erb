@@ -25,15 +25,15 @@
       <% if @record.respond_to?(:published_at) && @record.respond_to?(:published?) && @record.published? %>
         on <strong><%= format_date @record.published_at, time: true %></strong>
       <% end %>
-      
+
       <% if @record.respond_to?(:publish_alarm) && @record.publish_alarm.present? && @record.publish_alarm.fire_at.present? %>
         Alarm - <strong><%= format_date @record.publish_alarm.fire_at, time: true %></strong>
       <% end %>
     </li>
   </ul>
-  
+
   <hr />
-  
+
   <div id="fixed-sidebar" data-spy="affix" data-offset-top="140">
     <!-- Be sure to change the data-offset-top attribute on this element if you move it vertically -->
     <%= render "/outpost/shared/form_nav" %>

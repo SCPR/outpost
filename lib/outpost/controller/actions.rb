@@ -28,7 +28,7 @@ module Outpost
 
       def create
         @record = model.new(form_params)
-        
+
         if @record.save
           notice "Saved #{@record.simple_title}"
           respond_with :outpost, @record, location: requested_location
@@ -53,9 +53,9 @@ module Outpost
         notice "Deleted #{@record.simple_title}"
         respond_with :outpost, @record
       end
-      
+
       private
-      
+
       def form_params
         params[model.singular_route_key]
       end

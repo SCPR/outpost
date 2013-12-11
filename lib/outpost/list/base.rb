@@ -55,7 +55,7 @@ module Outpost
       #
       #   define_list do
       #     column :name, header: "Full Name", display: :display_full_name
-      #     column :user, 
+      #     column :user,
       #       header: "Associated User", display: proc { self.user.name }
       #   end
       #

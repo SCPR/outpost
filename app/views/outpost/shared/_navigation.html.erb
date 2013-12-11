@@ -9,23 +9,23 @@
       <% if index % per_col == 0 %>
         <div class="grouper">
       <% end %>
-      
+
       <li>
         <a href="<%=model.admin_index_path%>">
           <%= model.name.titleize.pluralize %>
         </a>
-        
+
         <div class="btn-links">
           <% if model.respond_to?(:admin_new_path) %>
             <a class="add btn btn-mini" href="<%=model.admin_new_path%>"><i class="icon-plus-sign"></i> Add</a>
           <% end %>
         </div>
       </li>
-      
+
       <% if index % per_col == per_col - 1 or model == models.last %>
         </div>
       <% end %>
-      
+
     <% end %>
   </ul> <!-- dropdown-menu -->
 </li> <!-- dropdown -->

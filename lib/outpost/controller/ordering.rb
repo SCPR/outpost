@@ -69,7 +69,7 @@ module Outpost
 
       # Set the order direction
       #
-      # It will either be the requested direction, or if not available, 
+      # It will either be the requested direction, or if not available,
       # then the table's default direction.
       def set_order_direction
         key = "#{model.content_key}_order_direction"

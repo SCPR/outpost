@@ -1,4 +1,4 @@
-## 
+##
 # Outpost::Controller::Helpers
 module Outpost
   module Controller
