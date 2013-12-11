@@ -36,6 +36,18 @@ module ActionView
 
       #----------------------
 
+      def full_errors(attribute, options={})
+        @template.render(
+          :partial => "/outpost/shared/full_errors",
+          :locals  => {
+            :f            => self,
+            :attribute    => attribute,
+            :options      => options
+          })
+      end
+
+      #----------------------
+
       def link_to_add_fields(association, options={})
         association = association.to_s
         partial     = options[:partial] || association.singularize

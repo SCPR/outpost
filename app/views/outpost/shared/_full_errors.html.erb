@@ -1,0 +1,9 @@
+<% if f.object.errors[attribute].present? %>
+  <div class="alert alert-error">
+    <ul class="unstyled" style="margin-bottom: 0">
+      <% f.object.errors[attribute].each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
