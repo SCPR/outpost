@@ -2,7 +2,7 @@ module ListHelper
   ICON_DOWN = "icon-arrow-down"
   ICON_UP   = "icon-arrow-up"
 
-  BOOTSTRAP_BOOLEAN_MAP = {
+  BOOLEAN_BOOTSTRAP_MAP = {
     true  => { icon: "icon-white icon-ok",     badge: "badge badge-success"},
     false => { icon: "icon-white icon-remove", badge: "badge badge-important"}
   }
@@ -164,8 +164,8 @@ module ListHelper
   # Returns String of the appropriate icon.
   def display_boolean(boolean)
     content_tag(:span,
-      content_tag(:i, "", class: BOOTSTRAP_BOOLEAN_MAP[!!boolean][:icon]),
-      class: BOOTSTRAP_BOOLEAN_MAP[!!boolean][:badge])
+      content_tag(:i, "", class: BOOLEAN_BOOTSTRAP_MAP[!!boolean][:icon]),
+      class: BOOLEAN_BOOTSTRAP_MAP[!!boolean][:badge])
   end
 
 
@@ -256,5 +256,11 @@ module ListHelper
   # Returns String to be used as a CSS class.
   def column_attribute_class(attribute)
     "column-#{attribute}".parameterize
+  end
+
+
+  # Public: Call the BOOLEAN_BOOTSTRAP_MAP
+  def boolean_bootstrap_map
+    BOOLEAN_BOOTSTRAP_MAP
   end
 end
