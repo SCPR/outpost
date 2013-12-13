@@ -2,6 +2,10 @@ module ListHelper
   ICON_DOWN = "icon-arrow-down"
   ICON_UP   = "icon-arrow-up"
 
+  BOOTSTRAP_BOOLEAN_MAP = {
+    true  => { icon: "icon-white icon-ok",     badge: "badge badge-success"},
+    false => { icon: "icon-white icon-remove", badge: "badge badge-important"}
+  }
 
   # Public: Renders the attribute for this column and record
   #
@@ -52,9 +56,15 @@ module ListHelper
 
       value = record.send(column.attribute)
       column._display_helper = display_helper
-      send(display_helper, value)
+
+      if self.method(display_helper).arity == 2
+        send(display_helper, value, record)
+      else
+        send(display_helper, value)
+      end
     end
   end
+
 
   # Public: Format a DateTime for displaying in lists
   #
@@ -69,6 +79,7 @@ module ListHelper
   def display_date(date)
     format_date(date, format: :full_date)
   end
+
 
   # Public: Display the attribute or "[blank]" if not present
   #
@@ -91,6 +102,7 @@ module ListHelper
     attrib.present? ? attrib.to_s : content_tag(:em, fallback)
   end
 
+
   # Public: Display the attribute as a string.
   #
   # attrib - (String) The attribute to display.
@@ -105,6 +117,7 @@ module ListHelper
     attrib.to_s
   end
 
+
   # Public: Displays an String representation of the record using +#to_title+.
   #
   # record - (String) The associated record.
@@ -117,9 +130,10 @@ module ListHelper
   #   # => "James Earl Jones"
   #
   # Returns String representation of the passed-in record.
-  def display_record(record)
-    record.try(:to_title)
+  def display_record(associated_record)
+    associated_record.try(:to_title)
   end
+
 
   # Public: Display a formatted DateTime.
   #
@@ -135,6 +149,7 @@ module ListHelper
     format_date(datetime, format: :full_date, time: true)
   end
 
+
   # Public: Display a boolean attribute as a sweet icon.
   #
   # boolean - (boolean) true or false
@@ -149,19 +164,10 @@ module ListHelper
   # Returns String of the appropriate icon.
   def display_boolean(boolean)
     content_tag(:span,
-      content_tag(:i, "", class: boolean_bootstrap_map[!!boolean][:icon]),
-      class: boolean_bootstrap_map[!!boolean][:badge])
+      content_tag(:i, "", class: BOOTSTRAP_BOOLEAN_MAP[!!boolean][:icon]),
+      class: BOOTSTRAP_BOOLEAN_MAP[!!boolean][:badge])
   end
 
-  # Private: Map for booleans to Bootstrap classes.
-  #
-  # Returns Hash
-  def boolean_bootstrap_map
-    {
-      true  => { icon: "icon-white icon-ok",     badge: "badge badge-success"},
-      false => { icon: "icon-white icon-remove", badge: "badge badge-important"}
-    }
-  end
 
   # Public: Maps the passed-in sort mode (asc, desc) to the appropriate
   # Bootstrap Glyphicons (icon-arrow-up, icon-arrow-down respectively)
@@ -182,6 +188,7 @@ module ListHelper
     when Outpost::ASCENDING  then ICON_UP
     end
   end
+
 
   # Public: Which sort mode to switch to. Useful for creating links to
   # switch the sort mode or change the list order.
@@ -215,6 +222,7 @@ module ListHelper
     end
   end
 
+
   # Public: Generate a CSS class for the column. If the column represents
   # an association, the class will be "column-association".
   #
@@ -234,6 +242,7 @@ module ListHelper
       "column-association"
     end
   end
+
 
   # Public: Generate a CSS class for this attribute
   #

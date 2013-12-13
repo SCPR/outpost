@@ -25,6 +25,10 @@
   `order` -> `order_attribute`
 * [BREAKING] Order directions are now in CAPS (ASC, DESC)
 * Changed text on Delete button to keep it from being Bui'd.
+* List Helpers can now accept two arguments: The attribute value, and the record.
+  If your list helper only accepts one argument, then only the attribute value
+  will be passed in. If it accepts a second argument, the record will also be
+  passed in.
 
 #### Fixes
 * None
