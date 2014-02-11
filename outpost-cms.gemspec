@@ -21,14 +21,4 @@ Gem::Specification.new do |s|
   s.add_dependency "jquery-rails"
   s.add_dependency "bcrypt-ruby", ">= 3.0.0"
   s.add_dependency 'select2-rails', '3.4.1'
-
-  s.add_development_dependency 'activerecord'
-  s.add_development_dependency 'actionpack'
-  s.add_development_dependency "sqlite3", "~> 1.3"
-  s.add_development_dependency 'combustion', '~> 0.3'
-  s.add_development_dependency "rspec-rails", "~> 2.13.1"
-  s.add_development_dependency "factory_girl", "~> 4.2"
-  s.add_development_dependency 'launchy'
-  s.add_development_dependency 'capybara', "~> 2.0"
-  s.add_development_dependency 'database_cleaner'
 end
