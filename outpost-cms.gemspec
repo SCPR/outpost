@@ -17,8 +17,8 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency "rails", ">= 3.2"
-  s.add_dependency "jquery-rails"
-  s.add_dependency "bcrypt-ruby", ">= 3.0.0"
+  s.add_dependency "rails", [">= 3.2", "< 5"]
+  s.add_dependency "jquery-rails", "~> 3.0"
+  s.add_dependency "bcrypt-ruby", [">= 3.0.0", "< 5"]
   s.add_dependency 'select2-rails', '3.4.1'
 end
