@@ -1,4 +1,7 @@
-### 0.0.4
+### 0.0.5
+
+
+### 0.0.4 (2014-02-13)
 #### Additions
 * Added `utilities.js`, which will include some utilities functions to use
   on various pages. First one is `preventEnterFromSubmittingForm()`.
