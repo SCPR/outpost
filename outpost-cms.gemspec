@@ -19,6 +19,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", [">= 3.2", "< 5"]
   s.add_dependency "jquery-rails", "~> 3.0"
-  s.add_dependency "bcrypt-ruby", [">= 3.0.0", "< 5"]
+  s.add_dependency "bcrypt-ruby", [">= 3.0.0", "< 4"]
   s.add_dependency 'select2-rails', '3.4.1'
 end

@@ -1,4 +1,6 @@
 ### 0.0.5
+#### Changes
+* Fixed bcrypt-ruby dependency versions.
 
 
 ### 0.0.4 (2014-02-13)
