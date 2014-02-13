@@ -1,6 +1,6 @@
 <% add_to_page_title "Editing: #{@record.to_title}" %>
 
-<%= simple_form_for [:outpost, @record], html: { class: "form-horizontal" } do |f| %>
+<%= simple_form_for [:outpost, @record], html: { class: "form-horizontal js-content-form" } do |f| %>
   <%= render 'errors', f: f %>
   <%= render 'form_fields', record: @record, f: f %>
   <%= render 'extra_fields', f: f %>

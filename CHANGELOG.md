@@ -31,7 +31,8 @@
   passed in.
 
 #### Fixes
-* None
+* Register an event handler on content forms and submit buttons which prevents the form from being submitted twice by double-click. Add class `js-content-form` to your form and class `js-submit-btns` to the div wrapping the submit buttons to activate. This is turned on by default.
+
 
 #### Deprecations
 * None

@@ -1,4 +1,4 @@
-# Bootstrap things
+# This file just turns on some simple behavior.
 
 # Scrollspy has to be initiated here,
 # instead of via data- attributes,
@@ -69,5 +69,16 @@ $ ->
             $(@).addClass("clickable")
             $(@).on click: (event) ->
                 window.location = href
+
+
+    # Disable the save buttons when the form is submitted.
+    # We can't actually disable the buttons (in the UI), because we need
+    # their information on the server side to figure out where
+    # to redirect. So instead we'll just register a callback that prevents
+    # the button from doing anything else after the form is submitted.
+    $('.js-content-form').one
+        submit: (event) ->
+            $(".js-save-btns button").on
+                click: (event) -> event.preventDefault();
 
     true
