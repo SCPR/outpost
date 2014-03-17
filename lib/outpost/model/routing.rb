@@ -22,6 +22,20 @@ module Outpost
       extend ActiveSupport::Concern
 
       module ClassMethods
+        attr_accessor :public_route_key
+
+        def public_route_key
+          if !@public_route_key && defined?(self.class::ROUTE_KEY)
+            @public_route_key = self.class::ROUTE_KEY
+
+            ActiveSupport::Deprecation.warn(
+              "ROUTE_KEY is deprecated. Please move it to `public_route_key`.")
+          end
+
+          @public_route_key
+        end
+
+
         # /outpost/blog_entries/new
         def admin_new_path
           collection_route("new_outpost_#{self.singular_route_key}_path")
@@ -84,17 +98,17 @@ module Outpost
       alias_method :admin_destroy_url, :admin_show_url
 
 
-      # Uses self.class::ROUTE_KEY to generate
+      # Uses self.class.public_route_key to generate
       # the front-end path to this object
       # If an object doesn't have a front-end path,
-      # do not define a ROUTE_KEY on the class.
+      # do not define a public_route_key on the class.
       #
       # If the object isn't public, then leave route_hash
       # empty as well.
       def public_path(options={})
-        if self.route_hash.present? && defined?(self.class::ROUTE_KEY)
+        if self.route_hash.present? && self.class.public_route_key
           Rails.application.routes.url_helpers.send(
-            "#{self.class::ROUTE_KEY}_path", options.merge!(self.route_hash))
+            "#{self.class.public_route_key}_path", options.merge!(self.route_hash))
         end
       end
 

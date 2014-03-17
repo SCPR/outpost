@@ -130,7 +130,7 @@ describe Outpost::Model::Routing do
         person.public_path.should eq nil
       end
 
-      it "returns nil if if ROUTE_KEY isn't defined" do
+      it "returns nil if if public_route_key isn't defined" do
         pidgeon = Pidgeon.new
         pidgeon.stub(:route_hash) { { id: 1, slug: "cool-dude" } }
         pidgeon.public_path.should eq nil

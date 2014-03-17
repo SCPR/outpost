@@ -14,8 +14,13 @@ module Outpost
     autoload :Serializer
 
     module ClassMethods
-      def outpost_model
+      def outpost_model(options={})
         include Methods, Identifier, Routing, Naming, Serializer
+
+        # Convenience for setting options on the class.
+        options.each do |option, value|
+          send("#{option}=", value)
+        end
       end
     end # ClassMethods
   end # Model

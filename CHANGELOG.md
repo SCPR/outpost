@@ -1,6 +1,20 @@
 ### 0.0.5
+#### Additions
+* Added the ability to specify options when declaring outpost model:
+
+```ruby
+class Article < ActiveRecord::Base
+  outpost_model public_route_key: "article"
+
+  # ...
+end
+```
+
 #### Changes
 * Fixed bcrypt-ruby dependency versions.
+
+#### Deprecations
+* Deprecated `ROUTE_KEY` for defining the public route path helper keys. Use `self.public_route_key = "..."` instead.
 
 
 ### 0.0.4 (2014-02-13)

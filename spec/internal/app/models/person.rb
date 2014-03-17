@@ -1,6 +1,5 @@
 class Person < ActiveRecord::Base
-  outpost_model
-  ROUTE_KEY = "person"
+  outpost_model public_route_key: "person"
 
   validates :name, presence: true
   validates :email, presence: true
