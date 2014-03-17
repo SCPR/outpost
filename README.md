@@ -25,12 +25,12 @@ so we can both exist on RubyGems.
 
 
 This gem also has some hard dependencies that aren't in the gemspec.
-My goal is to reduce these dependencies as much as possible, but as this was 
+My goal is to reduce these dependencies as much as possible, but as this was
 extracted from the KPCC application, these are fairly strict at this point.
 
 * `simple_form` - for Rails 3.2, use `~> 2.1.0`.
 For Rails 4.0, you'll need to use `~> 3.0.0.beta1`
-* `kaminari` - You need to use the 
+* `kaminari` - You need to use the
 [kaminari master branch](https://github.com/amatsuda/kaminari).
 * `eco`
 * `sass-rails`
@@ -38,8 +38,33 @@ For Rails 4.0, you'll need to use `~> 3.0.0.beta1`
 * `coffee-rails`
 
 ## Usage
+### Configuration
+Outpost has some required configuration. In an initializer, perhaps `outpost.rb`,
+register your "outpost models" (first-class models which are managed directly through
+Outpost), as strings. Other available configuration will be discussed throughout
+this documentation.
+
+```ruby
+Outpost::Config.configure do |config|
+  config.registered_models = [
+    "Article",
+    "Blog",
+    "User"
+  ]
+
+  # Attributes which should be looked for as "title attributes", used for representing
+  # the object throughout Outpost.
+  config.title_attributes      = [:name, :headline, :short_headline, :title]
+
+  # For controllers without a list defined, Outpost will render a list
+  # with all of the attributes. Add attributes here which should always be
+  # excluded from these automatic lists.
+  config.excluded_list_columns = ["body"]
+end
+
+
 ### Authentication
-Much like Devise, Outpost provides a basic `SessionsController` and 
+Much like Devise, Outpost provides a basic `SessionsController` and
 corresponding views. To use these, just add them to your routes:
 
 ```ruby
@@ -70,7 +95,7 @@ Your User class should have at least the following methods:
 
 #### Configuration
 
-You can set a different User class, or the attribute which the user 
+You can set a different User class, or the attribute which the user
 should use to login:
 
 ```
@@ -122,7 +147,7 @@ add_index :user_permissions, :permission_id
 ```
 
 You can include `Outpost::Model::Authorization` into your User model
-to provide the Permission association, and also add the `can_manage?` 
+to provide the Permission association, and also add the `can_manage?`
 method:
 
 ```ruby
@@ -131,7 +156,7 @@ if !current_user.can_manage?(Post)
 end
 ```
 
-Authorization is "All-or-None"... in other words, a user can either 
+Authorization is "All-or-None"... in other words, a user can either
 manage a resource or not - A user with permission for a particular model
 is able to Create, Read, Update, and Delete any of those objects.
 
@@ -150,8 +175,8 @@ or a link:
 
 ### User Preferences
 Preferences are stored in the session, and on a per-resource basis.
-Outpost provides built-in hooks in the controller and views for 
-Order (attribute) and Sort Mode ("asc", "desc"). In order to manage other 
+Outpost provides built-in hooks in the controller and views for
+Order (attribute) and Sort Mode ("asc", "desc"). In order to manage other
 preferences, you'll want to make use of a handful of methods that get
 mixed-in to your Outpost controllers:
 
@@ -171,7 +196,7 @@ For example:
 set_preference("blog_entries_color", "ff0000")
 ```
 
-You also need to add the parameter that the preference is using to 
+You also need to add the parameter that the preference is using to
 `config.preferences`:
 
 ```ruby
@@ -226,7 +251,7 @@ f.input :title, wrapper_html; { class: "field-counter", data: { target: 50, fuzz
 
 ![Preview](http://i.imgur.com/OZhlIOd.png)
 
-The Javascript for Preview is what handles sending the form data to the server, but you'll need to handle the server-side stuff yourself. The "Preview" button will show up once you've added a `preview` action to that controller. 
+The Javascript for Preview is what handles sending the form data to the server, but you'll need to handle the server-side stuff yourself. The "Preview" button will show up once you've added a `preview` action to that controller.
 
 #### Use
 
@@ -242,7 +267,7 @@ Here is a full example of what your `preview` action could look like:
 ```ruby
 def preview
   @post = ContentBase.obj_by_key(params[:obj_key]) || Post.new
-  
+
   with_rollback @post do
     @post.assign_attributes(form_params)
 
@@ -301,8 +326,8 @@ A ton of stuff. Here is a sampler:
 * Documentation... oh man, the documentation...
 
 ## Contributing
-Pull Requests are encouraged! This engine was built specifically for KPCC, 
-so its flexibility is limited... if you have improvements to make, please 
+Pull Requests are encouraged! This engine was built specifically for KPCC,
+so its flexibility is limited... if you have improvements to make, please
 make them.
 
 Fork it, make your changes, and send me a pull request.
