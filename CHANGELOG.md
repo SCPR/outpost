@@ -10,8 +10,15 @@ class Article < ActiveRecord::Base
 end
 ```
 
+* Bootstrap typeahead is now included in javascript by default. It is recommended that you just override the included javascripts.
+* Add some basic default column stying.
+* Smarter building of filter options.
+
 #### Changes
 * Fixed bcrypt-ruby dependency versions.
+
+#### Fixes
+* Fix error when Permissions aren't being used. This is a wip, as Permissions will eventually be totally optional.
 
 #### Deprecations
 * Deprecated `ROUTE_KEY` for defining the public route path helper keys. Use `self.public_route_key = "..."` instead.
