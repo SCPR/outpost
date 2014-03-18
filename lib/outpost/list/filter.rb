@@ -16,8 +16,14 @@ module Outpost
         collection = options[:collection]
         @collection = begin
           case collection
-          when NilClass
-            # TODO Automatically detect column type
+          when NilClass # No collection given. Find it ourselves.
+            if list.model.column_names.include?(@attribute)
+              -> {
+                list.model.order(@attribute).pluck("distinct #{@attribute}")
+              }
+            else
+              # TODO Handle association filtering
+            end
           when Proc
             collection
           when Symbol
