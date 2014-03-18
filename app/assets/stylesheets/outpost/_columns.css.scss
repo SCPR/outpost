@@ -1,0 +1,37 @@
+// Set column widths
+$datetimeWidth: 140px;
+$booleanWidth: 60px;
+$integerWidth: 50px;
+$statusWidth: 105px;
+
+@mixin url-cell {
+    width: 250px;
+    word-break: break-all;
+}
+
+table {
+
+    ///////////////////
+    // Global
+    .column-manage {
+        width: 60px;
+        white-space: nowrap;
+    }
+
+    .column-status {
+        width: $statusWidth;
+    }
+
+    .column-datetime, .column-date {
+        width: $datetimeWidth;
+    }
+
+    .column-boolean {
+        width: $booleanWidth;
+    }
+
+    .column-id {
+        width: $integerWidth;
+    }
+
+}
