@@ -17,6 +17,7 @@
 //= require bootstrap-alert
 //= require bootstrap-affix
 //= require bootstrap-datepicker
+//= require bootstrap-typeahead
 
 //= require outpost/base
 //= require outpost/templates
