@@ -318,12 +318,6 @@ The form ID argument is optional. By default it will target all forms on the pag
 
 #### More documentation to come.
 
-## Todo
-A ton of stuff. Here is a sampler:
-
-* Generators for resources (models, controllers).
-* Add record versioning (needs to be extracted from the SCPRv4 app).
-* Documentation... oh man, the documentation...
 
 ## Contributing
 Pull Requests are encouraged! This engine was built specifically for KPCC,
