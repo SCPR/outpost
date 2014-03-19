@@ -25,8 +25,8 @@ module Outpost
         attr_accessor :public_route_key
 
         def public_route_key
-          if !@public_route_key && defined?(self.class::ROUTE_KEY)
-            @public_route_key = self.class::ROUTE_KEY
+          if !@public_route_key && defined?(self::ROUTE_KEY)
+            @public_route_key = self::ROUTE_KEY
 
             ActiveSupport::Deprecation.warn(
               "ROUTE_KEY is deprecated. Please move it to `public_route_key`.")
