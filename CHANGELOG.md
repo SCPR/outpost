@@ -1,4 +1,4 @@
-### 0.0.5
+### 0.0.5 (2014-03-19)
 #### Additions
 * Added the ability to specify options when declaring outpost model:
 
