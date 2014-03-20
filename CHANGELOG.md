@@ -13,6 +13,7 @@ end
 * Bootstrap typeahead is now included in javascript by default. It is recommended that you just override the included javascripts.
 * Add some basic default column stying.
 * Smarter building of filter options.
+* Logo is now always an image. Override assets/images/outpost/logo.png to customize it.
 
 #### Changes
 * Fixed bcrypt-ruby dependency versions.
