@@ -27,7 +27,7 @@ module Outpost
       def require_login
         if !current_user
           session[:return_to] = request.fullpath
-          redirect_to outpost_login_path and return false
+          redirect_to outpost.login_path and return false
         end
       end
     end # Authentication

@@ -11,7 +11,7 @@ module TestHelpers
         :password                 => password,
         :password_confirmation    => password
 
-      visit outpost_login_path
+      visit outpost.login_path
       fill_in "email", with: @user.email
       fill_in "password", with: password
       click_button "Submit"

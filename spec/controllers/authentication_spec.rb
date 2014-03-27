@@ -55,7 +55,7 @@ describe Outpost::PeopleController do
       end
 
       it "redirects to login path if current_user is false" do
-        controller.response.should redirect_to outpost_login_path
+        controller.response.should redirect_to outpost.login_path
       end
     end
   end

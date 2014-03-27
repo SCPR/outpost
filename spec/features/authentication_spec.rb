@@ -4,7 +4,7 @@ describe 'authentication' do
   context 'not logged in' do
     it 'redirects to login path' do
       visit outpost_people_path
-      current_path.should eq outpost_login_path
+      current_path.should eq outpost.login_path
     end
   end
 
@@ -15,7 +15,7 @@ describe 'authentication' do
         :password                 => "secret",
         :password_confirmation    => "secret"
 
-      visit outpost_login_path
+      visit outpost.login_path
     end
 
     context 'incorrect login information' do
@@ -24,7 +24,7 @@ describe 'authentication' do
         fill_in "password", with: "secret"
         click_button "Submit"
 
-        current_path.should eq outpost_sessions_path
+        current_path.should eq outpost.sessions_path
         page.should have_css ".alert-error"
       end
     end
@@ -35,7 +35,7 @@ describe 'authentication' do
         fill_in "password", with: "secret"
         click_button "Submit"
 
-        current_path.should eq outpost_root_path
+        current_path.should eq outpost.root_path
         page.should have_css ".alert-success"
       end
     end

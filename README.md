@@ -65,15 +65,7 @@ end
 
 ### Authentication
 Much like Devise, Outpost provides a basic `SessionsController` and
-corresponding views. To use these, just add them to your routes:
-
-```ruby
-namespace :outpost do
-  resources :sessions, only: [:create, :destroy]
-  get 'login'  => "sessions#new", as: :login
-  get 'logout' => "sessions#destroy", as: :logout
-end
-```
+corresponding views. Their routes are part of the `Outpost::Engine` routes.
 
 Outpost also provides the `Outpost::Model::Authentication` module,
 which you should include into your User model to work with the provided
@@ -108,19 +100,28 @@ end
 
 ##### Routes
 
-Note that this gem doesn't provide any routes for you. It is expected that you'll want to use the path globbing to render Outpost-style 404's inside of Outpost (rather than your application's 404 page), so it gets too messy and complicated to try to combine your routes with path globbing.
-
-You'll want to put this at the bottom of your `outpost` namespace in your routes:
+Mount Outpost's routes outside of your `outpost` namespace. Your custom-defined namespace will be mostly for defining resources. You can also add a catch-all route (see example) at the very bottom of the namespace to use outpost-specific 404 pages. If you don't add this line, then 404 pages in the `/outpost` namespace will render your app's normal 404 page.
 
 ```ruby
-root to: 'home#dashboard'
+Rails.application.routes.draw do
+  # ...
 
-resources :sessions, only: [:create, :destroy]
-get 'login'  => "sessions#new", as: :login
-get 'logout' => "sessions#destroy", as: :logout
+  mount Outpost::Engine, at: "outpost"
 
-get "*path" => 'errors#not_found'
+  namespace :outpost do
+    resources :posts
+
+    # Add outpost-specific 404 pages.
+    # This must be at the very bottom of the namespace.
+    get "*path" => 'errors#not_found'
+  end
+end
 ```
+
+This mount provides a few routes:
+* `outpost.root_path` - The path to the dashboard.
+* `outpost.login_path` - Login
+* `outpost.logout_path` - Logout
 
 
 ### Authorization
@@ -152,7 +153,7 @@ method:
 
 ```ruby
 if !current_user.can_manage?(Post)
-  redirect_to outpost_root_path, alert: "Not Authorized"
+  redirect_to outpost.root_path, alert: "Not Authorized"
 end
 ```
 

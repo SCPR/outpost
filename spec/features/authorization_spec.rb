@@ -8,7 +8,7 @@ describe 'authorization' do
 
     it 'redirects to the dashboard' do
       visit outpost_people_path
-      current_path.should eq outpost_root_path
+      current_path.should eq outpost.root_path
       page.should have_css ".alert-error"
       page.should have_content "You don't have permission"
     end

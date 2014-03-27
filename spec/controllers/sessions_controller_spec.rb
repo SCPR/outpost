@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Outpost::SessionsController do
-  # -------------------------
+  routes { Outpost::Engine.routes }
 
   describe "GET /new" do
     it "returns success and renders new template if current_user false" do
@@ -14,7 +14,7 @@ describe Outpost::SessionsController do
     it "redirects to home page if current_user if set" do
       controller.stub(:current_user) { create :user }
       get :new
-      response.should redirect_to outpost_root_path
+      response.should redirect_to outpost.root_path
     end
   end
 
@@ -47,7 +47,7 @@ describe Outpost::SessionsController do
       end
 
       it "redirects to admin root" do
-        controller.response.should redirect_to outpost_root_path
+        controller.response.should redirect_to outpost.root_path
       end
 
       it "sets the flash" do
@@ -71,7 +71,7 @@ describe Outpost::SessionsController do
 
   # -------------------------
 
-  describe "DELETE /destroy" do
+  describe "GET /destroy" do
     let(:user) { create :user }
 
     it "unsets @current_user" do
@@ -88,7 +88,7 @@ describe Outpost::SessionsController do
 
     it "redirects to login page" do
       get :destroy
-      controller.response.should redirect_to outpost_login_path
+      controller.response.should redirect_to outpost.login_path
     end
 
     it "sets the flash" do

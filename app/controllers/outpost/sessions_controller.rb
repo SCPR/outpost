@@ -6,7 +6,7 @@ module Outpost
     respond_to :html
 
     def new
-      redirect_to outpost_root_path if current_user
+      redirect_to outpost.root_path if current_user
     end
 
     def create
@@ -16,7 +16,7 @@ module Outpost
         session[:user_id] = user.id
         user.update_column(:last_login, Time.now)
 
-        redirect_to session[:return_to] || outpost_root_path,
+        redirect_to session[:return_to] || outpost.root_path,
           notice: "Logged in."
 
         session[:return_to] = nil
@@ -29,7 +29,7 @@ module Outpost
     def destroy
       @current_user = nil
       session[:user_id] = nil
-      redirect_to outpost_login_path, notice: "Logged Out."
+      redirect_to outpost.login_path, notice: "Logged Out."
     end
 
     private

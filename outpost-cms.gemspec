@@ -22,4 +22,6 @@ Gem::Specification.new do |s|
   s.add_dependency "bcrypt-ruby", [">= 3.0.0", "< 4"]
   s.add_dependency 'select2-rails', '3.4.1'
   s.add_dependency 'kaminari', '~> 0.15.1'
+
+  s.add_development_dependency 'bundler', '> 0'
 end
