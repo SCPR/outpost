@@ -22,8 +22,11 @@ module Outpost
           with: ->(e) { render_error(404, e) and return false }
       end
 
-      #----------------------
 
+      private
+
+      # We don't want this to be considered an action method,
+      # so it's private
       def render_error(status, e=StandardError)
         response.status = status
 
@@ -33,8 +36,8 @@ module Outpost
           respond_to do |format|
             format.html do
               render(
-                :template   => "/errors/error_#{status}",
-                :layout     => "application",
+                :template   => "outpost/errors/error_#{status}",
+                :layout     => "outpost/application",
                 :status     => status,
                 :locals     => { error: e }
               )

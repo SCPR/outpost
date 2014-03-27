@@ -1,3 +1,29 @@
+### 0.1.0
+#### Changes
+* [BREAKING] Outpost now provides routes via mount. To use it, add it above your `outpost` namespace in your routes file. This mount is required by Outpost. To use it, add in your routes:
+
+```ruby
+Rails.application.routes.draw do
+  # ...
+
+  # ADD THIS LINE
+  mount Outpost::Engine, at: "outpost"
+
+  namespace :outpost do
+    resources :posts
+
+    # Add outpost-specific 404 pages.
+    # This must be at the very bottom of the namespace.
+    get "*path" => 'errors#not_found'
+  end
+end
+```
+
+You may then remove the `root`, `logout`, `login`, and `sessions` routes, as Outpost provides them for you. If you're using a bunch of custom code which still references `outpost_root_path`, for example, you can leave the old routes in place, but you still need to add the mount.
+
+
+
+
 ### 0.0.5 (2014-03-19)
 #### Additions
 * Added the ability to specify options when declaring outpost model:

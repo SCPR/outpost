@@ -10,10 +10,13 @@ module Outpost
     before_filter :root_breadcrumb
     before_filter :set_sections
 
+
+    private
+
     #------------------------
     # Always want to add this link to the Breadcrumbs
     def root_breadcrumb
-      breadcrumb "Outpost", outpost_root_path
+      breadcrumb "Outpost", outpost.root_path
     end
 
     #----------------------

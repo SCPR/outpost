@@ -22,6 +22,8 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.order = "random"
   config.infer_base_class_for_anonymous_controllers = false
+  config.filter_run focus: true
+  config.run_all_when_everything_filtered = true
 
   config.before type: :feature do
     DatabaseCleaner.strategy = :truncation

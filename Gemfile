@@ -25,4 +25,6 @@ group :test do
   gem "factory_girl", "~> 4.2"
 end
 
+gem 'pry'
+
 gemspec
