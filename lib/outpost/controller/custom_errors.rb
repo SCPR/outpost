@@ -27,7 +27,7 @@ module Outpost
 
       # We don't want this to be considered an action method,
       # so it's private
-      def render_error(status, e=StandardError)
+      def render_error(status, e=StandardError, template_prefix="outpost/")
         response.status = status
 
         if Rails.application.config.consider_all_requests_local
@@ -36,8 +36,8 @@ module Outpost
           respond_to do |format|
             format.html do
               render(
-                :template   => "outpost/errors/error_#{status}",
-                :layout     => "outpost/application",
+                :template   => "#{template_prefix}errors/error_#{status}",
+                :layout     => "#{template_prefix}application",
                 :status     => status,
                 :locals     => { error: e }
               )
