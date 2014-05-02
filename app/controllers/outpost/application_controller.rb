@@ -18,7 +18,7 @@ module Outpost
     # a kaminari bug: https://github.com/amatsuda/kaminari/issues/457
     # But it could stick around and be useful anyways.
     def route_proxy
-      outpost
+      nil
     end
     helper_method :route_proxy
 
