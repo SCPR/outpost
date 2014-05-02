@@ -21,6 +21,8 @@ end
 
 You may then remove the `root`, `logout`, `login`, and `sessions` routes, as Outpost provides them for you. If you're using a bunch of custom code which still references `outpost_root_path`, for example, you can leave the old routes in place, but you still need to add the mount.
 
+* Added optional `template_prefix` argument to `render_error`.
+
 #### Additions
 * Added `route_proxy` helper to controllers. This was originally to get around [a kaminari bug](https://github.com/amatsuda/kaminari/issues/457), but can be useful for other reasons.
 
