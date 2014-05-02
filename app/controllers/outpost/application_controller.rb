@@ -13,6 +13,15 @@ module Outpost
 
     private
 
+    #----------------------
+    # This method was originally introduced to get around
+    # a kaminari bug: https://github.com/amatsuda/kaminari/issues/457
+    # But it could stick around and be useful anyways.
+    def route_proxy
+      outpost
+    end
+    helper_method :route_proxy
+
     #------------------------
     # Always want to add this link to the Breadcrumbs
     def root_breadcrumb
@@ -24,8 +33,6 @@ module Outpost
     def set_sections
       @sections = {}
     end
-
-    #----------------------
 
     def with_rollback(object)
       object.transaction do
