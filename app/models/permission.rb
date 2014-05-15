@@ -1,6 +1,4 @@
 class Permission < ActiveRecord::Base
-  outpost_model
-
   #-------------------
   # Association
   has_many :user_permissions
