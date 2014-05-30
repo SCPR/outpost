@@ -1,4 +1,4 @@
-### 0.1.0
+### 0.1.0 (2014-05-30)
 #### Changes
 * [BREAKING] Outpost now provides routes via mount. To use it, add it above your `outpost` namespace in your routes file. This mount is required by Outpost. To use it, add in your routes:
 
