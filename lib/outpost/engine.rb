@@ -9,6 +9,7 @@ module Outpost
       g.helper false
     end
 
-    config.assets.paths << "vendor/assets/javascripts"
+    config.assets.paths << File.expand_path(
+      "../../../vendor/assets/javascripts", __FILE__)
   end
 end
