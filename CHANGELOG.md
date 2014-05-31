@@ -1,3 +1,8 @@
+### 0.1.2 (2014-05-30)
+#### Changes
+* Add vendor/ to gem files.
+
+
 ### 0.1.1 (2014-05-30)
 #### Changes
 * Added vendor/assets/javascripts to config.assets.paths
