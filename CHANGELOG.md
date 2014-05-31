@@ -1,4 +1,4 @@
-### 0.1.1
+### 0.1.1 (2014-05-30)
 #### Changes
 * Added vendor/assets/javascripts to config.assets.paths
 
