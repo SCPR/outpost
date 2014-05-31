@@ -8,5 +8,7 @@ module Outpost
       g.assets false
       g.helper false
     end
+
+    config.assets.paths << "vendor/assets/javascripts"
   end
 end
