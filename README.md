@@ -244,7 +244,7 @@ Add the class `field-counter` to a div wrapping the input field, and two data-at
 If you're using `simple_form`, it might look like this:
 
 ```ruby
-f.input :title, wrapper_html; { class: "field-counter", data: { target: 50, fuzziness: 10} }
+f.input :title, wrapper_html: { class: "field-counter", data: { target: 50, fuzziness: 10} }
 ```
 
 
