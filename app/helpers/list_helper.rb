@@ -72,7 +72,7 @@ module ListHelper
   #
   # Examples
   #
-  #   display_date(Time.now)
+  #   display_date(Time.zone.now)
   #   # => March 13th, 2012
   #
   # Returns String of formatted date
@@ -141,7 +141,7 @@ module ListHelper
   #
   # Examples
   #
-  #   display_datetime(Time.now)
+  #   display_datetime(Time.zone.now)
   #   # => "March 13th, 2013,  4:12pm"
   #
   # Returns String of the formatted date and time.

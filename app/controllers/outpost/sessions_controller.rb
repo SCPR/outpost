@@ -14,7 +14,7 @@ module Outpost
         params[@authentication_attribute], params[:password])
 
         session[:user_id] = user.id
-        user.update_column(:last_login, Time.now)
+        user.update_column(:last_login, Time.zone.now)
 
         redirect_to session[:return_to] || outpost.root_path,
           notice: "Logged in."

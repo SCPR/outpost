@@ -14,13 +14,13 @@ module UtilityHelper
   #
   # Examples
   #
-  #   format_date(Time.now, format: "iso", time: true)
+  #   format_date(Time.zone.now, format: "iso", time: true)
   #   # => "2013-03-13,  1:10pm"
   #
-  #   format_date(Time.now, with: "%D")
+  #   format_date(Time.zone.now, with: "%D")
   #   # => "03/13/13"
   #
-  #   format_date(Time.now)
+  #   format_date(Time.zone.now)
   #   # =>  "Mar 13, 2013"
   #
   # Returns String of the formatted date
