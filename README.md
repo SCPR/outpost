@@ -61,7 +61,7 @@ Outpost::Config.configure do |config|
   # excluded from these automatic lists.
   config.excluded_list_columns = ["body"]
 end
-
+```
 
 ### Authentication
 Much like Devise, Outpost provides a basic `SessionsController` and
