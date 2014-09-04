@@ -1,7 +1,7 @@
 # Outpost
 ![Outpost Sign](http://i.imgur.com/NWfpNk5.jpg)
 
-[![Build Status](https://travis-ci.org/SCPR/outpost.png)](https://travis-ci.org/SCPR/outpost)
+[![Circle CI](https://circleci.com/gh/SCPR/outpost.png?style=badge)](https://circleci.com/gh/SCPR/outpost)
 
 A Rails Engine for quickly standing up a CMS for a Newsroom.
 
