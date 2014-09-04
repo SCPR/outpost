@@ -7,7 +7,7 @@ gem 'bootstrap-sass', '~> 2.2'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
-gem 'kaminari', github: "amatsuda/kaminari"
+gem 'kaminari', github: "amatsuda/kaminari", tag: "v0.15.1"
 gem 'simple_form', github: "plataformatec/simple_form"
 gem 'select2-rails'
 gem 'execjs', '~> 2.0.0'
