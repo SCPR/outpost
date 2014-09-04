@@ -1,7 +1,7 @@
 # Outpost
 ![Outpost Sign](http://i.imgur.com/NWfpNk5.jpg)
 
-[![Circle CI](https://circleci.com/gh/SCPR/outpost.png?style=badge)](https://circleci.com/gh/SCPR/outpost)
+[![Circle CI](https://circleci.com/gh/SCPR/outpost.png?style=badge&circle-token=96490e908b6b140065eb8a432cfebf7237e44f19)](https://circleci.com/gh/SCPR/outpost)
 
 A Rails Engine for quickly standing up a CMS for a Newsroom.
 
