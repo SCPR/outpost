@@ -1,4 +1,4 @@
-### 0.1.4
+### 0.1.4 (unreleased)
 #### Changes
 * [BREAKING] Removed Outpost::Hook
 
