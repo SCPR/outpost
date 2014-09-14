@@ -1,3 +1,8 @@
+### 0.1.4
+#### Changes
+* [BREAKING] Removed Outpost::Hook
+
+
 ### 0.1.3 (2014-09-03)
 #### Changes
 * Use `Time.zone.now` instead of `Time.now`
