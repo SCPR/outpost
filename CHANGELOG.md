@@ -2,6 +2,9 @@
 #### Changes
 * [BREAKING] Removed Outpost::Hook
 
+#### Fixes
+* Fixed datetime text input to use correct timezone
+
 
 ### 0.1.3 (2014-09-03)
 #### Changes
