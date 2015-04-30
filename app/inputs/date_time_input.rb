@@ -6,7 +6,7 @@
 # take care of filling it in.
 #
 class DateTimeInput < SimpleForm::Inputs::Base
-  def input
+  def input(wrapper_options=nil)
     @builder.text_field(attribute_name,
       input_html_options.reverse_merge(value: @builder.object.send(attribute_name)))
   end
