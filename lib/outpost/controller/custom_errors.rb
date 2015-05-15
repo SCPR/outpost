@@ -64,6 +64,16 @@ module Outpost
               )
             end
 
+
+            format.js do
+              # Render an asset 404 without blowing up on CORS
+              @marked_for_same_origin_verification = false
+              render(
+                :text     => "#{status} - #{response.message}",
+                :status   => status
+              )
+            end
+
             format.any do
               head status
             end
