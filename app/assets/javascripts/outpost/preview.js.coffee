@@ -19,14 +19,17 @@ class outpost.Preview
                     for id,instance of CKEDITOR.instances
                         instance.updateElement()
 
-                data = form.serialize()
+                data = {}
+                _.each form.serializeArray(), (v) ->
+                    data[v['name']] = v['value']
 
                 $.ajax
-                    type: 'POST'
+                    type: data['_method'] || 'PATCH'
                     dataType: "html"
+                    contentType: "application/json; charset=utf-8"
                     url: "#{_t.options.baseUrl}/preview"
                     data:
-                        data
+                        JSON.stringify data
 
                     beforeSend: (jqXHR, settings) ->
                         _t.openWindow(target.data("windowOptions"))
