@@ -33,9 +33,10 @@ module RenderHelper
   #   <% end %>
   #
   # Returns a String of the fieldset.
-  def form_block(title="", &block)
+  def form_block(title="", options={}, &block)
     render "/outpost/shared/form_block",
       :title => title,
-      :body  => capture(&block)
+      :body  => capture(&block),
+      :options => options
   end
 end

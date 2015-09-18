@@ -1,8 +1,16 @@
 <% if title.present? %>
   <% id = "form-block-#{title.parameterize}" %>
   <% @sections[id] = title if @sections %>
-  <fieldset class="form-block" id="<%=id%>">
-  <legend><%= title %></legend>
+  <fieldset class="form-block <%= 'dockable' if options[:dockable] %>" id="<%=id%>">
+  <legend>
+    <%= title %>
+    <% if options[:dockable] %>
+      <span class="dockable-controls">
+        <a href="#" class="dismiss-control" style="display: none;">X</a>
+        <a href="#" class="dock-control"> >> </a>
+      </span>
+    <% end %>
+  </legend>
 
   <div class="hidden notification">
     <p class="muted"><i>Click header to show fields</i></p>
