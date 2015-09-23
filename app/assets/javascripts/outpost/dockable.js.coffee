@@ -7,13 +7,19 @@ $(document).ready ->
       dismissControl = dockable.find("legend a.dismiss-control")
       dockControl    = dockable.find("legend a.dock-control")
       dockControl.on "click", (e) ->
-        dockable.before "<div class='dockable-placeholder' data-dockable-id='#{dockable.attr('id')}'></div>"
-        dockControl.hide()
-        dismissControl.show()
-        dockable.prependTo dock
+        e.stopPropagation()
+        unless dockable.hasClass("docked")
+          dockable.before "<div class='dockable-placeholder' data-dockable-id='#{dockable.attr('id')}'></div>"
+          dockControl.hide()
+          dismissControl.show()
+          dockable.addClass "docked"
+          dockable.prependTo dock
       dismissControl.on "click", (e) ->
-        placeholder = $(".dockable-placeholder[data-dockable-id='" + (dockable.attr('id')) + "']")
-        placeholder.before dockable
-        placeholder.remove()
-        dismissControl.hide()
-        dockControl.show()
+        e.stopPropagation()
+        if dockable.hasClass("docked")
+          placeholder = $(".dockable-placeholder[data-dockable-id='" + (dockable.attr('id')) + "']")
+          placeholder.before dockable
+          placeholder.remove()
+          dismissControl.hide()
+          dockable.removeClass "docked"
+          dockControl.show()
