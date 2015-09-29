@@ -127,3 +127,44 @@ form.simple_form {
 .has-many-add-link {
   @extend .btn;
 }
+
+fieldset.form-block.dockable .dockable-controls a {
+  float: right;
+  text-decoration: none;
+  &:link {
+    color: white;
+  }
+  &:visited {
+    color: white;
+  }
+  &:hover {
+    color: white;
+  }
+  a:active {
+    color: white;
+  }
+}
+
+#form-nav ul.nav.nav-list {
+  display: none;
+}
+#form-nav ul.hover {
+  list-style: none;
+  position: absolute;
+  z-index: 20;
+  background-color: white;
+  border-radius: 3px;
+  border-width: 1px;
+  border-color: lightgray;
+  margin-top: -13px;
+  width: 100%;
+  margin-left: 0;
+}
+
+.show-on-hover > ul.dropdown-menu {
+  margin-top: -2px;  
+}
+
+.show-on-hover:hover > ul.dropdown-menu {
+    display: block;    
+}
