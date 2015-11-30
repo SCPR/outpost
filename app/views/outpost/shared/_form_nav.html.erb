@@ -1,12 +1,12 @@
 <% if @sections.present? %>
-  <h5>Jump to Section</h5>
-  <div id="form-nav">
-    <ul class="nav nav-list">
+  <div class="btn-group show-on-hover">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+      Jump to Section <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
       <% @sections.each do |id, title| %>
         <li><a href="#<%=id%>"><%= title %></a></li>
       <% end %>
     </ul>
   </div>
-
-  <hr />
 <% end %>

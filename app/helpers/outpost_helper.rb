@@ -46,4 +46,24 @@ module OutpostHelper
   def modal_toggle(options={}, &block)
     render "/outpost/shared/modal", options: options, body: capture(&block)
   end
+
+  # This is used to create a form that wraps the whole page content
+  # including the main form fields and the sidebar.  It assumes that
+  # content_form expressions exist in the template in order to render
+  # the top and bottom tags of the form.
+  #
+  # Can be used in place of #simple_form_for.  Be aware that since
+  # this is using content_for, only one of these forms can exist at
+  # a time.
+  def page_wrapping_form *args, &block
+    f = nil
+    content_for :content_wrapper_top do
+      raw simple_form_for(*args){ |frm| f = frm }.gsub("</form>", "")
+    end
+    content_for :content_wrapper_bottom do 
+      raw "</form>"
+    end
+    yield f
+  end
+
 end
