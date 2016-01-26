@@ -13,6 +13,7 @@
     </div>
 
     <div class="pull-right">
+      <%= content_for :submit_row %>
       <% if controller.action_methods.include? "preview" %>
         <div class="btn-group dropup" id="preview-submit">
           <a href="#" class="btn btn-info js-preview-btn" data-window-options="width=1200,height=1000">Preview</a>
