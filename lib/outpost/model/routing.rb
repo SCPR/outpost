@@ -130,7 +130,7 @@ module Outpost
       def public_url(options={})
         if path = self.public_path(options)
           File.join(
-            "http://#{Rails.application.default_url_options[:host]}", path)
+            "#{Rails.application.default_url_options[:protocol] || 'http'}://#{Rails.application.default_url_options[:host]}", path)
         end
       end
 
